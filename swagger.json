@@ -1,0 +1,1116 @@
+{
+    "swaggerVersion": "1.2",
+    "apis": [
+        {
+            "path": "/api/blogs/article/",
+            "operations": [
+                {
+                    "nickname": "Article_list",
+                    "items": {
+                        "$ref": "ArticleSerializer"
+                    },
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "format": "int32",
+                            "paramType": "query",
+                            "name": "page",
+                            "description": null,
+                            "type": "integer"
+                        },
+                        {
+                            "format": "int32",
+                            "paramType": "query",
+                            "name": "page_size",
+                            "description": null,
+                            "type": "integer"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "name",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "name__in",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "id",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "id__in",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published_at_from",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published_at_to",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "tag",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "enum": [
+                                "created_at",
+                                "-created_at",
+                                "id",
+                                "-id",
+                                "published_at",
+                                "-published_at"
+                            ],
+                            "paramType": "query",
+                            "name": "order_by",
+                            "description": "排序",
+                            "type": "enum"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "GET",
+                    "type": "array"
+                },
+                {
+                    "nickname": "Article_create",
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "paramType": "form",
+                            "name": "name",
+                            "required": true,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "title",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "author",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "description",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "image",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "tags",
+                            "required": true,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "body_html",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "published",
+                            "required": false,
+                            "description": "",
+                            "type": "boolean"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "published_at",
+                            "format": "date-time",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "metafield",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "name",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "name__in",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "id",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "id__in",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published_at_from",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published_at_to",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "tag",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "enum": [
+                                "created_at",
+                                "-created_at",
+                                "id",
+                                "-id",
+                                "published_at",
+                                "-published_at"
+                            ],
+                            "paramType": "query",
+                            "name": "order_by",
+                            "description": "排序",
+                            "type": "enum"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "POST",
+                    "type": "ArticleSerializer"
+                }
+            ],
+            "description": ""
+        },
+        {
+            "path": "/api/blogs/article/{pk}/",
+            "operations": [
+                {
+                    "nickname": "Article_retrieve",
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "name": "pk",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "name",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "name__in",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "id",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "id__in",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published_at_from",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published_at_to",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "tag",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "enum": [
+                                "created_at",
+                                "-created_at",
+                                "id",
+                                "-id",
+                                "published_at",
+                                "-published_at"
+                            ],
+                            "paramType": "query",
+                            "name": "order_by",
+                            "description": "排序",
+                            "type": "enum"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "GET",
+                    "type": "ArticleSerializer"
+                },
+                {
+                    "nickname": "Article_destroy",
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "name": "pk",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "name",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "name__in",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "id",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "id__in",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published_at_from",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published_at_to",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "tag",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "enum": [
+                                "created_at",
+                                "-created_at",
+                                "id",
+                                "-id",
+                                "published_at",
+                                "-published_at"
+                            ],
+                            "paramType": "query",
+                            "name": "order_by",
+                            "description": "排序",
+                            "type": "enum"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "DELETE",
+                    "type": "ArticleSerializer"
+                },
+                {
+                    "nickname": "Article_partial_update",
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "name": "pk",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "name",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "title",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "author",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "description",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "image",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "tags",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "body_html",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "published",
+                            "required": false,
+                            "description": "",
+                            "type": "boolean"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "published_at",
+                            "format": "date-time",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "metafield",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "name": "name",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "name": "name__in",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "name": "id",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "name": "id__in",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "name": "published_at_from",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "name": "published_at_to",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "name": "published",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "name": "tag",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "order_by",
+                            "required": false,
+                            "enum": [
+                                "created_at",
+                                "-created_at",
+                                "id",
+                                "-id",
+                                "published_at",
+                                "-published_at"
+                            ],
+                            "description": "排序",
+                            "type": "enum"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "PATCH",
+                    "type": "ArticleSerializer"
+                },
+                {
+                    "nickname": "Article_update",
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "name": "pk",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "name",
+                            "required": true,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "title",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "author",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "description",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "image",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "tags",
+                            "required": true,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "body_html",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "published",
+                            "required": false,
+                            "description": "",
+                            "type": "boolean"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "published_at",
+                            "format": "date-time",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "metafield",
+                            "required": false,
+                            "description": "",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "name",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "name__in",
+                            "description": "Name",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "id",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "id__in",
+                            "description": "ID",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published_at_from",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published_at_to",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "published",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "tag",
+                            "description": null,
+                            "type": "string"
+                        },
+                        {
+                            "enum": [
+                                "created_at",
+                                "-created_at",
+                                "id",
+                                "-id",
+                                "published_at",
+                                "-published_at"
+                            ],
+                            "paramType": "query",
+                            "name": "order_by",
+                            "description": "排序",
+                            "type": "enum"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "PUT",
+                    "type": "ArticleSerializer"
+                }
+            ],
+            "description": ""
+        },
+        {
+            "path": "/api/blogs/tag/",
+            "operations": [
+                {
+                    "nickname": "Article_Tag_list",
+                    "items": {
+                        "$ref": "ArticleTagSerializer"
+                    },
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "GET",
+                    "type": "array"
+                },
+                {
+                    "nickname": "Article_Tag_create",
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "paramType": "form",
+                            "name": "title",
+                            "required": false,
+                            "description": "",
+                            "defaultValue": "标签",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "POST",
+                    "type": "ArticleTagSerializer"
+                }
+            ],
+            "description": ""
+        },
+        {
+            "path": "/api/blogs/tag/{pk}/",
+            "operations": [
+                {
+                    "nickname": "Article_Tag_retrieve",
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "name": "pk",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "GET",
+                    "type": "ArticleTagSerializer"
+                },
+                {
+                    "nickname": "Article_Tag_destroy",
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "name": "pk",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "DELETE",
+                    "type": "ArticleTagSerializer"
+                },
+                {
+                    "nickname": "Article_Tag_partial_update",
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "name": "pk",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "title",
+                            "required": false,
+                            "description": "",
+                            "defaultValue": "标签",
+                            "type": "string"
+                        },
+                        {
+                            "required": false,
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "PATCH",
+                    "type": "ArticleTagSerializer"
+                },
+                {
+                    "nickname": "Article_Tag_update",
+                    "notes": "",
+                    "parameters": [
+                        {
+                            "required": true,
+                            "paramType": "path",
+                            "name": "pk",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "title",
+                            "required": false,
+                            "description": "",
+                            "defaultValue": "标签",
+                            "type": "string"
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "title",
+                            "description": null,
+                            "type": "string"
+                        }
+                    ],
+                    "summary": "",
+                    "method": "PUT",
+                    "type": "ArticleTagSerializer"
+                }
+            ],
+            "description": ""
+        }
+    ],
+    "basePath": "http://127.0.0.1:8000",
+    "apiVersion": "",
+    "models": {
+        "WriteArticleTagSerializer": {
+            "required": [],
+            "id": "WriteArticleTagSerializer",
+            "properties": {
+                "title": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "defaultValue": "标签",
+                    "type": "string"
+                }
+            }
+        },
+        "ArticleSerializer": {
+            "required": [
+                "id",
+                "name",
+                "title",
+                "author",
+                "description",
+                "image",
+                "tags",
+                "body_html",
+                "published",
+                "published_at",
+                "metafield",
+                "created_at",
+                "updated_at"
+            ],
+            "id": "ArticleSerializer",
+            "properties": {
+                "id": {
+                    "readOnly": true,
+                    "format": "int64",
+                    "required": false,
+                    "description": null,
+                    "type": "integer"
+                },
+                "name": {
+                    "readOnly": false,
+                    "required": true,
+                    "description": null,
+                    "type": "string"
+                },
+                "title": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "author": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "description": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "image": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "tags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": false,
+                    "required": true,
+                    "description": null,
+                    "type": "array"
+                },
+                "body_html": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "published": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "boolean"
+                },
+                "published_at": {
+                    "readOnly": false,
+                    "format": "date-time",
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "metafield": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "created_at": {
+                    "readOnly": true,
+                    "format": "date-time",
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "updated_at": {
+                    "readOnly": true,
+                    "format": "date-time",
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                }
+            }
+        },
+        "WriteArticleSerializer": {
+            "required": [
+                "name",
+                "tags"
+            ],
+            "id": "WriteArticleSerializer",
+            "properties": {
+                "name": {
+                    "readOnly": false,
+                    "required": true,
+                    "description": null,
+                    "type": "string"
+                },
+                "title": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "author": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "description": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "image": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "tags": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": false,
+                    "required": true,
+                    "description": null,
+                    "type": "array"
+                },
+                "body_html": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "published": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "boolean"
+                },
+                "published_at": {
+                    "readOnly": false,
+                    "format": "date-time",
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                },
+                "metafield": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "type": "string"
+                }
+            }
+        },
+        "ArticleTagSerializer": {
+            "required": [
+                "id",
+                "title"
+            ],
+            "id": "ArticleTagSerializer",
+            "properties": {
+                "id": {
+                    "readOnly": true,
+                    "format": "int64",
+                    "required": false,
+                    "description": null,
+                    "type": "integer"
+                },
+                "title": {
+                    "readOnly": false,
+                    "required": false,
+                    "description": null,
+                    "defaultValue": "标签",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "resourcePath": "/api/blogs"
+}

@@ -1,0 +1,242 @@
+#%RAML 1.0
+title: 嘿店开放平台 API
+version: v1
+baseUri: http://api.heidianer.com
+
+
+types:
+  WriteArticleTagSerializer:
+    type: object
+    properties:
+      title: string
+
+  ArticleSerializer:
+    type: object
+    properties:
+      created_at: string
+      metafield: string
+      description: string
+      author: string
+      image: string
+      title: string
+      body_html: string
+      updated_at: string
+      published_at: string
+      published: boolean
+      id: integer
+      tags: array
+      name: string
+
+  ArticleTagSerializer:
+    type: object
+    properties:
+      id: integer
+      title: string
+
+  WriteArticleSerializer:
+    type: object
+    properties:
+      metafield: string
+      description: string
+      author: string
+      image: string
+      tags: array
+      body_html: string
+      published_at: string
+      published: boolean
+      title: string
+      name: string
+
+
+
+
+/api/blogs/article/:
+  get:
+    queryParameters:
+      page:
+        type: integer
+        required: false
+      page_size:
+        type: integer
+        required: false
+      name:
+        type: string
+        required: false
+      name__in:
+        type: string
+        required: false
+      id:
+        type: string
+        required: false
+      id__in:
+        type: string
+        required: false
+      published_at_from:
+        type: string
+        required: false
+      published_at_to:
+        type: string
+        required: false
+      published:
+        type: string
+        required: false
+      title:
+        type: string
+        required: false
+      tag:
+        type: string
+        required: false
+      order_by:
+        type: enum
+        required: false
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+  post:
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+
+
+/api/blogs/article/{pk}/:
+  get:
+    uriParameters:
+      pk:
+        type: string
+        required: true
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+  delete:
+    uriParameters:
+      pk:
+        type: string
+        required: true
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+  patch:
+    uriParameters:
+      pk:
+        type: string
+        required: true
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+  put:
+    uriParameters:
+      pk:
+        type: string
+        required: true
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+
+
+/api/blogs/tag/:
+  get:
+    queryParameters:
+      title:
+        type: string
+        required: false
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+  post:
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+
+
+/api/blogs/tag/{pk}/:
+  get:
+    uriParameters:
+      pk:
+        type: string
+        required: true
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+  delete:
+    uriParameters:
+      pk:
+        type: string
+        required: true
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+  patch:
+    uriParameters:
+      pk:
+        type: string
+        required: true
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+  put:
+    uriParameters:
+      pk:
+        type: string
+        required: true
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {}
+
+
