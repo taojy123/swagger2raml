@@ -1,0 +1,267 @@
+#%RAML 1.0
+title: 嘿店开放平台 API
+version: v1
+baseUri: http://api.heidianer.com
+
+
+types:
+  CustomerMessageSerializer:
+    type: object
+    properties:
+      customer:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      context:
+        required: false
+        type: string
+
+  WriteCustomerSerializer:
+    type: object
+    properties:
+      mobile:
+        required: false
+        type: string
+      gender:
+        required: false
+        type: string
+      note:
+        required: false
+        type: string
+      birthday:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+      accepts_marketing:
+        required: false
+        type: boolean
+      email:
+        required: false
+        type: string
+
+  WriteCustomFormSerializer:
+    type: object
+    properties:
+      fields:
+        required: false
+        type: string
+
+  WriteCustomerMessageSerializer:
+    type: object
+    properties:
+      customer:
+        required: false
+        type: string
+      context:
+        required: false
+        type: string
+
+  CustomerSerializer:
+    type: object
+    properties:
+      mobile:
+        required: false
+        type: string
+      gender:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+      email:
+        required: false
+        type: string
+      note:
+        required: false
+        type: string
+      birthday:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+      accepts_marketing:
+        required: false
+        type: boolean
+      id:
+        required: false
+        type: integer
+
+  CustomFormSerializer:
+    type: object
+    properties:
+      fields:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+
+
+
+
+/api/crm/customer/:
+  post:
+    body:
+      application/json:
+        schema: WriteCustomerSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomerSerializer
+
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      coupon:
+        required: false
+        type: string
+      coupon__exclude:
+        required: false
+        type: string
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomerSerializer[]
+
+
+
+/api/crm/customer/{pk}/:
+  put:
+    body:
+      application/json:
+        schema: WriteCustomerSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomerSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomerSerializer
+
+  delete:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomerSerializer
+
+  patch:
+    body:
+      application/json:
+        schema: WriteCustomerSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomerSerializer
+
+
+
+/api/crm/custom_form/:
+  post:
+    body:
+      application/json:
+        schema: WriteCustomFormSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomFormSerializer
+
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomFormSerializer[]
+
+
+
+/api/crm/custom_form/{pk}/:
+  put:
+    body:
+      application/json:
+        schema: WriteCustomFormSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomFormSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomFormSerializer
+
+  delete:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomFormSerializer
+
+  patch:
+    body:
+      application/json:
+        schema: WriteCustomFormSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomFormSerializer
+
+
+
+/api/crm/customer_message/:
+  post:
+    body:
+      application/json:
+        schema: WriteCustomerMessageSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomerMessageSerializer
+
+

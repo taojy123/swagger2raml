@@ -1,0 +1,112 @@
+#%RAML 1.0
+title: 嘿店开放平台 API
+version: v1
+baseUri: http://api.heidianer.com
+
+
+types:
+  WriteWebhookSerializer:
+    type: object
+    properties:
+      url:
+        required: true
+        type: string
+      metafield:
+        required: false
+        type: string
+      event:
+        required: true
+        type: string
+
+  WebhookSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      url:
+        required: true
+        type: string
+      created_at:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      event:
+        required: true
+        type: string
+      id:
+        required: false
+        type: integer
+
+
+
+
+/api/webhooks/webhook/:
+  post:
+    body:
+      application/json:
+        schema: WriteWebhookSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: WebhookSerializer
+
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: WebhookSerializer[]
+
+
+
+/api/webhooks/webhook/{pk}/:
+  put:
+    body:
+      application/json:
+        schema: WriteWebhookSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: WebhookSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: WebhookSerializer
+
+  delete:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: WebhookSerializer
+
+  patch:
+    body:
+      application/json:
+        schema: WriteWebhookSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: WebhookSerializer
+
+

@@ -1,0 +1,105 @@
+#%RAML 1.0
+title: 嘿店开放平台 API
+version: v1
+baseUri: http://api.heidianer.com
+
+
+types:
+  WriteNewUserSerializer:
+    type: object
+    properties:
+      theme_install_intent:
+        required: false
+        type: string
+      code:
+        required: false
+        type: string
+      password:
+        required: true
+        type: string
+      email:
+        required: true
+        type: string
+      shopname:
+        required: true
+        type: string
+
+  NewUserSerializer:
+    type: object
+    properties:
+      domain:
+        required: false
+        type: string
+
+
+
+
+/api/oauth/dashboard/token/:
+  post:
+    body:
+      application/json:
+        schema: Writeobject
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: object
+
+
+
+/api/oauth/dashboard/password/forgot/:
+  post:
+    body:
+      application/json:
+        schema: Writeobject
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: object
+
+
+
+/api/oauth/dashboard/password/reset/:
+  post:
+    body:
+      application/json:
+        schema: Writeobject
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: object
+
+
+
+/api/oauth/homepage/shop-create/:
+  post:
+    body:
+      application/json:
+        schema: WriteNewUserSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: NewUserSerializer
+
+
+
+/api/oauth/homepage/shop-name/forgot/:
+  post:
+    body:
+      application/json:
+        schema: Writeobject
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: object
+
+

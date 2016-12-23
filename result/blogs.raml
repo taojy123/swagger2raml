@@ -6,14 +6,14 @@ baseUri: http://api.heidianer.com
 
 types:
   WriteArticleTagSerializer:
-    type: json
+    type: object
     properties:
       title:
         required: false
         type: string
 
   ArticleSerializer:
-    type: json
+    type: object
     properties:
       created_at:
         required: false
@@ -56,7 +56,7 @@ types:
         type: string
 
   ArticleTagSerializer:
-    type: json
+    type: object
     properties:
       id:
         required: false
@@ -66,7 +66,7 @@ types:
         type: string
 
   WriteArticleSerializer:
-    type: json
+    type: object
     properties:
       metafield:
         required: false
@@ -103,6 +103,17 @@ types:
 
 
 /api/blogs/article/:
+  post:
+    body:
+      application/json:
+        schema: WriteArticleSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: ArticleSerializer
+
   get:
     queryParameters:
       page:
@@ -154,7 +165,10 @@ types:
           application/json:
             schema: ArticleSerializer[]
 
-  post:
+
+
+/api/blogs/article/{pk}/:
+  put:
     body:
       application/json:
         schema: WriteArticleSerializer
@@ -165,9 +179,6 @@ types:
           application/json:
             schema: ArticleSerializer
 
-
-
-/api/blogs/article/{pk}/:
   get:
     responses:
       200:
@@ -183,17 +194,6 @@ types:
             schema: ArticleSerializer
 
   patch:
-    body:
-      application/json:
-        schema: WriteArticleSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            schema: ArticleSerializer
-
-  put:
     body:
       application/json:
         schema: WriteArticleSerializer
@@ -207,6 +207,17 @@ types:
 
 
 /api/blogs/tag/:
+  post:
+    body:
+      application/json:
+        schema: WriteArticleTagSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: ArticleTagSerializer
+
   get:
     queryParameters:
       title:
@@ -219,7 +230,10 @@ types:
           application/json:
             schema: ArticleTagSerializer[]
 
-  post:
+
+
+/api/blogs/tag/{pk}/:
+  put:
     body:
       application/json:
         schema: WriteArticleTagSerializer
@@ -230,9 +244,6 @@ types:
           application/json:
             schema: ArticleTagSerializer
 
-
-
-/api/blogs/tag/{pk}/:
   get:
     responses:
       200:
@@ -248,17 +259,6 @@ types:
             schema: ArticleTagSerializer
 
   patch:
-    body:
-      application/json:
-        schema: WriteArticleTagSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            schema: ArticleTagSerializer
-
-  put:
     body:
       application/json:
         schema: WriteArticleTagSerializer

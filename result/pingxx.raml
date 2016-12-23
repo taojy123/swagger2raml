@@ -1,0 +1,47 @@
+#%RAML 1.0
+title: 嘿店开放平台 API
+version: v1
+baseUri: http://api.heidianer.com
+
+
+types:
+
+
+
+/api/pingxx/webhooks/:
+  post:
+    body:
+      application/json:
+        schema: Writeobject
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: object
+
+
+
+/api/pingxx/test_order/:
+  post:
+    body:
+      application/json:
+        schema: Writeobject
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: object
+
+
+
+/api/pingxx/test_order/status/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: object
+
+

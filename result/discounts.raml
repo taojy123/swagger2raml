@@ -1,0 +1,777 @@
+#%RAML 1.0
+title: 嘿店开放平台 API
+version: v1
+baseUri: http://api.heidianer.com
+
+
+types:
+  CustomerWithCouponCodeSerializer:
+    type: object
+    properties:
+      mobile:
+        required: true
+        type: string
+      coupon_codes:
+        required: false
+        type: CouponCodeSerializer[]
+      id:
+        required: false
+        type: integer
+      full_name:
+        required: false
+        type: string
+
+  WriteCustomerSerializer:
+    type: object
+    properties:
+      mobile:
+        required: false
+        type: string
+      gender:
+        required: false
+        type: string
+      note:
+        required: false
+        type: string
+      birthday:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+      accepts_marketing:
+        required: false
+        type: boolean
+      email:
+        required: false
+        type: string
+
+  WritePromotionCodeSerializer:
+    type: object
+    properties:
+      ends_at:
+        required: false
+        type: string
+      is_forever:
+        required: false
+        type: boolean
+      code:
+        required: true
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      value:
+        required: false
+        type: string
+      discount_type:
+        required: false
+        type: string
+      is_limit_once:
+        required: false
+        type: boolean
+      starts_at:
+        required: false
+        type: string
+      minimum_amount:
+        required: false
+        type: string
+      quantity:
+        required: false
+        type: integer
+
+  WriteCustomerWithCouponCodeSerializer:
+    type: object
+    properties:
+      mobile:
+        required: true
+        type: string
+      full_name:
+        required: false
+        type: string
+
+  CouponSerializer:
+    type: object
+    properties:
+      status:
+        required: false
+        type: string
+      ends_at:
+        required: false
+        type: string
+      is_forever:
+        required: false
+        type: boolean
+      coupon_codes:
+        required: false
+        type: CouponCodeSerializer[]
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+      used_count:
+        required: false
+        type: string
+      code_prefix:
+        required: true
+        type: string
+      value:
+        required: false
+        type: string
+      discount_type:
+        required: false
+        type: string
+      verbose_title:
+        required: false
+        type: string
+      is_limit_once:
+        required: false
+        type: boolean
+      starts_at:
+        required: false
+        type: string
+      minimum_amount:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      quantity:
+        required: false
+        type: integer
+
+  CustomerSerializer:
+    type: object
+    properties:
+      mobile:
+        required: false
+        type: string
+      gender:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+      email:
+        required: false
+        type: string
+      note:
+        required: false
+        type: string
+      birthday:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+      accepts_marketing:
+        required: false
+        type: boolean
+      id:
+        required: false
+        type: integer
+
+  PromotionCodeSerializer:
+    type: object
+    properties:
+      status:
+        required: false
+        type: string
+      ends_at:
+        required: false
+        type: string
+      is_forever:
+        required: false
+        type: boolean
+      code:
+        required: true
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+      used_count:
+        required: false
+        type: string
+      value:
+        required: false
+        type: string
+      discount_type:
+        required: false
+        type: string
+      verbose_title:
+        required: false
+        type: string
+      is_limit_once:
+        required: false
+        type: boolean
+      starts_at:
+        required: false
+        type: string
+      minimum_amount:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      quantity:
+        required: false
+        type: integer
+
+  CouponCodeSerializer:
+    type: object
+    properties:
+      customer:
+        required: false
+        type: CustomerSerializer
+      status:
+        required: false
+        type: string
+      code:
+        required: true
+        type: string
+      used_at:
+        required: false
+        type: string
+      coupon_id:
+        required: true
+        type: integer
+      id:
+        required: false
+        type: integer
+
+  WriteCouponCodeSerializer:
+    type: object
+    properties:
+      status:
+        required: false
+        type: string
+      code:
+        required: true
+        type: string
+      used_at:
+        required: false
+        type: string
+      coupon_id:
+        required: true
+        type: integer
+
+  WriteCouponSerializer:
+    type: object
+    properties:
+      ends_at:
+        required: false
+        type: string
+      is_forever:
+        required: false
+        type: boolean
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      code_prefix:
+        required: true
+        type: string
+      value:
+        required: false
+        type: string
+      discount_type:
+        required: false
+        type: string
+      is_limit_once:
+        required: false
+        type: boolean
+      starts_at:
+        required: false
+        type: string
+      minimum_amount:
+        required: false
+        type: string
+      quantity:
+        required: false
+        type: integer
+
+
+
+
+/api/discounts/promotion_code/:
+  post:
+    body:
+      application/json:
+        schema: WritePromotionCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: PromotionCodeSerializer
+
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      code:
+        required: false
+        type: string
+      code__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      available:
+        required: false
+        type: string
+      unstart:
+        required: false
+        type: string
+      expired:
+        required: false
+        type: string
+      order_by:
+        required: false
+        enum:
+          - id
+          - -id
+          - created_at
+          - -created_at
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: PromotionCodeSerializer[]
+
+
+
+/api/discounts/promotion_code/{pk}/:
+  put:
+    body:
+      application/json:
+        schema: WritePromotionCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: PromotionCodeSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: PromotionCodeSerializer
+
+  delete:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: PromotionCodeSerializer
+
+  patch:
+    body:
+      application/json:
+        schema: WritePromotionCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: PromotionCodeSerializer
+
+
+
+/api/discounts/customer/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      order_by:
+        required: false
+        enum:
+          - id
+          - -id
+          - created_at
+          - -created_at
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomerWithCouponCodeSerializer[]
+
+
+
+/api/discounts/customer/{pk}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CustomerWithCouponCodeSerializer
+
+
+
+/api/discounts/customer/{parent_lookup_customer}/coupon_code/:
+  post:
+    body:
+      application/json:
+        schema: WriteCouponCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer
+
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      status:
+        required: false
+        enum:
+          - unissued
+          - unused
+          - used
+      status__in:
+        required: false
+        type: string
+      customer:
+        required: false
+        type: string
+      customer__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      is_issued:
+        required: false
+        type: string
+      order_by:
+        required: false
+        enum:
+          - id
+          - -id
+          - created_at
+          - -created_at
+          - used_at
+          - -used_at
+          - status
+          - -status
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer[]
+
+
+
+/api/discounts/customer/{parent_lookup_customer}/coupon_code/{pk}/:
+  put:
+    body:
+      application/json:
+        schema: WriteCouponCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer
+
+  delete:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer
+
+  patch:
+    body:
+      application/json:
+        schema: WriteCouponCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer
+
+
+
+/api/discounts/coupon/{pk}/customers/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponSerializer
+
+
+
+/api/discounts/coupon/:
+  post:
+    body:
+      application/json:
+        schema: WriteCouponSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponSerializer
+
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      available:
+        required: false
+        type: string
+      unstart:
+        required: false
+        type: string
+      expired:
+        required: false
+        type: string
+      order_by:
+        required: false
+        enum:
+          - id
+          - -id
+          - created_at
+          - -created_at
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponSerializer[]
+
+
+
+/api/discounts/coupon/{pk}/:
+  put:
+    body:
+      application/json:
+        schema: WriteCouponSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponSerializer
+
+  delete:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponSerializer
+
+  patch:
+    body:
+      application/json:
+        schema: WriteCouponSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponSerializer
+
+
+
+/api/discounts/coupon/{parent_lookup_coupon}/coupon_code/:
+  post:
+    body:
+      application/json:
+        schema: WriteCouponCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer
+
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      status:
+        required: false
+        enum:
+          - unissued
+          - unused
+          - used
+      status__in:
+        required: false
+        type: string
+      customer:
+        required: false
+        type: string
+      customer__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      is_issued:
+        required: false
+        type: string
+      order_by:
+        required: false
+        enum:
+          - id
+          - -id
+          - created_at
+          - -created_at
+          - used_at
+          - -used_at
+          - status
+          - -status
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer[]
+
+
+
+/api/discounts/coupon/{parent_lookup_coupon}/coupon_code/{pk}/:
+  put:
+    body:
+      application/json:
+        schema: WriteCouponCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer
+
+  delete:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer
+
+  patch:
+    body:
+      application/json:
+        schema: WriteCouponCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: CouponCodeSerializer
+
+
+
+/api/discounts/get_all_items/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: object
+
+
+
+/api/discounts/delete_items/:
+  patch:
+    body:
+      application/json:
+        schema: Writeobject
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: object
+
+

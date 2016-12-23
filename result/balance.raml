@@ -1,0 +1,257 @@
+#%RAML 1.0
+title: 嘿店开放平台 API
+version: v1
+baseUri: http://api.heidianer.com
+
+
+types:
+  OrderSerializer:
+    type: object
+    properties:
+      image:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      title:
+        required: false
+        type: string
+
+  BalanceOutSerializer:
+    type: object
+    properties:
+      alipay:
+        required: false
+        type: string
+      status:
+        required: false
+        type: string
+      request_money:
+        required: false
+        type: string
+      last_checked_at:
+        required: false
+        type: string
+      reason:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+      charge_fee:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      final_money:
+        required: false
+        type: string
+
+  WalletSerializer:
+    type: object
+    properties:
+      alipay:
+        required: false
+        type: string
+      balance:
+        required: true
+        type: string
+      id:
+        required: false
+        type: integer
+      full_name:
+        required: false
+        type: string
+
+  BalanceInSerializer:
+    type: object
+    properties:
+      status:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+      transaction_number:
+        required: false
+        type: string
+      transaction_type:
+        required: false
+        type: string
+      amount:
+        required: false
+        type: string
+      delegated:
+        required: false
+        type: boolean
+      order:
+        required: false
+        type: OrderSerializer
+      id:
+        required: false
+        type: integer
+      channel:
+        required: true
+        type: string
+
+  WriteBalanceOutSerializer:
+    type: object
+    properties:
+
+  WriteOrderSerializer:
+    type: object
+    properties:
+
+  WriteBalanceInSerializer:
+    type: object
+    properties:
+      channel:
+        required: true
+        type: string
+
+  WriteWalletSerializer:
+    type: object
+    properties:
+      alipay:
+        required: false
+        type: string
+      balance:
+        required: true
+        type: string
+      full_name:
+        required: false
+        type: string
+
+
+
+
+/api/balance/in/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: BalanceInSerializer[]
+
+
+
+/api/balance/in/{pk}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: BalanceInSerializer
+
+
+
+/api/balance/out/:
+  post:
+    body:
+      application/json:
+        schema: WriteBalanceOutSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: BalanceOutSerializer
+
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      created_at_from:
+        required: false
+        type: string
+      created_at_to:
+        required: false
+        type: string
+      order_by:
+        required: false
+        enum:
+          - id
+          - -id
+          - created_at
+          - -created_at
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: BalanceOutSerializer[]
+
+
+
+/api/balance/out/{pk}/:
+  put:
+    body:
+      application/json:
+        schema: WriteBalanceOutSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: BalanceOutSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: BalanceOutSerializer
+
+  delete:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: BalanceOutSerializer
+
+  patch:
+    body:
+      application/json:
+        schema: WriteBalanceOutSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            schema: BalanceOutSerializer
+
+
+
+/api/balance/wallet/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: WalletSerializer[]
+
+
+
+/api/balance/wallet/{pk}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: WalletSerializer
+
+

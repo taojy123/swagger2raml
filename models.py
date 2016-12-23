@@ -2,7 +2,7 @@
 
 class Field(object):
 
-    def __init__(self, name, data):
+    def __init__(self, name, data, for_write=False):
         self.name = name
         self.data = data
         self.required = data.get('required', False)
@@ -13,8 +13,10 @@ class Field(object):
         self.items = data.get('items', {})
 
         if self.type == 'array':
-            itme_type = data['items']['type']
+            itme_type = data['items'].values()[0]
             self.type = itme_type + '[]'
+            if 'serializer' in self.type.lower() and for_write:
+                self.type = 'Write' + self.type
 
         self.required_json = 'true' if self.required else 'false'
 
@@ -37,7 +39,8 @@ class Serializer(object):
 
         self.fields = []
         for field_name, field_data in data['properties'].items():
-            field = Field(field_name, field_data)
+            for_write = (self.category == 'write')
+            field = Field(field_name, field_data, for_write)
             self.fields.append(field)
 
     def __repr__(self):
