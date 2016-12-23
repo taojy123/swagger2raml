@@ -8,7 +8,7 @@ baseUri: http://api.heidianer.com
 types:
   %for serializer in serializers:
   {{ serializer.id }}:
-    type: json
+    type: object
     properties:
       %for field in serializer.fields:
       {{ field.name }}:
