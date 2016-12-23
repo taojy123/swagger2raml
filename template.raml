@@ -8,10 +8,12 @@ baseUri: http://api.heidianer.com
 types:
   %for serializer in serializers:
   {{ serializer.id }}:
-    type: object
+    type: json
     properties:
       %for field in serializer.fields:
-      {{ field.name }}: {{ field.type }}
+      {{ field.name }}:
+        required: {{ field.required_json }}
+        type: {{ field.type }}
       %endfor
 
   %endfor
@@ -22,30 +24,33 @@ types:
 {{ api.path }}:
   %for operation in api.operations:
   {{ operation.method }}:
-    %if (operation.path_parameters):
-    uriParameters:
-    %for parameter in operation.path_parameters:
-      {{ parameter.name }}:
-        type: {{ parameter.type }}
-        required: {{ parameter.required_json }}
-    %endfor
-
-    %endif
-    %if (operation.query_parameters):
+    %if operation.query_parameters:
     queryParameters:
     %for parameter in operation.query_parameters:
       {{ parameter.name }}:
-        type: {{ parameter.type }}
         required: {{ parameter.required_json }}
+        %if parameter.type == 'enum':
+        enum:
+          %for item in parameter.enum:
+          - {{ item }}
+          %endfor
+        %else:
+        type: {{ parameter.type }}
+        %endif
     %endfor
+
+    %endif
+    %if operation.method in ['post', 'put', 'patch'] and operation.serializer_name:
+    body:
+      application/json:
+        schema: Write{{ operation.serializer_name }}
 
     %endif
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: {{ operation.serializer_name }}
 
   %endfor
 

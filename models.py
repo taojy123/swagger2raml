@@ -10,6 +10,13 @@ class Field(object):
         self.write_only = data.get('writeOnly', False)
         self.type = data.get('type', '')
         self.format = data.get('format', '')
+        self.items = data.get('items', {})
+
+        if self.type == 'array':
+            itme_type = data['items']['type']
+            self.type = itme_type + '[]'
+
+        self.required_json = 'true' if self.required else 'false'
 
     def __repr__(self):
         return self.name
@@ -46,7 +53,7 @@ class Parameter(object):
         self.type = data.get('type')
         self.required = data.get('required', False)
         self.description = data.get('description')
-        self.enum = data.get('enum')
+        self.enum = data.get('enum', [])
 
         self.required_json = 'true' if self.required else 'false'
 
@@ -82,6 +89,10 @@ class Operation(object):
 
             if parameter.param_type == 'form':
                 self.form_parameters.append(parameter)
+
+        self.serializer_name = self.type
+        if self.serializer_name == 'array':
+            self.serializer_name = self.items.get('$ref', '') + '[]'
 
     def __repr__(self):
         return self.nickname

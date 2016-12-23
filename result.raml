@@ -6,46 +6,98 @@ baseUri: http://api.heidianer.com
 
 types:
   WriteArticleTagSerializer:
-    type: object
+    type: json
     properties:
-      title: string
+      title:
+        required: false
+        type: string
 
   ArticleSerializer:
-    type: object
+    type: json
     properties:
-      created_at: string
-      metafield: string
-      description: string
-      author: string
-      image: string
-      title: string
-      body_html: string
-      updated_at: string
-      published_at: string
-      published: boolean
-      id: integer
-      tags: array
-      name: string
+      created_at:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      author:
+        required: false
+        type: string
+      image:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      body_html:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      published_at:
+        required: false
+        type: string
+      published:
+        required: false
+        type: boolean
+      id:
+        required: false
+        type: integer
+      tags:
+        required: true
+        type: string[]
+      name:
+        required: true
+        type: string
 
   ArticleTagSerializer:
-    type: object
+    type: json
     properties:
-      id: integer
-      title: string
+      id:
+        required: false
+        type: integer
+      title:
+        required: false
+        type: string
 
   WriteArticleSerializer:
-    type: object
+    type: json
     properties:
-      metafield: string
-      description: string
-      author: string
-      image: string
-      tags: array
-      body_html: string
-      published_at: string
-      published: boolean
-      title: string
-      name: string
+      metafield:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      author:
+        required: false
+        type: string
+      image:
+        required: false
+        type: string
+      tags:
+        required: true
+        type: string[]
+      body_html:
+        required: false
+        type: string
+      published_at:
+        required: false
+        type: string
+      published:
+        required: false
+        type: boolean
+      title:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
 
 
 
@@ -54,111 +106,103 @@ types:
   get:
     queryParameters:
       page:
-        type: integer
         required: false
+        type: integer
       page_size:
+        required: false
         type: integer
-        required: false
       name:
-        type: string
         required: false
+        type: string
       name__in:
-        type: string
         required: false
+        type: string
       id:
-        type: string
         required: false
+        type: string
       id__in:
-        type: string
         required: false
+        type: string
       published_at_from:
-        type: string
         required: false
+        type: string
       published_at_to:
-        type: string
         required: false
+        type: string
       published:
-        type: string
         required: false
+        type: string
       title:
-        type: string
         required: false
+        type: string
       tag:
+        required: false
         type: string
-        required: false
       order_by:
-        type: enum
         required: false
+        enum:
+          - created_at
+          - -created_at
+          - id
+          - -id
+          - published_at
+          - -published_at
 
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleSerializer[]
 
   post:
+    body:
+      application/json:
+        schema: WriteArticleSerializer
+
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleSerializer
 
 
 
 /api/blogs/article/{pk}/:
   get:
-    uriParameters:
-      pk:
-        type: string
-        required: true
-
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleSerializer
 
   delete:
-    uriParameters:
-      pk:
-        type: string
-        required: true
-
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleSerializer
 
   patch:
-    uriParameters:
-      pk:
-        type: string
-        required: true
+    body:
+      application/json:
+        schema: WriteArticleSerializer
 
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleSerializer
 
   put:
-    uriParameters:
-      pk:
-        type: string
-        required: true
+    body:
+      application/json:
+        schema: WriteArticleSerializer
 
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleSerializer
 
 
 
@@ -166,77 +210,63 @@ types:
   get:
     queryParameters:
       title:
-        type: string
         required: false
+        type: string
 
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleTagSerializer[]
 
   post:
+    body:
+      application/json:
+        schema: WriteArticleTagSerializer
+
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleTagSerializer
 
 
 
 /api/blogs/tag/{pk}/:
   get:
-    uriParameters:
-      pk:
-        type: string
-        required: true
-
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleTagSerializer
 
   delete:
-    uriParameters:
-      pk:
-        type: string
-        required: true
-
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleTagSerializer
 
   patch:
-    uriParameters:
-      pk:
-        type: string
-        required: true
+    body:
+      application/json:
+        schema: WriteArticleTagSerializer
 
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleTagSerializer
 
   put:
-    uriParameters:
-      pk:
-        type: string
-        required: true
+    body:
+      application/json:
+        schema: WriteArticleTagSerializer
 
     responses:
       200:
         body:
           application/json:
-            example: |
-              {}
+            schema: ArticleTagSerializer
 
 
