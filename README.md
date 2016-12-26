@@ -8,6 +8,7 @@ Usage
 
     $ git clone https://github.com/taojy123/swagger2raml
     $ cd swagger2raml
+    $ pip install -r requirement.txt
     $ python s2r
     Finish!
     $
