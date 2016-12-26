@@ -1,16 +1,30 @@
+#coding=utf8
+
 import json
 import step
 import urllib2
 import os
+import sys
 from models import Api, Serializer
 
-# support swagger version: 1.2
 
+# ======== support swagger version: 1.2 ========
+
+TITLE_PREFIX = u'嘿店开放平台 API '
 ROOT_URL = 'http://heidianapi.com/api/docs/api-docs/'
 OUTPUT_DIR = './result'
 
 
 if __name__ == '__main__':
+
+    if len(sys.argv) > 1:
+        TITLE_PREFIX = sys.args[1].replace('_', ' ')
+
+    if len(sys.argv) > 2:
+        ROOT_URL = sys.args[2]
+
+    if len(sys.argv) > 3:
+        OUTPUT_DIR = sys.args[3]
 
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
@@ -24,6 +38,8 @@ if __name__ == '__main__':
         name = sub_url.strip('/').split('/')[-1]
         print('================ %s ==================' % name)
         print(sub_url)
+
+        title = TITLE_PREFIX + name.upper()
 
         page = urllib2.urlopen(sub_url).read()
         data = json.loads(page)
@@ -51,6 +67,6 @@ if __name__ == '__main__':
         open(output_path, 'w').write(page)
 
 
-print('finish!')
+print('Finish!')
 
 
