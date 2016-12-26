@@ -183,15 +183,39 @@ types:
         required: false
         type: string
 
-  WriteProductOptionValueSerializer:
+  CustomerAddressSerializer:
     type: object
     properties:
-      value:
+      province:
         required: false
         type: string
-      title:
-        required: true
+      city:
+        required: false
         type: string
+      district:
+        required: false
+        type: string
+      mobile:
+        required: false
+        type: string
+      address1:
+        required: false
+        type: string
+      address2:
+        required: false
+        type: string
+      is_default:
+        required: false
+        type: boolean
+      full_name:
+        required: false
+        type: string
+      country:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
 
   ProductSerializer:
     type: object
@@ -506,39 +530,15 @@ types:
         required: false
         type: integer
 
-  CustomerAddressSerializer:
+  WriteProductOptionValueSerializer:
     type: object
     properties:
-      province:
+      value:
         required: false
         type: string
-      city:
-        required: false
+      title:
+        required: true
         type: string
-      district:
-        required: false
-        type: string
-      mobile:
-        required: false
-        type: string
-      address1:
-        required: false
-        type: string
-      address2:
-        required: false
-        type: string
-      is_default:
-        required: false
-        type: boolean
-      full_name:
-        required: false
-        type: string
-      country:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
 
   OrderSerializer:
     type: object
@@ -739,13 +739,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteOrderSerializer
+        type: WriteOrderSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
   get:
     queryParameters:
@@ -755,6 +755,12 @@ types:
       page_size:
         required: false
         type: integer
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
       order_status:
         required: false
         enum:
@@ -762,15 +768,6 @@ types:
           - closed
           - cancelled
       order_status__in:
-        required: false
-        type: string
-      financial_status:
-        required: false
-        enum:
-          - pending
-          - paid
-          - refunded
-      financial_status__in:
         required: false
         type: string
       order_number:
@@ -788,10 +785,13 @@ types:
       fulfillment_status__in:
         required: false
         type: string
-      id:
+      financial_status:
         required: false
-        type: string
-      id__in:
+        enum:
+          - pending
+          - paid
+          - refunded
+      financial_status__in:
         required: false
         type: string
       order_by:
@@ -806,46 +806,46 @@ types:
       200:
         body:
           application/json:
-            schema: OrderSerializer[]
+            type: OrderSerializer[]
 
 
 
 /api/customers/order/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteOrderSerializer
+        type: WriteOrderSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteOrderSerializer
+        type: WriteOrderSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
 
 
@@ -853,13 +853,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteOrderSerializer
+        type: WriteOrderSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
 
 
@@ -877,7 +877,7 @@ types:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer[]
+            type: CouponCodeSerializer[]
 
 
 
@@ -887,7 +887,7 @@ types:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer
+            type: CouponCodeSerializer
 
 
 
@@ -895,98 +895,98 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCustomerAddressSerializer
+        type: WriteCustomerAddressSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomerAddressSerializer
+            type: CustomerAddressSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: CustomerAddressSerializer[]
+            type: CustomerAddressSerializer[]
 
 
 
 /api/customers/address/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteCustomerAddressSerializer
+        type: WriteCustomerAddressSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomerAddressSerializer
+            type: CustomerAddressSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: CustomerAddressSerializer
+            type: CustomerAddressSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: CustomerAddressSerializer
+            type: CustomerAddressSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteCustomerAddressSerializer
+        type: WriteCustomerAddressSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomerAddressSerializer
+            type: CustomerAddressSerializer
 
 
 
 /api/customers/ordertoken/{token}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteOrderSerializer
+        type: WriteOrderSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteOrderSerializer
+        type: WriteOrderSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
 
 
@@ -994,13 +994,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteOrderSerializer
+        type: WriteOrderSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
 
 
@@ -1008,13 +1008,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteOrderSerializer
+        type: WriteOrderSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
 
 
@@ -1024,7 +1024,7 @@ types:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
 
 
@@ -1034,40 +1034,40 @@ types:
       200:
         body:
           application/json:
-            schema: PasswordCustomerSerializer
+            type: PasswordCustomerSerializer
 
   post:
     body:
       application/json:
-        schema: WritePasswordCustomerSerializer
+        type: WritePasswordCustomerSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PasswordCustomerSerializer
+            type: PasswordCustomerSerializer
 
   put:
     body:
       application/json:
-        schema: WritePasswordCustomerSerializer
+        type: WritePasswordCustomerSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PasswordCustomerSerializer
+            type: PasswordCustomerSerializer
 
   patch:
     body:
       application/json:
-        schema: WritePasswordCustomerSerializer
+        type: WritePasswordCustomerSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PasswordCustomerSerializer
+            type: PasswordCustomerSerializer
 
 
 
@@ -1075,13 +1075,13 @@ types:
   post:
     body:
       application/json:
-        schema: Writeobject
+        type: object
 
     responses:
       200:
         body:
           application/json:
-            schema: object
+            type: object
 
 
 
@@ -1089,13 +1089,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteAuthTokenSerializer
+        type: WriteAuthTokenSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: AuthTokenSerializer
+            type: AuthTokenSerializer
 
 
 
@@ -1103,13 +1103,13 @@ types:
   post:
     body:
       application/json:
-        schema: Writeobject
+        type: object
 
     responses:
       200:
         body:
           application/json:
-            schema: object
+            type: object
 
 
 
@@ -1117,12 +1117,12 @@ types:
   post:
     body:
       application/json:
-        schema: Writeobject
+        type: object
 
     responses:
       200:
         body:
           application/json:
-            schema: object
+            type: object
 
 

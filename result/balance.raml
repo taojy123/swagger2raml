@@ -141,7 +141,7 @@ types:
       200:
         body:
           application/json:
-            schema: BalanceInSerializer[]
+            type: BalanceInSerializer[]
 
 
 
@@ -151,7 +151,7 @@ types:
       200:
         body:
           application/json:
-            schema: BalanceInSerializer
+            type: BalanceInSerializer
 
 
 
@@ -159,13 +159,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteBalanceOutSerializer
+        type: WriteBalanceOutSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: BalanceOutSerializer
+            type: BalanceOutSerializer
 
   get:
     queryParameters:
@@ -193,46 +193,46 @@ types:
       200:
         body:
           application/json:
-            schema: BalanceOutSerializer[]
+            type: BalanceOutSerializer[]
 
 
 
 /api/balance/out/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteBalanceOutSerializer
+        type: WriteBalanceOutSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: BalanceOutSerializer
+            type: BalanceOutSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: BalanceOutSerializer
+            type: BalanceOutSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: BalanceOutSerializer
+            type: BalanceOutSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteBalanceOutSerializer
+        type: WriteBalanceOutSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: BalanceOutSerializer
+            type: BalanceOutSerializer
 
 
 
@@ -242,7 +242,7 @@ types:
       200:
         body:
           application/json:
-            schema: WalletSerializer[]
+            type: WalletSerializer[]
 
 
 
@@ -252,6 +252,6 @@ types:
       200:
         body:
           application/json:
-            schema: WalletSerializer
+            type: WalletSerializer
 
 

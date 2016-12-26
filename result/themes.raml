@@ -23,6 +23,9 @@ types:
       title:
         required: false
         type: string
+      version:
+        required: false
+        type: string
       name:
         required: true
         type: string
@@ -83,8 +86,8 @@ types:
         required: false
         type: string
       theme:
-        required: false
-        type: ThemeSerializer
+        required: true
+        type: string
       assets:
         required: false
         type: string
@@ -98,10 +101,19 @@ types:
   ThemeSerializer:
     type: object
     properties:
+      screenshot_mobile:
+        required: false
+        type: string
+      presets:
+        required: false
+        type: ThemePresetSerializer[]
       metafield:
         required: false
         type: string
       description:
+        required: false
+        type: string
+      screenshot:
         required: false
         type: string
       author:
@@ -111,6 +123,9 @@ types:
         required: false
         type: string
       title:
+        required: false
+        type: string
+      version:
         required: false
         type: string
       id:
@@ -143,6 +158,9 @@ types:
         type: string
       demo:
         required: false
+        type: string
+      theme:
+        required: true
         type: string
       assets:
         required: false
@@ -189,13 +207,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteThemeUploadSerializer
+        type: WriteThemeUploadSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeUploadSerializer
+            type: ThemeUploadSerializer
 
 
 
@@ -203,13 +221,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteThemeUploadSerializer
+        type: WriteThemeUploadSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeUploadSerializer
+            type: ThemeUploadSerializer
 
 
 
@@ -217,38 +235,38 @@ types:
   post:
     body:
       application/json:
-        schema: WriteThemeUploadSerializer
+        type: WriteThemeUploadSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeUploadSerializer
+            type: ThemeUploadSerializer
 
 
 
 /api/themes/uploadtheme/{pk}/:
-  put:
-    body:
-      application/json:
-        schema: WriteThemeUploadSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            schema: ThemeUploadSerializer
-
   patch:
     body:
       application/json:
-        schema: WriteThemeUploadSerializer
+        type: WriteThemeUploadSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeUploadSerializer
+            type: ThemeUploadSerializer
+
+  put:
+    body:
+      application/json:
+        type: WriteThemeUploadSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeUploadSerializer
 
 
 
@@ -256,13 +274,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteThemeSerializer
+        type: WriteThemeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
   get:
     queryParameters:
@@ -277,46 +295,46 @@ types:
       200:
         body:
           application/json:
-            schema: ThemeSerializer[]
+            type: ThemeSerializer[]
 
 
 
 /api/themes/theme/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteThemeSerializer
+        type: WriteThemeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteThemeSerializer
+        type: WriteThemeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
 
 
@@ -324,13 +342,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteThemePresetSerializer
+        type: WriteThemePresetSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemePresetSerializer
+            type: ThemePresetSerializer
 
   get:
     queryParameters:
@@ -340,7 +358,10 @@ types:
       page_size:
         required: false
         type: integer
-      theme:
+      id:
+        required: false
+        type: string
+      id__in:
         required: false
         type: string
       name:
@@ -349,10 +370,7 @@ types:
       name__in:
         required: false
         type: string
-      id:
-        required: false
-        type: string
-      id__in:
+      theme:
         required: false
         type: string
       tag:
@@ -366,45 +384,45 @@ types:
       200:
         body:
           application/json:
-            schema: ThemePresetSerializer[]
+            type: ThemePresetSerializer[]
 
 
 
 /api/themes/preset/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteThemePresetSerializer
+        type: WriteThemePresetSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemePresetSerializer
+            type: ThemePresetSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: ThemePresetSerializer
+            type: ThemePresetSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: ThemePresetSerializer
+            type: ThemePresetSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteThemePresetSerializer
+        type: WriteThemePresetSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemePresetSerializer
+            type: ThemePresetSerializer
 
 

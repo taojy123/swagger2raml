@@ -6,7 +6,7 @@ from models import Api, Serializer
 
 # support swagger version: 1.2
 
-ROOT_URL = 'http://127.0.0.1:8000/api/docs/api-docs/'
+ROOT_URL = 'http://heidianapi.com/api/docs/api-docs/'
 OUTPUT_DIR = './result'
 
 

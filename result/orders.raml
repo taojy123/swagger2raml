@@ -550,13 +550,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCartSerializer
+        type: WriteCartSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CartSerializer
+            type: CartSerializer
 
 
 
@@ -564,13 +564,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCartSerializer
+        type: WriteCartSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CartSerializer
+            type: CartSerializer
 
 
 
@@ -580,7 +580,7 @@ types:
       200:
         body:
           application/json:
-            schema: CartSerializer
+            type: CartSerializer
 
 
 
@@ -588,13 +588,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCartItemSerializer
+        type: WriteCartItemSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CartItemSerializer
+            type: CartItemSerializer
 
 
 
@@ -602,13 +602,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCartItemSerializer
+        type: WriteCartItemSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CartItemSerializer
+            type: CartItemSerializer
 
 
 
@@ -616,59 +616,59 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCartItemSerializer
+        type: WriteCartItemSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CartItemSerializer
+            type: CartItemSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: CartItemSerializer[]
+            type: CartItemSerializer[]
 
 
 
 /api/orders/cart/{parent_lookup_cart__token}/item/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteCartItemSerializer
+        type: WriteCartItemSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CartItemSerializer
+            type: CartItemSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: CartItemSerializer
+            type: CartItemSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: CartItemSerializer
+            type: CartItemSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteCartItemSerializer
+        type: WriteCartItemSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CartItemSerializer
+            type: CartItemSerializer
 
 
 
@@ -676,13 +676,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteOrderSerializer
+        type: WriteOrderSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
   get:
     queryParameters:
@@ -692,6 +692,12 @@ types:
       page_size:
         required: false
         type: integer
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
       order_status:
         required: false
         enum:
@@ -699,15 +705,6 @@ types:
           - closed
           - cancelled
       order_status__in:
-        required: false
-        type: string
-      financial_status:
-        required: false
-        enum:
-          - pending
-          - paid
-          - refunded
-      financial_status__in:
         required: false
         type: string
       order_number:
@@ -725,10 +722,13 @@ types:
       fulfillment_status__in:
         required: false
         type: string
-      id:
+      financial_status:
         required: false
-        type: string
-      id__in:
+        enum:
+          - pending
+          - paid
+          - refunded
+      financial_status__in:
         required: false
         type: string
       created_at_from:
@@ -756,46 +756,46 @@ types:
       200:
         body:
           application/json:
-            schema: OrderSerializer[]
+            type: OrderSerializer[]
 
 
 
 /api/orders/order/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteOrderSerializer
+        type: WriteOrderSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteOrderSerializer
+        type: WriteOrderSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: OrderSerializer
+            type: OrderSerializer
 
 
 
@@ -803,59 +803,59 @@ types:
   post:
     body:
       application/json:
-        schema: WriteFulfillmentSerializer
+        type: WriteFulfillmentSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: FulfillmentSerializer
+            type: FulfillmentSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: FulfillmentSerializer[]
+            type: FulfillmentSerializer[]
 
 
 
 /api/orders/order/{parent_lookup_order}/fulfillment/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteFulfillmentSerializer
+        type: WriteFulfillmentSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: FulfillmentSerializer
+            type: FulfillmentSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: FulfillmentSerializer
+            type: FulfillmentSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: FulfillmentSerializer
+            type: FulfillmentSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteFulfillmentSerializer
+        type: WriteFulfillmentSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: FulfillmentSerializer
+            type: FulfillmentSerializer
 
 
 
@@ -863,12 +863,12 @@ types:
   post:
     body:
       application/json:
-        schema: Writeobject
+        type: object
 
     responses:
       200:
         body:
           application/json:
-            schema: object
+            type: object
 
 

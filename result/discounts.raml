@@ -313,13 +313,13 @@ types:
   post:
     body:
       application/json:
-        schema: WritePromotionCodeSerializer
+        type: WritePromotionCodeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PromotionCodeSerializer
+            type: PromotionCodeSerializer
 
   get:
     queryParameters:
@@ -329,16 +329,16 @@ types:
       page_size:
         required: false
         type: integer
-      code:
-        required: false
-        type: string
-      code__in:
-        required: false
-        type: string
       id:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      code:
+        required: false
+        type: string
+      code__in:
         required: false
         type: string
       available:
@@ -362,46 +362,46 @@ types:
       200:
         body:
           application/json:
-            schema: PromotionCodeSerializer[]
+            type: PromotionCodeSerializer[]
 
 
 
 /api/discounts/promotion_code/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WritePromotionCodeSerializer
+        type: WritePromotionCodeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PromotionCodeSerializer
+            type: PromotionCodeSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: PromotionCodeSerializer
+            type: PromotionCodeSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: PromotionCodeSerializer
+            type: PromotionCodeSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WritePromotionCodeSerializer
+        type: WritePromotionCodeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PromotionCodeSerializer
+            type: PromotionCodeSerializer
 
 
 
@@ -432,7 +432,7 @@ types:
       200:
         body:
           application/json:
-            schema: CustomerWithCouponCodeSerializer[]
+            type: CustomerWithCouponCodeSerializer[]
 
 
 
@@ -442,7 +442,7 @@ types:
       200:
         body:
           application/json:
-            schema: CustomerWithCouponCodeSerializer
+            type: CustomerWithCouponCodeSerializer
 
 
 
@@ -450,13 +450,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCouponCodeSerializer
+        type: WriteCouponCodeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer
+            type: CouponCodeSerializer
 
   get:
     queryParameters:
@@ -466,6 +466,12 @@ types:
       page_size:
         required: false
         type: integer
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
       status:
         required: false
         enum:
@@ -479,12 +485,6 @@ types:
         required: false
         type: string
       customer__in:
-        required: false
-        type: string
-      id:
-        required: false
-        type: string
-      id__in:
         required: false
         type: string
       is_issued:
@@ -506,46 +506,46 @@ types:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer[]
+            type: CouponCodeSerializer[]
 
 
 
 /api/discounts/customer/{parent_lookup_customer}/coupon_code/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteCouponCodeSerializer
+        type: WriteCouponCodeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer
+            type: CouponCodeSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer
+            type: CouponCodeSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer
+            type: CouponCodeSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteCouponCodeSerializer
+        type: WriteCouponCodeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer
+            type: CouponCodeSerializer
 
 
 
@@ -555,7 +555,7 @@ types:
       200:
         body:
           application/json:
-            schema: CouponSerializer
+            type: CouponSerializer
 
 
 
@@ -563,13 +563,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCouponSerializer
+        type: WriteCouponSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CouponSerializer
+            type: CouponSerializer
 
   get:
     queryParameters:
@@ -606,46 +606,46 @@ types:
       200:
         body:
           application/json:
-            schema: CouponSerializer[]
+            type: CouponSerializer[]
 
 
 
 /api/discounts/coupon/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteCouponSerializer
+        type: WriteCouponSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CouponSerializer
+            type: CouponSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: CouponSerializer
+            type: CouponSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: CouponSerializer
+            type: CouponSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteCouponSerializer
+        type: WriteCouponSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CouponSerializer
+            type: CouponSerializer
 
 
 
@@ -653,13 +653,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCouponCodeSerializer
+        type: WriteCouponCodeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer
+            type: CouponCodeSerializer
 
   get:
     queryParameters:
@@ -669,6 +669,12 @@ types:
       page_size:
         required: false
         type: integer
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
       status:
         required: false
         enum:
@@ -682,12 +688,6 @@ types:
         required: false
         type: string
       customer__in:
-        required: false
-        type: string
-      id:
-        required: false
-        type: string
-      id__in:
         required: false
         type: string
       is_issued:
@@ -709,46 +709,46 @@ types:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer[]
+            type: CouponCodeSerializer[]
 
 
 
 /api/discounts/coupon/{parent_lookup_coupon}/coupon_code/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteCouponCodeSerializer
+        type: WriteCouponCodeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer
+            type: CouponCodeSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer
+            type: CouponCodeSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer
+            type: CouponCodeSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteCouponCodeSerializer
+        type: WriteCouponCodeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CouponCodeSerializer
+            type: CouponCodeSerializer
 
 
 
@@ -758,7 +758,7 @@ types:
       200:
         body:
           application/json:
-            schema: object
+            type: object
 
 
 
@@ -766,12 +766,12 @@ types:
   patch:
     body:
       application/json:
-        schema: Writeobject
+        type: object
 
     responses:
       200:
         body:
           application/json:
-            schema: object
+            type: object
 
 

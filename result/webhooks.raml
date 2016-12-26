@@ -47,13 +47,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteWebhookSerializer
+        type: WriteWebhookSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: WebhookSerializer
+            type: WebhookSerializer
 
   get:
     queryParameters:
@@ -68,45 +68,45 @@ types:
       200:
         body:
           application/json:
-            schema: WebhookSerializer[]
+            type: WebhookSerializer[]
 
 
 
 /api/webhooks/webhook/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteWebhookSerializer
+        type: WriteWebhookSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: WebhookSerializer
+            type: WebhookSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: WebhookSerializer
+            type: WebhookSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: WebhookSerializer
+            type: WebhookSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteWebhookSerializer
+        type: WriteWebhookSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: WebhookSerializer
+            type: WebhookSerializer
 
 

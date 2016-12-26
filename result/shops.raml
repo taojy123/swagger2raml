@@ -114,15 +114,15 @@ types:
         required: false
         type: boolean
 
-  WritePlanSerializer:
+  WritePlanBillingSerializer:
     type: object
     properties:
-      next_billing:
+      plan_period:
         required: true
-        type: PlanBillingSerializer
-      active_billing:
+        type: string
+      plan_name:
         required: true
-        type: PlanBillingSerializer
+        type: string
 
   PageConfigPresetSerializer:
     type: object
@@ -183,9 +183,54 @@ types:
         required: false
         type: string
 
-  WriteRecursiveField:
+  WriteIdentificationSerializer:
     type: object
     properties:
+      alipay:
+        required: false
+        type: string
+      identification_number:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      representative_id_photo2:
+        required: false
+        type: string
+      mobile:
+        required: false
+        type: string
+      identification_type:
+        required: false
+        type: string
+      identification_photo:
+        required: false
+        type: string
+      pingxx_available_channels:
+        required: false
+        type: string
+      pingxx_public_key:
+        required: false
+        type: string
+      representative_id_photo:
+        required: false
+        type: string
+      representative:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+      pingxx_test_key:
+        required: false
+        type: string
+      pingxx_app_id:
+        required: false
+        type: string
+      pingxx_live_key:
+        required: false
+        type: string
 
   WriteStaticPageSerializer:
     type: object
@@ -728,64 +773,19 @@ types:
         required: false
         type: string
 
-  WritePlanBillingSerializer:
+  WritePlanSerializer:
     type: object
     properties:
-      plan_period:
+      next_billing:
         required: true
-        type: string
-      plan_name:
+        type: PlanBillingSerializer
+      active_billing:
         required: true
-        type: string
+        type: PlanBillingSerializer
 
-  WriteIdentificationSerializer:
+  WriteRecursiveField:
     type: object
     properties:
-      alipay:
-        required: false
-        type: string
-      identification_number:
-        required: false
-        type: string
-      metafield:
-        required: false
-        type: string
-      representative_id_photo2:
-        required: false
-        type: string
-      mobile:
-        required: false
-        type: string
-      identification_type:
-        required: false
-        type: string
-      identification_photo:
-        required: false
-        type: string
-      pingxx_available_channels:
-        required: false
-        type: string
-      pingxx_public_key:
-        required: false
-        type: string
-      representative_id_photo:
-        required: false
-        type: string
-      representative:
-        required: false
-        type: string
-      full_name:
-        required: false
-        type: string
-      pingxx_test_key:
-        required: false
-        type: string
-      pingxx_app_id:
-        required: false
-        type: string
-      pingxx_live_key:
-        required: false
-        type: string
 
   PlanSerializer:
     type: object
@@ -871,7 +871,7 @@ types:
       200:
         body:
           application/json:
-            schema: ShopSerializer[]
+            type: ShopSerializer[]
 
 
 
@@ -881,7 +881,7 @@ types:
       200:
         body:
           application/json:
-            schema: ShopSerializer
+            type: ShopSerializer
 
 
 
@@ -889,13 +889,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteStaticPageSerializer
+        type: WriteStaticPageSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: StaticPageSerializer
+            type: StaticPageSerializer
 
   get:
     queryParameters:
@@ -905,16 +905,16 @@ types:
       page_size:
         required: false
         type: integer
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
       id:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
         required: false
         type: string
       order_by:
@@ -931,46 +931,46 @@ types:
       200:
         body:
           application/json:
-            schema: StaticPageSerializer[]
+            type: StaticPageSerializer[]
 
 
 
 /api/shops/page/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteStaticPageSerializer
+        type: WriteStaticPageSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: StaticPageSerializer
+            type: StaticPageSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: StaticPageSerializer
+            type: StaticPageSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: StaticPageSerializer
+            type: StaticPageSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteStaticPageSerializer
+        type: WriteStaticPageSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: StaticPageSerializer
+            type: StaticPageSerializer
 
 
 
@@ -978,26 +978,26 @@ types:
   post:
     body:
       application/json:
-        schema: WritePageSerializer
+        type: WritePageSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PageSerializer
+            type: PageSerializer
 
   get:
     queryParameters:
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
       id:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
         required: false
         type: string
       order_by:
@@ -1014,7 +1014,7 @@ types:
       200:
         body:
           application/json:
-            schema: PageSerializer[]
+            type: PageSerializer[]
 
 
 
@@ -1022,13 +1022,13 @@ types:
   post:
     body:
       application/json:
-        schema: WritePageSerializer
+        type: WritePageSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PageSerializer
+            type: PageSerializer
 
 
 
@@ -1036,52 +1036,52 @@ types:
   put:
     body:
       application/json:
-        schema: WritePageSerializer
+        type: WritePageSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PageSerializer
+            type: PageSerializer
 
 
 
 /api/shops/navigation/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WritePageSerializer
+        type: WritePageSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PageSerializer
+            type: PageSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: PageSerializer
+            type: PageSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: PageSerializer
+            type: PageSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WritePageSerializer
+        type: WritePageSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PageSerializer
+            type: PageSerializer
 
 
 
@@ -1089,13 +1089,13 @@ types:
   post:
     body:
       application/json:
-        schema: WritePageSerializer
+        type: WritePageSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PageSerializer
+            type: PageSerializer
 
 
 
@@ -1103,13 +1103,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteIdentificationSerializer
+        type: WriteIdentificationSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: IdentificationSerializer
+            type: IdentificationSerializer
 
   get:
     queryParameters:
@@ -1123,7 +1123,7 @@ types:
       200:
         body:
           application/json:
-            schema: IdentificationSerializer[]
+            type: IdentificationSerializer[]
 
 
 
@@ -1131,13 +1131,13 @@ types:
   put:
     body:
       application/json:
-        schema: WriteMenuSerializer
+        type: WriteMenuSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: MenuSerializer
+            type: MenuSerializer
 
 
 
@@ -1145,26 +1145,26 @@ types:
   post:
     body:
       application/json:
-        schema: WriteMenuSerializer
+        type: WriteMenuSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: MenuSerializer
+            type: MenuSerializer
 
   get:
     queryParameters:
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
       id:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
         required: false
         type: string
       order_by:
@@ -1179,46 +1179,46 @@ types:
       200:
         body:
           application/json:
-            schema: MenuSerializer[]
+            type: MenuSerializer[]
 
 
 
 /api/shops/menu/{name}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteMenuSerializer
+        type: WriteMenuSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: MenuSerializer
+            type: MenuSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: MenuSerializer
+            type: MenuSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: MenuSerializer
+            type: MenuSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteMenuSerializer
+        type: WriteMenuSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: MenuSerializer
+            type: MenuSerializer
 
 
 
@@ -1226,59 +1226,59 @@ types:
   post:
     body:
       application/json:
-        schema: WriteMenuItemSerializer
+        type: WriteMenuItemSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: MenuItemSerializer
+            type: MenuItemSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: MenuItemSerializer[]
+            type: MenuItemSerializer[]
 
 
 
 /api/shops/menu/{parent_lookup_menu__name}/item/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteMenuItemSerializer
+        type: WriteMenuItemSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: MenuItemSerializer
+            type: MenuItemSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: MenuItemSerializer
+            type: MenuItemSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: MenuItemSerializer
+            type: MenuItemSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteMenuItemSerializer
+        type: WriteMenuItemSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: MenuItemSerializer
+            type: MenuItemSerializer
 
 
 
@@ -1288,7 +1288,7 @@ types:
       200:
         body:
           application/json:
-            schema: ShopFrontSerializer
+            type: ShopFrontSerializer
 
 
 
@@ -1298,29 +1298,29 @@ types:
       200:
         body:
           application/json:
-            schema: ShopSerializer
+            type: ShopSerializer
 
   put:
     body:
       application/json:
-        schema: WriteShopSerializer
+        type: WriteShopSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopSerializer
+            type: ShopSerializer
 
   patch:
     body:
       application/json:
-        schema: WriteShopSerializer
+        type: WriteShopSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopSerializer
+            type: ShopSerializer
 
 
 
@@ -1330,7 +1330,7 @@ types:
       200:
         body:
           application/json:
-            schema: ShopSerializer
+            type: ShopSerializer
 
 
 
@@ -1338,12 +1338,12 @@ types:
   put:
     body:
       application/json:
-        schema: WriteShopSerializer
+        type: WriteShopSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopSerializer
+            type: ShopSerializer
 
 

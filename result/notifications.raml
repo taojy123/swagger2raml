@@ -140,16 +140,16 @@ types:
       page_size:
         required: false
         type: integer
-      kind:
-        required: false
-        type: string
-      kind__in:
-        required: false
-        type: string
       id:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      kind:
+        required: false
+        type: string
+      kind__in:
         required: false
         type: string
 
@@ -157,7 +157,7 @@ types:
       200:
         body:
           application/json:
-            schema: NotificationCategorySerializer[]
+            type: NotificationCategorySerializer[]
 
 
 
@@ -165,13 +165,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteNotificationCategorySerializer
+        type: WriteNotificationCategorySerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: NotificationCategorySerializer
+            type: NotificationCategorySerializer
 
 
 
@@ -179,13 +179,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteNotificationCategorySerializer
+        type: WriteNotificationCategorySerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: NotificationCategorySerializer
+            type: NotificationCategorySerializer
 
 
 
@@ -193,13 +193,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteNotificationCategorySerializer
+        type: WriteNotificationCategorySerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: NotificationCategorySerializer
+            type: NotificationCategorySerializer
 
 
 
@@ -207,13 +207,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteNotificationCategorySerializer
+        type: WriteNotificationCategorySerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: NotificationCategorySerializer
+            type: NotificationCategorySerializer
 
 
 
@@ -221,13 +221,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteNotificationCategorySerializer
+        type: WriteNotificationCategorySerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: NotificationCategorySerializer
+            type: NotificationCategorySerializer
 
 
 
@@ -235,13 +235,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteNotificationCategorySerializer
+        type: WriteNotificationCategorySerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: NotificationCategorySerializer
+            type: NotificationCategorySerializer
 
 
 
@@ -262,7 +262,7 @@ types:
       200:
         body:
           application/json:
-            schema: ShopNotificationSerializer[]
+            type: ShopNotificationSerializer[]
 
 
 
@@ -270,13 +270,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteShopNotificationSerializer
+        type: WriteShopNotificationSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopNotificationSerializer
+            type: ShopNotificationSerializer
 
 
 
@@ -284,13 +284,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteShopNotificationSerializer
+        type: WriteShopNotificationSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopNotificationSerializer
+            type: ShopNotificationSerializer
 
 
 
@@ -300,7 +300,7 @@ types:
       200:
         body:
           application/json:
-            schema: ShopNotificationSerializer
+            type: ShopNotificationSerializer
 
 
 
@@ -308,13 +308,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteShopNotificationSerializer
+        type: WriteShopNotificationSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopNotificationSerializer
+            type: ShopNotificationSerializer
 
 
 
@@ -322,13 +322,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteShopNotificationSerializer
+        type: WriteShopNotificationSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopNotificationSerializer
+            type: ShopNotificationSerializer
 
 
 
@@ -349,7 +349,7 @@ types:
       200:
         body:
           application/json:
-            schema: CustomerNotificationSerializer[]
+            type: CustomerNotificationSerializer[]
 
 
 
@@ -357,13 +357,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCustomerNotificationSerializer
+        type: WriteCustomerNotificationSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomerNotificationSerializer
+            type: CustomerNotificationSerializer
 
 
 
@@ -371,13 +371,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCustomerNotificationSerializer
+        type: WriteCustomerNotificationSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomerNotificationSerializer
+            type: CustomerNotificationSerializer
 
 
 
@@ -387,7 +387,7 @@ types:
       200:
         body:
           application/json:
-            schema: CustomerNotificationSerializer
+            type: CustomerNotificationSerializer
 
 
 
@@ -395,13 +395,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCustomerNotificationSerializer
+        type: WriteCustomerNotificationSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomerNotificationSerializer
+            type: CustomerNotificationSerializer
 
 
 
@@ -409,12 +409,12 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCustomerNotificationSerializer
+        type: WriteCustomerNotificationSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomerNotificationSerializer
+            type: CustomerNotificationSerializer
 
 

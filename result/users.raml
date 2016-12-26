@@ -5,22 +5,6 @@ baseUri: http://api.heidianer.com
 
 
 types:
-  WriteThemeSerializer:
-    type: object
-    properties:
-      current_preset:
-        required: false
-        type: string
-      private_settings_data:
-        required: false
-        type: string
-      metafield:
-        required: false
-        type: string
-      settings_data:
-        required: false
-        type: string
-
   PageConfigPresetSerializer:
     type: object
     properties:
@@ -37,16 +21,10 @@ types:
         required: false
         type: string
 
-  ShopAdminUserSerializer:
+  WriteShopAdminUserSerializer:
     type: object
     properties:
       mobile:
-        required: false
-        type: string
-      created_at:
-        required: false
-        type: string
-      updated_at:
         required: false
         type: string
       email:
@@ -55,9 +33,6 @@ types:
       full_name:
         required: false
         type: string
-      id:
-        required: false
-        type: integer
 
   PlanBillingSerializer:
     type: object
@@ -93,17 +68,29 @@ types:
         required: false
         type: integer
 
-  WritePageConfigPresetSerializer:
+  WriteUserSerializer:
     type: object
     properties:
-
-  ScriptTagSerializer:
-    type: object
-    properties:
-      src:
+      username:
+        required: true
+        type: string
+      password:
+        required: true
+        type: string
+      last_login:
         required: false
         type: string
-      metafield:
+      email:
+        required: true
+        type: string
+      date_joined:
+        required: false
+        type: string
+
+  ShopAdminUserSerializer:
+    type: object
+    properties:
+      mobile:
         required: false
         type: string
       created_at:
@@ -112,49 +99,19 @@ types:
       updated_at:
         required: false
         type: string
-      display_scope:
-        required: false
+      email:
+        required: true
         type: string
-      content:
+      full_name:
         required: false
         type: string
       id:
         required: false
         type: integer
 
-  ThemePresetSerializer:
+  WritePageConfigPresetSerializer:
     type: object
     properties:
-      screenshot_mobile:
-        required: false
-        type: string
-      pageconfigs:
-        required: false
-        type: PageConfigPresetSerializer[]
-      metafield:
-        required: false
-        type: string
-      name:
-        required: false
-        type: string
-      screenshot:
-        required: false
-        type: string
-      title:
-        required: false
-        type: string
-      color:
-        required: false
-        type: string
-      settings_data:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-      assets:
-        required: false
-        type: string
 
   ThemeSerializer:
     type: object
@@ -193,43 +150,81 @@ types:
         required: false
         type: string
 
-  WriteShopSerializer:
+  ThemePresetSerializer:
     type: object
     properties:
-      website:
+      screenshot_mobile:
         required: false
         type: string
+      pageconfigs:
+        required: false
+        type: PageConfigPresetSerializer[]
       metafield:
         required: false
         type: string
-      slogan:
+      name:
         required: false
         type: string
-      description:
+      screenshot:
         required: false
         type: string
       title:
         required: false
         type: string
-      identification_type:
+      color:
         required: false
         type: string
-      phone:
+      settings_data:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      assets:
+        required: false
+        type: string
+
+  ScriptTagSerializer:
+    type: object
+    properties:
+      src:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      display_scope:
+        required: false
+        type: string
+      content:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+
+  WriteShopSerializer:
+    type: object
+    properties:
+      logo:
+        required: false
+        type: string
+      identification_type:
         required: false
         type: string
       favicon:
         required: false
         type: string
-      email:
+      metafield:
         required: false
         type: string
-      address:
-        required: false
-        type: string
-      logo:
-        required: false
-        type: string
-      company:
+      title:
         required: false
         type: string
 
@@ -257,6 +252,102 @@ types:
       date_joined:
         required: false
         type: string
+
+  WritePlanBillingSerializer:
+    type: object
+    properties:
+      plan_period:
+        required: true
+        type: string
+      plan_name:
+        required: true
+        type: string
+
+  WriteThemeSerializer:
+    type: object
+    properties:
+      current_preset:
+        required: false
+        type: string
+      private_settings_data:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+
+  WriteThemePresetSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+
+  WriteScriptTagSerializer:
+    type: object
+    properties:
+      content:
+        required: false
+        type: string
+      src:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      display_scope:
+        required: false
+        type: string
+
+  WritePlanSerializer:
+    type: object
+    properties:
+      next_billing:
+        required: true
+        type: PlanBillingSerializer
+      active_billing:
+        required: true
+        type: PlanBillingSerializer
+
+  ShopSerializer:
+    type: object
+    properties:
+      created_at:
+        required: false
+        type: string
+      domain:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      identification_type:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      favicon:
+        required: false
+        type: string
+      logo:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
 
   PlanSerializer:
     type: object
@@ -295,157 +386,6 @@ types:
         required: false
         type: integer
 
-  WriteThemePresetSerializer:
-    type: object
-    properties:
-      metafield:
-        required: false
-        type: string
-      title:
-        required: false
-        type: string
-
-  WriteScriptTagSerializer:
-    type: object
-    properties:
-      content:
-        required: false
-        type: string
-      src:
-        required: false
-        type: string
-      metafield:
-        required: false
-        type: string
-      display_scope:
-        required: false
-        type: string
-
-  WritePlanSerializer:
-    type: object
-    properties:
-      next_billing:
-        required: true
-        type: PlanBillingSerializer
-      active_billing:
-        required: true
-        type: PlanBillingSerializer
-
-  WritePlanBillingSerializer:
-    type: object
-    properties:
-      plan_period:
-        required: true
-        type: string
-      plan_name:
-        required: true
-        type: string
-
-  WriteUserSerializer:
-    type: object
-    properties:
-      username:
-        required: true
-        type: string
-      password:
-        required: true
-        type: string
-      last_login:
-        required: false
-        type: string
-      email:
-        required: true
-        type: string
-      date_joined:
-        required: false
-        type: string
-
-  ShopSerializer:
-    type: object
-    properties:
-      domain:
-        required: false
-        type: string
-      identification_type:
-        required: false
-        type: string
-      address:
-        required: false
-        type: string
-      updated_at:
-        required: false
-        type: string
-      favicon:
-        required: false
-        type: string
-      logo:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-      metafield:
-        required: false
-        type: string
-      title:
-        required: false
-        type: string
-      payment_channels:
-        required: false
-        type: string
-      theme:
-        required: false
-        type: ThemeSerializer
-      email:
-        required: false
-        type: string
-      website:
-        required: false
-        type: string
-      description:
-        required: false
-        type: string
-      company:
-        required: false
-        type: string
-      phone:
-        required: false
-        type: string
-      plan:
-        required: false
-        type: PlanSerializer
-      wechat_app_id:
-        required: false
-        type: string
-      slogan:
-        required: false
-        type: string
-      name:
-        required: false
-        type: string
-      notifications:
-        required: false
-        type: string
-      created_at:
-        required: false
-        type: string
-      script_tags:
-        required: false
-        type: ScriptTagSerializer[]
-
-  WriteShopAdminUserSerializer:
-    type: object
-    properties:
-      mobile:
-        required: false
-        type: string
-      email:
-        required: true
-        type: string
-      full_name:
-        required: false
-        type: string
-
 
 
 
@@ -463,7 +403,7 @@ types:
       200:
         body:
           application/json:
-            schema: UserSerializer[]
+            type: UserSerializer[]
 
 
 
@@ -471,13 +411,13 @@ types:
   put:
     body:
       application/json:
-        schema: WriteUserSerializer
+        type: WriteUserSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: UserSerializer
+            type: UserSerializer
 
 
 
@@ -487,7 +427,7 @@ types:
       200:
         body:
           application/json:
-            schema: UserSerializer
+            type: UserSerializer
 
 
 
@@ -505,7 +445,7 @@ types:
       200:
         body:
           application/json:
-            schema: ShopAdminUserSerializer[]
+            type: ShopAdminUserSerializer[]
 
 
 
@@ -513,13 +453,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteShopAdminUserSerializer
+        type: WriteShopAdminUserSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopAdminUserSerializer
+            type: ShopAdminUserSerializer
 
 
 
@@ -527,13 +467,13 @@ types:
   put:
     body:
       application/json:
-        schema: WriteShopAdminUserSerializer
+        type: WriteShopAdminUserSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopAdminUserSerializer
+            type: ShopAdminUserSerializer
 
 
 
@@ -541,13 +481,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteShopAdminUserSerializer
+        type: WriteShopAdminUserSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopAdminUserSerializer
+            type: ShopAdminUserSerializer
 
 
 
@@ -557,7 +497,7 @@ types:
       200:
         body:
           application/json:
-            schema: ShopAdminUserSerializer
+            type: ShopAdminUserSerializer
 
 
 
@@ -565,13 +505,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteShopSerializer
+        type: WriteShopSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopSerializer
+            type: ShopSerializer
 
   get:
     queryParameters:
@@ -586,45 +526,45 @@ types:
       200:
         body:
           application/json:
-            schema: ShopSerializer[]
+            type: ShopSerializer[]
 
 
 
 /api/users/shop/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteShopSerializer
+        type: WriteShopSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopSerializer
+            type: ShopSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: ShopSerializer
+            type: ShopSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: ShopSerializer
+            type: ShopSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteShopSerializer
+        type: WriteShopSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShopSerializer
+            type: ShopSerializer
 
 

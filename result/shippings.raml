@@ -180,13 +180,13 @@ types:
   put:
     body:
       application/json:
-        schema: WriteShippingMethodSerializer
+        type: WriteShippingMethodSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShippingMethodSerializer
+            type: ShippingMethodSerializer
 
 
 
@@ -194,13 +194,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteShippingMethodSerializer
+        type: WriteShippingMethodSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShippingMethodSerializer
+            type: ShippingMethodSerializer
 
   get:
     queryParameters:
@@ -215,46 +215,46 @@ types:
       200:
         body:
           application/json:
-            schema: ShippingMethodSerializer[]
+            type: ShippingMethodSerializer[]
 
 
 
 /api/shippings/shippingmethod/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteShippingMethodSerializer
+        type: WriteShippingMethodSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShippingMethodSerializer
+            type: ShippingMethodSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: ShippingMethodSerializer
+            type: ShippingMethodSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: ShippingMethodSerializer
+            type: ShippingMethodSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteShippingMethodSerializer
+        type: WriteShippingMethodSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShippingMethodSerializer
+            type: ShippingMethodSerializer
 
 
 
@@ -262,13 +262,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteShippingZoneSerializer
+        type: WriteShippingZoneSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShippingZoneSerializer
+            type: ShippingZoneSerializer
 
   get:
     queryParameters:
@@ -283,46 +283,46 @@ types:
       200:
         body:
           application/json:
-            schema: ShippingZoneSerializer[]
+            type: ShippingZoneSerializer[]
 
 
 
 /api/shippings/shippingmethod/{parent_lookup_shipping_method}/shippingzone/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteShippingZoneSerializer
+        type: WriteShippingZoneSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShippingZoneSerializer
+            type: ShippingZoneSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: ShippingZoneSerializer
+            type: ShippingZoneSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: ShippingZoneSerializer
+            type: ShippingZoneSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteShippingZoneSerializer
+        type: WriteShippingZoneSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ShippingZoneSerializer
+            type: ShippingZoneSerializer
 
 
 
@@ -332,7 +332,7 @@ types:
       200:
         body:
           application/json:
-            schema: PlaceSerializer
+            type: PlaceSerializer
 
 
 
@@ -347,7 +347,7 @@ types:
       200:
         body:
           application/json:
-            schema: PlaceSerializer[]
+            type: PlaceSerializer[]
 
 
 
@@ -357,6 +357,6 @@ types:
       200:
         body:
           application/json:
-            schema: PlaceSerializer
+            type: PlaceSerializer
 
 

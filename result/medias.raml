@@ -145,7 +145,7 @@ types:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
 
 
@@ -179,7 +179,7 @@ types:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
 
 
@@ -187,13 +187,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteFileSerializer
+        type: WriteFileSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
   get:
     queryParameters:
@@ -203,6 +203,12 @@ types:
       page_size:
         required: false
         type: integer
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
       file_type:
         required: false
         enum:
@@ -212,12 +218,6 @@ types:
           - audio
           - other
       file_type__in:
-        required: false
-        type: string
-      id:
-        required: false
-        type: string
-      id__in:
         required: false
         type: string
       parent:
@@ -241,46 +241,46 @@ types:
       200:
         body:
           application/json:
-            schema: FileSerializer[]
+            type: FileSerializer[]
 
 
 
 /api/medias/file/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteFileSerializer
+        type: WriteFileSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteFileSerializer
+        type: WriteFileSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
 
 
@@ -288,13 +288,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteFileSerializer
+        type: WriteFileSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
   get:
     queryParameters:
@@ -304,6 +304,12 @@ types:
       page_size:
         required: false
         type: integer
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
       file_type:
         required: false
         enum:
@@ -313,12 +319,6 @@ types:
           - audio
           - other
       file_type__in:
-        required: false
-        type: string
-      id:
-        required: false
-        type: string
-      id__in:
         required: false
         type: string
       parent:
@@ -342,45 +342,45 @@ types:
       200:
         body:
           application/json:
-            schema: FileSerializer[]
+            type: FileSerializer[]
 
 
 
 /api/medias/material/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteFileSerializer
+        type: WriteFileSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteFileSerializer
+        type: WriteFileSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
 

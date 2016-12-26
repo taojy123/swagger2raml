@@ -43,14 +43,14 @@ types:
     %if operation.method in ['post', 'put', 'patch'] and operation.serializer_name:
     body:
       application/json:
-        schema: Write{{ operation.serializer_name }}
+        type: {{ operation.serializer_name_write }}
 
     %endif
     responses:
       200:
         body:
           application/json:
-            schema: {{ operation.serializer_name }}
+            type: {{ operation.serializer_name }}
 
   %endfor
 

@@ -106,13 +106,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteArticleSerializer
+        type: WriteArticleSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ArticleSerializer
+            type: ArticleSerializer
 
   get:
     queryParameters:
@@ -122,16 +122,16 @@ types:
       page_size:
         required: false
         type: integer
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
       id:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
         required: false
         type: string
       published_at_from:
@@ -163,46 +163,46 @@ types:
       200:
         body:
           application/json:
-            schema: ArticleSerializer[]
+            type: ArticleSerializer[]
 
 
 
 /api/blogs/article/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteArticleSerializer
+        type: WriteArticleSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ArticleSerializer
+            type: ArticleSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: ArticleSerializer
+            type: ArticleSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: ArticleSerializer
+            type: ArticleSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteArticleSerializer
+        type: WriteArticleSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ArticleSerializer
+            type: ArticleSerializer
 
 
 
@@ -210,13 +210,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteArticleTagSerializer
+        type: WriteArticleTagSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ArticleTagSerializer
+            type: ArticleTagSerializer
 
   get:
     queryParameters:
@@ -228,45 +228,45 @@ types:
       200:
         body:
           application/json:
-            schema: ArticleTagSerializer[]
+            type: ArticleTagSerializer[]
 
 
 
 /api/blogs/tag/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteArticleTagSerializer
+        type: WriteArticleTagSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ArticleTagSerializer
+            type: ArticleTagSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: ArticleTagSerializer
+            type: ArticleTagSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: ArticleTagSerializer
+            type: ArticleTagSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteArticleTagSerializer
+        type: WriteArticleTagSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ArticleTagSerializer
+            type: ArticleTagSerializer
 
 

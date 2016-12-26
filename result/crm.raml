@@ -43,12 +43,15 @@ types:
         required: false
         type: string
 
-  WriteCustomFormSerializer:
+  CustomFormSerializer:
     type: object
     properties:
       fields:
         required: false
         type: string
+      id:
+        required: false
+        type: integer
 
   WriteCustomerMessageSerializer:
     type: object
@@ -91,15 +94,12 @@ types:
         required: false
         type: integer
 
-  CustomFormSerializer:
+  WriteCustomFormSerializer:
     type: object
     properties:
       fields:
         required: false
         type: string
-      id:
-        required: false
-        type: integer
 
 
 
@@ -108,13 +108,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCustomerSerializer
+        type: WriteCustomerSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomerSerializer
+            type: CustomerSerializer
 
   get:
     queryParameters:
@@ -141,46 +141,46 @@ types:
       200:
         body:
           application/json:
-            schema: CustomerSerializer[]
+            type: CustomerSerializer[]
 
 
 
 /api/crm/customer/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteCustomerSerializer
+        type: WriteCustomerSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomerSerializer
+            type: CustomerSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: CustomerSerializer
+            type: CustomerSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: CustomerSerializer
+            type: CustomerSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteCustomerSerializer
+        type: WriteCustomerSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomerSerializer
+            type: CustomerSerializer
 
 
 
@@ -188,13 +188,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCustomFormSerializer
+        type: WriteCustomFormSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomFormSerializer
+            type: CustomFormSerializer
 
   get:
     queryParameters:
@@ -209,46 +209,46 @@ types:
       200:
         body:
           application/json:
-            schema: CustomFormSerializer[]
+            type: CustomFormSerializer[]
 
 
 
 /api/crm/custom_form/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteCustomFormSerializer
+        type: WriteCustomFormSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomFormSerializer
+            type: CustomFormSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: CustomFormSerializer
+            type: CustomFormSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: CustomFormSerializer
+            type: CustomFormSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteCustomFormSerializer
+        type: WriteCustomFormSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomFormSerializer
+            type: CustomFormSerializer
 
 
 
@@ -256,12 +256,12 @@ types:
   post:
     body:
       application/json:
-        schema: WriteCustomerMessageSerializer
+        type: WriteCustomerMessageSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: CustomerMessageSerializer
+            type: CustomerMessageSerializer
 
 

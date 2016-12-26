@@ -97,6 +97,10 @@ class Operation(object):
         if self.serializer_name == 'array':
             self.serializer_name = self.items.get('$ref', '') + '[]'
 
+        self.serializer_name_write = self.serializer_name
+        if 'serializer' in self.serializer_name_write.lower():
+            self.serializer_name_write = 'Write' + self.serializer_name_write
+
     def __repr__(self):
         return self.nickname
 

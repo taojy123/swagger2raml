@@ -238,6 +238,37 @@ types:
         required: false
         type: string
 
+  WritePageSerializer:
+    type: object
+    properties:
+      shop:
+        required: true
+        type: string
+      metafield:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+      title:
+        required: false
+        type: string
+      body_html:
+        required: false
+        type: string
+      permanent:
+        required: false
+        type: boolean
+      page_type:
+        required: false
+        type: string
+      pageconfig:
+        required: true
+        type: PageConfigSerializer
+      description:
+        required: false
+        type: string
+
   ThemePresetSerializer:
     type: object
     properties:
@@ -269,37 +300,6 @@ types:
         required: false
         type: integer
       assets:
-        required: false
-        type: string
-
-  WritePageSerializer:
-    type: object
-    properties:
-      shop:
-        required: true
-        type: string
-      metafield:
-        required: false
-        type: string
-      name:
-        required: true
-        type: string
-      title:
-        required: false
-        type: string
-      body_html:
-        required: false
-        type: string
-      permanent:
-        required: false
-        type: boolean
-      page_type:
-        required: false
-        type: string
-      pageconfig:
-        required: true
-        type: PageConfigSerializer
-      description:
         required: false
         type: string
 
@@ -532,20 +532,20 @@ types:
   post:
     body:
       application/json:
-        schema: WriteThemeSerializer
+        type: WriteThemeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer[]
+            type: ThemeSerializer[]
 
 
 
@@ -553,13 +553,13 @@ types:
   post:
     body:
       application/json:
-        schema: WriteThemeSerializer
+        type: WriteThemeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
 
 
@@ -567,58 +567,70 @@ types:
   post:
     body:
       application/json:
-        schema: WriteThemeSerializer
+        type: WriteThemeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
 
 
 /api/shopthemes/theme/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WriteThemeSerializer
+        type: WriteThemeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
   delete:
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WriteThemeSerializer
+        type: WriteThemeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ThemeSerializer
+            type: ThemeSerializer
 
 
 
 /api/shopthemes/file/:
   get:
     queryParameters:
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
+        required: false
+        type: string
       file_type:
         required: false
         enum:
@@ -629,18 +641,6 @@ types:
           - snippets
           - assets
       file_type__in:
-        required: false
-        type: string
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
-      id:
-        required: false
-        type: string
-      id__in:
         required: false
         type: string
       permanent:
@@ -660,7 +660,7 @@ types:
       200:
         body:
           application/json:
-            schema: FileSerializer[]
+            type: FileSerializer[]
 
 
 
@@ -670,7 +670,7 @@ types:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
 
 
@@ -680,7 +680,7 @@ types:
       200:
         body:
           application/json:
-            schema: TemplateSerializer[]
+            type: TemplateSerializer[]
 
 
 
@@ -690,13 +690,25 @@ types:
       200:
         body:
           application/json:
-            schema: TemplateSerializer
+            type: TemplateSerializer
 
 
 
 /api/shopthemes/block/:
   get:
     queryParameters:
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
+        required: false
+        type: string
       file_type:
         required: false
         enum:
@@ -707,18 +719,6 @@ types:
           - snippets
           - assets
       file_type__in:
-        required: false
-        type: string
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
-      id:
-        required: false
-        type: string
-      id__in:
         required: false
         type: string
       permanent:
@@ -738,7 +738,7 @@ types:
       200:
         body:
           application/json:
-            schema: FileSerializer[]
+            type: FileSerializer[]
 
 
 
@@ -748,7 +748,7 @@ types:
       200:
         body:
           application/json:
-            schema: FileSerializer
+            type: FileSerializer
 
 
 
@@ -766,39 +766,39 @@ types:
       200:
         body:
           application/json:
-            schema: PageConfigSerializer[]
+            type: PageConfigSerializer[]
 
 
 
 /api/shopthemes/pageconfig/{pk}/:
-  put:
+  patch:
     body:
       application/json:
-        schema: WritePageConfigSerializer
+        type: WritePageConfigSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PageConfigSerializer
+            type: PageConfigSerializer
 
   get:
     responses:
       200:
         body:
           application/json:
-            schema: PageConfigSerializer
+            type: PageConfigSerializer
 
-  patch:
+  put:
     body:
       application/json:
-        schema: WritePageConfigSerializer
+        type: WritePageConfigSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: PageConfigSerializer
+            type: PageConfigSerializer
 
 
 
@@ -816,7 +816,7 @@ types:
       200:
         body:
           application/json:
-            schema: PageSerializer[]
+            type: PageSerializer[]
 
 
 
@@ -826,7 +826,7 @@ types:
       200:
         body:
           application/json:
-            schema: SnippetSerializer[]
+            type: SnippetSerializer[]
 
 
 
@@ -836,7 +836,7 @@ types:
       200:
         body:
           application/json:
-            schema: SnippetSerializer
+            type: SnippetSerializer
 
 
 
@@ -846,7 +846,7 @@ types:
       200:
         body:
           application/json:
-            schema: ContainerSerializer[]
+            type: ContainerSerializer[]
 
 
 
@@ -856,7 +856,7 @@ types:
       200:
         body:
           application/json:
-            schema: ContainerSerializer
+            type: ContainerSerializer
 
 
 
@@ -864,13 +864,13 @@ types:
   put:
     body:
       application/json:
-        schema: WriteActivateThemeSerializer
+        type: WriteActivateThemeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: ActivateThemeSerializer
+            type: ActivateThemeSerializer
 
 
 
@@ -878,12 +878,12 @@ types:
   post:
     body:
       application/json:
-        schema: WriteInstallThemeSerializer
+        type: WriteInstallThemeSerializer
 
     responses:
       200:
         body:
           application/json:
-            schema: InstallThemeSerializer
+            type: InstallThemeSerializer
 
 
