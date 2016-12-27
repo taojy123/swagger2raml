@@ -1,10 +1,10 @@
 <%setopt("strip", False)%>
 #%RAML 1.0
 title: {{ title }}
-version: v1
-baseUri: http://api.heidianer.com
+baseUri: {{ base_uri }}
 
 
+%if serializers:
 types:
   %for serializer in serializers:
   {{ serializer.id }}:
@@ -17,13 +17,16 @@ types:
       %endfor
 
   %endfor
+%endif
 
 
 %for api in apis:
-
 {{ api.path }}:
   %for operation in api.operations:
   {{ operation.method }}:
+    %if operation.patch:
+    {{ operation.patch.content.strip() }}
+    %else:
     %if operation.query_parameters:
     queryParameters:
     %for parameter in operation.query_parameters:
@@ -51,6 +54,7 @@ types:
         body:
           application/json:
             type: {{ operation.serializer_name }}
+    %endif
 
   %endfor
 

@@ -67,7 +67,9 @@ class Parameter(object):
 class Operation(object):
     
     def __init__(self, data):
+        self.patch = None
         self.data = data
+
         self.nickname = data['nickname']
         self.notes = data['notes']
         self.summary = data['summary']
@@ -119,7 +121,28 @@ class Api(object):
     def __repr__(self):
         return '<API:%s>' % self.path
 
+    def match_patches(self, patches):
+        for operation in self.operations:
+            for patch in patches:
+                if patch.path == self.path and patch.method == operation.method:
+                    assert patch.match == False
+                    patch.match = True
+                    operation.patch = patch
 
+
+class Patch(object):
+
+    def __init__(self, path, method):
+        self.path = path
+        self.method = method.lower()
+        self.content = '\n'
+        self.match = False
+
+    def __repr__(self):
+        return '<Patch:%s %s>' % (self.path, self.method)
+
+    def append_content(self, line):
+        self.content += line.rstrip() + '\n'
         
 
 

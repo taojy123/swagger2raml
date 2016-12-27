@@ -1,0 +1,160 @@
+#%RAML 1.0
+title: 嘿店开放平台 API NOTIFICATIONS PATCH
+version: v1
+baseUri: http://heidianapi.com
+
+
+/api/notifications/category/:
+  get:
+    description: 获取所有的通知类型的数据和配置
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      kind:
+        required: false
+        type: string
+        description: 筛选大类
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                {
+                    "count": 1,
+                    "next": null,
+                    "previous": null,
+                    "results": [
+                        {
+                            "id": 1,
+                            "email_enabled": false,
+                            "sms_enabled": false,
+                            "dashboard_enabled": true,
+                            "name": "name",
+                            "kind": "测试类型",
+                            "title": "测试标题",
+                            "description": "你好好",
+                            "allow_email_enable": true,
+                            "allow_sms_enable": false
+                        }
+                    ]
+                }
+
+
+/api/notifications/category/{category__id}/email_enable/:
+  post:
+    description: 开启 email 通知提醒
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                {"result": true}
+
+
+/api/notifications/category/{category__id}/sms_enable/:
+  post:
+    description: 开启短信通知提醒
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                {"result": true}
+
+
+/api/notifications/category/{category__id}/dashboard_enable/:
+  post:
+    description: 开启站内信通知提醒
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                {"result": true}
+
+
+/api/notifications/category/{category__id}/email_disable/:
+  post:
+    description: 关闭 email 通知提醒
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                {"result": false}
+
+
+/api/notifications/category/{category__id}/sms_disable/:
+  post:
+    description: 关闭短信通知提醒
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                {"result": false}
+
+
+/api/notifications/category/{category__id}/dashboard_disable/:
+  post:
+    description: 关闭站内信通知提醒
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                {"result": false}
+
+
+/api/notifications/shop_notification/{pk}/read/:
+  post:
+    description: 通知标记已读 (url 中的 shop_notification 改成 customer_notification 即为买家接口)
+
+    responses:
+      200:
+
+
+/api/notifications/shop_notification/read_all/:
+  post:
+    description: 通知批量标记已读 (url 中的 shop_notification 改成 customer_notification 即为买家接口)
+    queryParameters:
+      id__in:
+        required: false
+        type: string
+        example: "1,3,19"
+
+    responses:
+      200:
+
+
+/api/notifications/shop_notification/{pk}/delete/:
+  post:
+    description: 删除通知 (url 中的 shop_notification 改成 customer_notification 即为买家接口)
+
+    responses:
+      200:
+
+
+/api/notifications/shop_notification/delete_all/:
+  post:
+    description: 批量删除通知 (url 中的 shop_notification 改成 customer_notification 即为买家接口)
+    queryParameters:
+      id__in:
+        required: false
+        type: string
+        example: "1,3,19"
+
+    responses:
+      200:
+
