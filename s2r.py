@@ -1,13 +1,15 @@
 #coding=utf8
 
-import json
-import step
-import urllib2
 import os
 import sys
 import re
+import json
 import getopt
+import step
+
 from models import Api, Serializer, Patch
+
+PY3 = sys.version_info[0] == 3
 
 
 # ======== support swagger version: 1.2 ========
@@ -16,6 +18,17 @@ TITLE_PREFIX = u'嘿店开放平台 API '
 ROOT_URL = 'http://heidianapi.com/api/docs/api-docs/'
 OUTPUT_DIR = './result'
 PATCH_FILES = ['./patch/notifications_patch.raml']
+
+
+def get_data(url):
+    if PY3:
+        import urllib.request
+        data = urllib.request.urlopen(url).read()
+        data = data.decode()
+    else:
+        import urllib2
+        data = urllib2.urlopen(url).read()
+    return json.loads(data)
 
 
 def get_all_patches(patch_files):
@@ -89,8 +102,7 @@ if __name__ == '__main__':
 
     base_uri = re.findall(r'^(.+?//.+?)/', ROOT_URL)[0]
     patches = get_all_patches(PATCH_FILES)
-    page = urllib2.urlopen(ROOT_URL).read()
-    data = json.loads(page)
+    data = get_data(ROOT_URL)
 
     for sub_api_data in data['apis']:
 
@@ -101,8 +113,7 @@ if __name__ == '__main__':
 
         title = TITLE_PREFIX + name.upper()
 
-        page = urllib2.urlopen(sub_url).read()
-        data = json.loads(page)
+        data = get_data(sub_url)
 
         apis = []
         for api_data in data['apis']:
@@ -121,8 +132,9 @@ if __name__ == '__main__':
 
         expands = {}
         template = open('template.raml').read()
-        page = step.Template(template).expand(locals())        
-        page = page.encode('utf8')
+        page = step.Template(template).expand(locals())     
+        if not PY3:   
+            page = page.encode('utf8')
 
         output_path = os.path.join(OUTPUT_DIR, '%s.raml' % name)
         open(output_path, 'w').write(page)
@@ -141,8 +153,9 @@ for patch in patches:
         expands[patch.path].append(patch)
 
 template = open('template.raml').read()
-page = step.Template(template).expand(locals())        
-page = page.encode('utf8')
+page = step.Template(template).expand(locals())
+if not PY3:      
+    page = page.encode('utf8')
 
 output_path = os.path.join(OUTPUT_DIR, '%s.raml' % name)
 open(output_path, 'w').write(page)

@@ -13,7 +13,7 @@ class Field(object):
         self.items = data.get('items', {})
 
         if self.type == 'array':
-            itme_type = data['items'].values()[0]
+            itme_type = list(data['items'].values())[0]
             self.type = itme_type + '[]'
             if 'serializer' in self.type.lower() and for_write:
                 self.type = 'Write' + self.type

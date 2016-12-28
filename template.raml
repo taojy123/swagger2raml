@@ -50,9 +50,11 @@ types:
     %endif
     responses:
       200:
+        %if operation.method not in ['delete']:
         body:
           application/json:
             type: {{ operation.serializer_name }}
+        %endif
     %endif
 
   %endfor
