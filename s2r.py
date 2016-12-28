@@ -61,10 +61,9 @@ if __name__ == '__main__':
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
 
-    patches = get_all_patches(PATCH_FILES)
 
     base_uri = re.findall(r'^(.+?//.+?)/', ROOT_URL)[0]
-
+    patches = get_all_patches(PATCH_FILES)
     page = urllib2.urlopen(ROOT_URL).read()
     data = json.loads(page)
 
@@ -94,7 +93,8 @@ if __name__ == '__main__':
             serializers.append(serializer)
 
         print(serializers)
-
+        
+        expands = {}
         template = open('template.raml').read()
         page = step.Template(template).expand(locals())        
         page = page.encode('utf8')
@@ -103,10 +103,26 @@ if __name__ == '__main__':
         open(output_path, 'w').write(page)
 
 
-print('==================================================')
+print('================ Expand Patches ==================')
+name = 'expand'
+title = TITLE_PREFIX + name.upper()
+apis = []
+serializers = []
+expands = {}
 for patch in patches:
-    print(patch, patch.match)
+    print(patch, patch.matched)
+    if not patch.matched:
+        expands[patch.path] = expands.get(patch.path, [])
+        expands[patch.path].append(patch)
 
+template = open('template.raml').read()
+page = step.Template(template).expand(locals())        
+page = page.encode('utf8')
+
+output_path = os.path.join(OUTPUT_DIR, '%s.raml' % name)
+open(output_path, 'w').write(page)
+
+print('=====================================')
 print('Finish!')
 
 

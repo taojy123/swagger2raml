@@ -125,8 +125,8 @@ class Api(object):
         for operation in self.operations:
             for patch in patches:
                 if patch.path == self.path and patch.method == operation.method:
-                    assert patch.match == False
-                    patch.match = True
+                    assert patch.matched == False
+                    patch.matched = True
                     operation.patch = patch
 
 
@@ -136,7 +136,7 @@ class Patch(object):
         self.path = path
         self.method = method.lower()
         self.content = '\n'
-        self.match = False
+        self.matched = False
 
     def __repr__(self):
         return '<Patch:%s %s>' % (self.path, self.method)

@@ -3,7 +3,6 @@
 title: {{ title }}
 baseUri: {{ base_uri }}
 
-
 %if serializers:
 types:
   %for serializer in serializers:
@@ -59,3 +58,14 @@ types:
   %endfor
 
 %endfor
+
+%for api_path in sorted(expands):
+{{ api_path }}:
+  %for patch in expands[api_path]:
+  {{ patch.method }}:
+    {{ patch.content.strip() }}
+
+  %endfor
+
+%endfor
+
