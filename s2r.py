@@ -6,6 +6,7 @@ import urllib2
 import os
 import sys
 import re
+import getopt
 from models import Api, Serializer, Patch
 
 
@@ -47,20 +48,44 @@ def get_all_patches(patch_files):
     return patches
 
 
+def usage():
+    text = """
+Usage:   
+  python s2r.py [options]
+
+General Options:
+  -h, --help                    Show help.
+  -i(--input=) <api_root_url>   Such as: 'http://xxx.com/api/docs/api-docs/'
+  -o(--output=) <result_dir>    Such as: './result/'
+  -t(--title=) <title_prefix>   Such as: 'My_First_Api'
+  -p(--patches=) <patch_files>  Such as: 'aaa.raml,patches/bbb.raml,ccc.raml'
+"""
+    print(text)
+    sys.exit()
+
+
 if __name__ == '__main__':
 
-    if len(sys.argv) > 1:
-        TITLE_PREFIX = sys.args[1].replace('_', ' ')
+    try:
+        options, args = getopt.getopt(sys.argv[1:], 'hi:o:t:p:', ['help', 'input=', 'output=', 'title=', 'patches='])
 
-    if len(sys.argv) > 2:
-        ROOT_URL = sys.args[2]
+        for name, value in options:
+            if name in ['-h', '--help']:
+                usage()
+            elif name in ['-i', '--input']:
+                ROOT_URL = value
+            elif name in ['-o', '--output']:
+                OUTPUT_DIR = value
+            elif name in ['-t', '--title']:
+                TITLE_PREFIX = value.replace('_', ' ')
+            elif name in ['-p', '--patches']:
+                PATCH_FILES = value.strip().split(',')
 
-    if len(sys.argv) > 3:
-        OUTPUT_DIR = sys.args[3]
+    except getopt.GetoptError:
+        usage()
 
     if not os.path.exists(OUTPUT_DIR):
         os.makedirs(OUTPUT_DIR)
-
 
     base_uri = re.findall(r'^(.+?//.+?)/', ROOT_URL)[0]
     patches = get_all_patches(PATCH_FILES)
@@ -93,7 +118,7 @@ if __name__ == '__main__':
             serializers.append(serializer)
 
         print(serializers)
-        
+
         expands = {}
         template = open('template.raml').read()
         page = step.Template(template).expand(locals())        
