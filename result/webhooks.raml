@@ -1,0 +1,107 @@
+#%RAML 1.0
+title: webhooks
+baseUri: http://heidianapi.com
+
+types:
+  WriteWebhookSerializer:
+    type: object
+    properties:
+      url:
+        required: true
+        type: string
+      metafield:
+        required: false
+        type: string
+      event:
+        required: true
+        type: string
+
+  WebhookSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      url:
+        required: true
+        type: string
+      created_at:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      event:
+        required: true
+        type: string
+      id:
+        required: false
+        type: integer
+
+
+
+/api/webhooks/webhook/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: WebhookSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteWebhookSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: WebhookSerializer
+
+
+/api/webhooks/webhook/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteWebhookSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: WebhookSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: WebhookSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteWebhookSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: WebhookSerializer
+
+  delete:
+    responses:
+      200:
+
+
+
+

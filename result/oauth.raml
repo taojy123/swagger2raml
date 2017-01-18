@@ -1,0 +1,100 @@
+#%RAML 1.0
+title: oauth
+baseUri: http://heidianapi.com
+
+types:
+  WriteNewUserSerializer:
+    type: object
+    properties:
+      theme_install_intent:
+        required: false
+        type: string
+      code:
+        required: false
+        type: string
+      password:
+        required: true
+        type: string
+      email:
+        required: true
+        type: string
+      shopname:
+        required: true
+        type: string
+
+  NewUserSerializer:
+    type: object
+    properties:
+      domain:
+        required: false
+        type: string
+
+
+
+/api/oauth/dashboard/token/:
+  post:
+    body:
+      application/json:
+        type: object
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+/api/oauth/dashboard/password/forgot/:
+  post:
+    body:
+      application/json:
+        type: object
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+/api/oauth/dashboard/password/reset/:
+  post:
+    body:
+      application/json:
+        type: object
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+/api/oauth/homepage/shop-create/:
+  post:
+    body:
+      application/json:
+        type: WriteNewUserSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: NewUserSerializer
+
+
+/api/oauth/homepage/shop-name/forgot/:
+  post:
+    body:
+      application/json:
+        type: object
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+
+

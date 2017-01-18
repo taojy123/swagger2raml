@@ -1,0 +1,399 @@
+#%RAML 1.0
+title: themes
+baseUri: http://heidianapi.com
+
+types:
+  WriteThemeSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      author:
+        required: false
+        type: string
+      price:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+
+  WriteThemeUploadSerializer:
+    type: object
+    properties:
+      settings_schema:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      author:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      version:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+
+  ThemePresetSerializer:
+    type: object
+    properties:
+      screenshot_mobile:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      screenshot:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      color:
+        required: false
+        type: string
+      demo:
+        required: false
+        type: string
+      tags:
+        required: false
+        type: string[]
+      settings_data:
+        required: false
+        type: string
+      theme:
+        required: true
+        type: string
+      assets:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      name:
+        required: true
+        type: string
+
+  ThemeSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      author:
+        required: false
+        type: string
+      price:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      name:
+        required: true
+        type: string
+
+  WriteThemePresetSerializer:
+    type: object
+    properties:
+      screenshot_mobile:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      screenshot:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      color:
+        required: false
+        type: string
+      demo:
+        required: false
+        type: string
+      theme:
+        required: true
+        type: string
+      assets:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+
+  ThemeUploadSerializer:
+    type: object
+    properties:
+      settings_schema:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      author:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      version:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      name:
+        required: true
+        type: string
+
+
+
+/api/themes/uploadtheme/{pk}/file/:
+  post:
+    body:
+      application/json:
+        type: WriteThemeUploadSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeUploadSerializer
+
+
+/api/themes/uploadtheme/{pk}/preset/:
+  post:
+    body:
+      application/json:
+        type: WriteThemeUploadSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeUploadSerializer
+
+
+/api/themes/uploadtheme/{pk}/reset/:
+  post:
+    body:
+      application/json:
+        type: WriteThemeUploadSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeUploadSerializer
+
+
+/api/themes/uploadtheme/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteThemeUploadSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeUploadSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteThemeUploadSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeUploadSerializer
+
+
+/api/themes/theme/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteThemeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer
+
+
+/api/themes/theme/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteThemeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteThemeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/themes/preset/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      theme:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      tag:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemePresetSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteThemePresetSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemePresetSerializer
+
+
+/api/themes/preset/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteThemePresetSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemePresetSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemePresetSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteThemePresetSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemePresetSerializer
+
+  delete:
+    responses:
+      200:
+
+
+
+

@@ -1,0 +1,76 @@
+#%RAML 1.0
+title: pingxx
+baseUri: http://heidianapi.com
+
+
+
+/api/pingxx/webhooks/:
+  post:
+    body:
+      application/json:
+        type: object
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+/api/pingxx/pay_for_order_qr/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+  post:
+    body:
+      application/json:
+        type: object
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+/api/pingxx/test_order/:
+  post:
+    body:
+      application/json:
+        type: object
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+/api/pingxx/test_order/status/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+/api/pingxx/dashboard/webhooks/:
+  post:
+    body:
+      application/json:
+        type: object
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+
+

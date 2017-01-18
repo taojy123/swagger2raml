@@ -14,10 +14,11 @@ PY3 = sys.version_info[0] == 3
 
 # ======== support swagger version: 1.2 ========
 
-TITLE_PREFIX = u'嘿店开放平台 API '
+TITLE_PREFIX = u''  #u'嘿店开放平台 API '
 ROOT_URL = 'http://heidianapi.com/api/docs/api-docs/'
 OUTPUT_DIR = './result'
-PATCH_FILES = ['./patch/notifications_patch.raml']
+PATCH_FILES = ['./patch/notifications_patch.raml', './patch/patch.raml']
+GENERATE_HTML = False
 
 
 def get_data(url):
@@ -68,10 +69,11 @@ Usage:
 
 General Options:
   -h, --help                    Show help.
-  -i(--input=) <api_root_url>   Such as: 'http://xxx.com/api/docs/api-docs/'
-  -o(--output=) <result_dir>    Such as: './result/'
-  -t(--title=) <title_prefix>   Such as: 'My_First_Api'
-  -p(--patches=) <patch_files>  Such as: 'aaa.raml,patches/bbb.raml,ccc.raml'
+  -i, --input  <api_root_url>   Such as: 'http://xxx.com/api/docs/api-docs/'
+  -o, --output  <result_dir>    Such as: './result/'
+  -t, --title  <title_prefix>   Such as: 'My_First_Api'
+  -p, --patches  <patch_files>  Such as: 'aaa.raml,patches/bbb.raml,ccc.raml'
+  --html                        Generate html files
 """
     print(text)
     sys.exit()
@@ -93,6 +95,8 @@ if __name__ == '__main__':
                 TITLE_PREFIX = value.replace('_', ' ')
             elif name in ['-p', '--patches']:
                 PATCH_FILES = value.strip().split(',')
+            elif name in ['--html']:
+                GENERATE_HTML = True
 
     except getopt.GetoptError:
         usage()
@@ -111,13 +115,15 @@ if __name__ == '__main__':
         print('================ %s ==================' % name)
         print(sub_url)
 
-        title = TITLE_PREFIX + name.upper()
+        title = TITLE_PREFIX + name
 
         data = get_data(sub_url)
 
         apis = []
         for api_data in data['apis']:
             api = Api(api_data)
+            if api in apis:
+                continue
             api.match_patches(patches)
             apis.append(api)
 
@@ -142,15 +148,16 @@ if __name__ == '__main__':
 
 print('================ Expand Patches ==================')
 name = 'expand'
-title = TITLE_PREFIX + name.upper()
+title = TITLE_PREFIX + name
 apis = []
 serializers = []
 expands = {}
 for patch in patches:
     print(patch, patch.matched)
-    if not patch.matched:
-        expands[patch.path] = expands.get(patch.path, [])
-        expands[patch.path].append(patch)
+    if patch.matched:
+        continue
+    expands[patch.path] = expands.get(patch.path, [])
+    expands[patch.path].append(patch)
 
 template = open('template.raml').read()
 page = step.Template(template).expand(locals())
@@ -161,6 +168,37 @@ output_path = os.path.join(OUTPUT_DIR, '%s.raml' % name)
 open(output_path, 'w').write(page)
 
 print('=====================================')
+
+
+if GENERATE_HTML or 1:
+    print('============== raml2html ==================')
+
+    """
+    npm install -g raml2html
+    raml2html -i example.raml -o example.html
+    """
+
+    HTML_DIR = os.path.join(OUTPUT_DIR, 'html')
+    if not os.path.exists(HTML_DIR):
+        os.mkdir(HTML_DIR)
+
+    index_path = os.path.join(HTML_DIR, 'index.html')
+    open(index_path, 'w')
+
+    for name in os.listdir(OUTPUT_DIR):
+        if name[-5:] != '.raml':
+            continue
+        raml_path = os.path.join(OUTPUT_DIR, name)
+        html_name = name[:-5]+'.html'
+        html_path = os.path.join(HTML_DIR, html_name)
+        cmd = 'raml2html -i %s -o %s' % (raml_path, html_path)
+        print(cmd)
+        os.system(cmd)
+        open(index_path, 'a').write('<p><a href="%s">%s</a></p>\n' % (html_name, html_name))
+
+    print('=====================================')
+
+
 print('Finish!')
 
 

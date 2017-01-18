@@ -121,6 +121,11 @@ class Api(object):
     def __repr__(self):
         return '<API:%s>' % self.path
 
+    def __eq__(self, other):
+        if not isinstance(other, Api):
+            return False
+        return self.data == other.data
+
     def match_patches(self, patches):
         for operation in self.operations:
             for patch in patches:

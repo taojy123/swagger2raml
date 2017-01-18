@@ -1,0 +1,170 @@
+#%RAML 1.0
+title: pricing
+baseUri: http://heidianapi.com
+
+types:
+  PlanSerializer:
+    type: object
+    properties:
+      ends_at:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      days_left:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      active_billing:
+        required: true
+        type: PlanBillingSerializer
+      period:
+        required: false
+        type: string
+      can_publish_products:
+        required: false
+        type: string
+      starts_at:
+        required: false
+        type: string
+      next_billing:
+        required: true
+        type: PlanBillingSerializer
+      is_expired:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+
+  PlanBillingSerializer:
+    type: object
+    properties:
+      status:
+        required: false
+        type: string
+      ends_at:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      order_number:
+        required: false
+        type: string
+      order_token:
+        required: false
+        type: string
+      starts_at:
+        required: false
+        type: string
+      plan_period:
+        required: true
+        type: string
+      billing_type:
+        required: false
+        type: string
+      plan_name:
+        required: true
+        type: string
+      id:
+        required: false
+        type: integer
+
+  WritePlanBillingSerializer:
+    type: object
+    properties:
+      plan_period:
+        required: true
+        type: string
+      plan_name:
+        required: true
+        type: string
+
+  WritePlanSerializer:
+    type: object
+    properties:
+      next_billing:
+        required: true
+        type: PlanBillingSerializer
+      active_billing:
+        required: true
+        type: PlanBillingSerializer
+
+
+
+/api/pricing/plan/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: PlanSerializer[]
+
+
+/api/pricing/plan/renew/:
+  post:
+    body:
+      application/json:
+        type: WritePlanSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PlanSerializer
+
+
+/api/pricing/plan/upgrade/:
+  post:
+    body:
+      application/json:
+        type: WritePlanSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PlanSerializer
+
+
+/api/pricing/plan/{pk}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: PlanSerializer
+
+
+/api/pricing/plan_billing/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PlanBillingSerializer[]
+
+
+/api/pricing/plan_billing/{pk}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: PlanBillingSerializer
+
+
+
+

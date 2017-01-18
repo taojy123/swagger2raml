@@ -1,0 +1,360 @@
+#%RAML 1.0
+title: shippings
+baseUri: http://heidianapi.com
+
+types:
+  ShippingZoneSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      normal_price:
+        required: false
+        type: string
+      shipping_method_id:
+        required: false
+        type: integer
+      place_codes:
+        required: true
+        type: string[]
+      rate_type:
+        required: false
+        type: string
+      over_price:
+        required: false
+        type: string
+      normal_unit:
+        required: false
+        type: string
+      over_unit:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      free_shipping_price:
+        required: false
+        type: string
+
+  WriteShippingMethodSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      normal_price:
+        required: false
+        type: string
+      rate_type:
+        required: false
+        type: string
+      over_price:
+        required: false
+        type: string
+      normal_unit:
+        required: false
+        type: string
+      over_unit:
+        required: false
+        type: string
+      is_used:
+        required: false
+        type: boolean
+      shipping_zones:
+        required: false
+        type: WriteShippingZoneSerializer[]
+      free_shipping_price:
+        required: false
+        type: string
+
+  ShippingMethodSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      normal_price:
+        required: false
+        type: string
+      rate_type:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      over_price:
+        required: false
+        type: string
+      normal_unit:
+        required: false
+        type: string
+      over_unit:
+        required: false
+        type: string
+      is_used:
+        required: false
+        type: boolean
+      shipping_zones:
+        required: false
+        type: ShippingZoneSerializer[]
+      id:
+        required: false
+        type: integer
+      free_shipping_price:
+        required: false
+        type: string
+
+  PlaceSerializer:
+    type: object
+    properties:
+      code:
+        required: true
+        type: string
+      parent:
+        required: false
+        type: string
+      short_name:
+        required: false
+        type: string
+      area:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      name:
+        required: true
+        type: string
+
+  WriteShippingZoneSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      normal_price:
+        required: false
+        type: string
+      shipping_method_id:
+        required: false
+        type: integer
+      place_codes:
+        required: true
+        type: string[]
+      over_price:
+        required: false
+        type: string
+      normal_unit:
+        required: false
+        type: string
+      over_unit:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      free_shipping_price:
+        required: false
+        type: string
+
+  WritePlaceSerializer:
+    type: object
+    properties:
+      code:
+        required: true
+        type: string
+      short_name:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+      parent:
+        required: false
+        type: string
+      area:
+        required: false
+        type: string
+
+
+
+/api/shippings/shippingmethod/{pk}/choose/:
+  put:
+    body:
+      application/json:
+        type: WriteShippingMethodSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingMethodSerializer
+
+
+/api/shippings/shippingmethod/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingMethodSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteShippingMethodSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingMethodSerializer
+
+
+/api/shippings/shippingmethod/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteShippingMethodSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingMethodSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingMethodSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteShippingMethodSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingMethodSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/shippings/shippingmethod/{parent_lookup_shipping_method}/shippingzone/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingZoneSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteShippingZoneSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingZoneSerializer
+
+
+/api/shippings/shippingmethod/{parent_lookup_shipping_method}/shippingzone/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteShippingZoneSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingZoneSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingZoneSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteShippingZoneSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShippingZoneSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/shippings/place/for_area/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: PlaceSerializer
+
+
+/api/shippings/place/:
+  get:
+    queryParameters:
+      parent_code:
+        required: false
+        type: string
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PlaceSerializer[]
+
+
+/api/shippings/place/{pk}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: PlaceSerializer
+
+
+
+

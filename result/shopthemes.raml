@@ -1,0 +1,983 @@
+#%RAML 1.0
+title: shopthemes
+baseUri: http://heidianapi.com
+
+types:
+  WriteThemeSerializer:
+    type: object
+    properties:
+      current_preset:
+        required: false
+        type: string
+      private_settings_data:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      assets:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+
+  WritePageConfigPresetSerializer:
+    type: object
+    properties:
+
+  WriteActivateThemeSerializer:
+    type: object
+    properties:
+      name:
+        required: true
+        type: string
+
+  ActivateThemeSerializer:
+    type: object
+    properties:
+
+  ContainerSerializer:
+    type: object
+    properties:
+      settings_schema:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      file_type:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+      content:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      icon:
+        required: false
+        type: string
+
+  TemplateSerializer:
+    type: object
+    properties:
+      template_type:
+        required: false
+        type: string
+      settings_schema:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      file_type:
+        required: true
+        type: string
+      name:
+        required: true
+        type: string
+      content:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      icon:
+        required: false
+        type: string
+
+  PageConfigPresetSerializer:
+    type: object
+    properties:
+      template_name:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      page_type:
+        required: false
+        type: string
+
+  PageSerializer:
+    type: object
+    properties:
+      permanent:
+        required: false
+        type: boolean
+      id:
+        required: false
+        type: integer
+      name:
+        required: false
+        type: string
+      page_type:
+        required: false
+        type: string
+
+  WriteInstallThemeSerializer:
+    type: object
+    properties:
+      preset:
+        required: true
+        type: string
+      name:
+        required: true
+        type: string
+
+  PageConfigSerializer:
+    type: object
+    properties:
+      locked:
+        required: false
+        type: boolean
+      template_name:
+        required: false
+        type: string
+      page:
+        required: false
+        type: PageSerializer
+      theme:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      settings_data:
+        required: false
+        type: string
+
+  FileSerializer:
+    type: object
+    properties:
+      src:
+        required: false
+        type: string
+      settings_schema:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      file_type:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      content:
+        required: false
+        type: string
+      permanent:
+        required: false
+        type: boolean
+      metafield:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      icon:
+        required: false
+        type: string
+
+  ThemePresetSerializer:
+    type: object
+    properties:
+      screenshot_mobile:
+        required: false
+        type: string
+      pageconfigs:
+        required: false
+        type: PageConfigPresetSerializer[]
+      metafield:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      screenshot:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      color:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+      assets:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      name:
+        required: false
+        type: string
+
+  WritePageSerializer:
+    type: object
+    properties:
+      permanent:
+        required: false
+        type: boolean
+      page_type:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+
+  ThemeSerializer:
+    type: object
+    properties:
+      current_preset:
+        required: false
+        type: string
+      presets:
+        required: false
+        type: ThemePresetSerializer[]
+      settings_schema:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      private_settings_data:
+        required: false
+        type: string
+      version:
+        required: false
+        type: string
+      is_current:
+        required: false
+        type: boolean
+      metafield:
+        required: false
+        type: string
+      assets:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      settings_data:
+        required: false
+        type: string
+
+  WriteSnippetSerializer:
+    type: object
+    properties:
+      settings_schema:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      content:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      icon:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+
+  SnippetSerializer:
+    type: object
+    properties:
+      settings_schema:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      file_type:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+      content:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      icon:
+        required: false
+        type: string
+
+  WriteThemePresetSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+
+  WriteFileSerializer:
+    type: object
+    properties:
+      src:
+        required: false
+        type: string
+      settings_schema:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      content:
+        required: false
+        type: string
+      permanent:
+        required: false
+        type: boolean
+      metafield:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+      icon:
+        required: false
+        type: string
+
+  WriteContainerSerializer:
+    type: object
+    properties:
+      settings_schema:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      content:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      icon:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+
+  WriteTemplateSerializer:
+    type: object
+    properties:
+      settings_schema:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      file_type:
+        required: true
+        type: string
+      content:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      icon:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+
+  InstallThemeSerializer:
+    type: object
+    properties:
+
+  WritePageConfigSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+
+
+
+/api/shopthemes/file/:
+  get:
+    queryParameters:
+      file_type:
+        required: false
+        enum:
+          - layouts
+          - templates
+          - containers
+          - blocks
+          - snippets
+          - assets
+      file_type__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      permanent:
+        required: false
+        type: string
+      order_by:
+        required: false
+        enum:
+          - id
+          - -id
+          - file_type
+          - -file_type
+          - name
+          - -name
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteFileSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
+
+/api/shopthemes/file/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteFileSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteFileSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/shopthemes/template/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: TemplateSerializer[]
+
+
+/api/shopthemes/template/{pk}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: TemplateSerializer
+
+
+/api/shopthemes/block/:
+  get:
+    queryParameters:
+      file_type:
+        required: false
+        enum:
+          - layouts
+          - templates
+          - containers
+          - blocks
+          - snippets
+          - assets
+      file_type__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      permanent:
+        required: false
+        type: string
+      order_by:
+        required: false
+        enum:
+          - id
+          - -id
+          - file_type
+          - -file_type
+          - name
+          - -name
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer[]
+
+
+/api/shopthemes/block/{pk}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
+
+/api/shopthemes/pageconfig/:
+  get:
+    queryParameters:
+      page_type:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer[]
+
+
+/api/shopthemes/pageconfig/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WritePageConfigSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WritePageConfigSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer
+
+
+/api/shopthemes/snippet/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: SnippetSerializer[]
+
+
+/api/shopthemes/snippet/{pk}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: SnippetSerializer
+
+
+/api/shopthemes/container/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ContainerSerializer[]
+
+
+/api/shopthemes/container/{pk}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ContainerSerializer
+
+
+/api/shopthemes/theme/apply_preset/:
+  post:
+    body:
+      application/json:
+        type: WriteThemeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer
+
+
+/api/shopthemes/theme/save_as_preset/:
+  post:
+    body:
+      application/json:
+        type: WriteThemeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer
+
+
+/api/shopthemes/theme/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteThemeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer
+
+
+/api/shopthemes/theme/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteThemeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteThemeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/shopthemes/theme/{parent_lookup_theme}/file/:
+  get:
+    queryParameters:
+      file_type:
+        required: false
+        enum:
+          - layouts
+          - templates
+          - containers
+          - blocks
+          - snippets
+          - assets
+      file_type__in:
+        required: false
+        type: string
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteFileSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
+
+/api/shopthemes/theme/{parent_lookup_theme}/file/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteFileSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteFileSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/shopthemes/theme/{parent_lookup_theme}/pageconfig/{pk}/lock/:
+  put:
+    body:
+      application/json:
+        type: WritePageConfigSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer
+
+
+/api/shopthemes/theme/{parent_lookup_theme}/pageconfig/{pk}/unlock/:
+  put:
+    body:
+      application/json:
+        type: WritePageConfigSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer
+
+
+/api/shopthemes/theme/{parent_lookup_theme}/pageconfig/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer[]
+
+
+/api/shopthemes/theme/{parent_lookup_theme}/pageconfig/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WritePageConfigSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WritePageConfigSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer
+
+
+/api/shopthemes/activate_theme/:
+  put:
+    body:
+      application/json:
+        type: WriteActivateThemeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ActivateThemeSerializer
+
+
+/api/shopthemes/install_theme/:
+  post:
+    body:
+      application/json:
+        type: WriteInstallThemeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: InstallThemeSerializer
+
+
+
+

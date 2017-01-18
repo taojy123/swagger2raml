@@ -1,0 +1,262 @@
+#%RAML 1.0
+title: blogs
+baseUri: http://heidianapi.com
+
+types:
+  WriteArticleTagSerializer:
+    type: object
+    properties:
+      title:
+        required: false
+        type: string
+
+  ArticleSerializer:
+    type: object
+    properties:
+      created_at:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      author:
+        required: false
+        type: string
+      image:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      body_html:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      published_at:
+        required: false
+        type: string
+      published:
+        required: false
+        type: boolean
+      id:
+        required: false
+        type: integer
+      tags:
+        required: true
+        type: string[]
+      name:
+        required: true
+        type: string
+
+  ArticleTagSerializer:
+    type: object
+    properties:
+      id:
+        required: false
+        type: integer
+      title:
+        required: false
+        type: string
+
+  WriteArticleSerializer:
+    type: object
+    properties:
+      metafield:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      author:
+        required: false
+        type: string
+      image:
+        required: false
+        type: string
+      tags:
+        required: true
+        type: string[]
+      body_html:
+        required: false
+        type: string
+      published_at:
+        required: false
+        type: string
+      published:
+        required: false
+        type: boolean
+      title:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+
+
+
+/api/blogs/article/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      name:
+        required: false
+        type: string
+      name__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      published_at_from:
+        required: false
+        type: string
+      published_at_to:
+        required: false
+        type: string
+      published:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      tag:
+        required: false
+        type: string
+      order_by:
+        required: false
+        enum:
+          - created_at
+          - -created_at
+          - id
+          - -id
+          - published_at
+          - -published_at
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteArticleSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleSerializer
+
+
+/api/blogs/article/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteArticleSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteArticleSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/blogs/tag/:
+  get:
+    queryParameters:
+      title:
+        required: false
+        type: string
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleTagSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteArticleTagSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleTagSerializer
+
+
+/api/blogs/tag/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteArticleTagSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleTagSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleTagSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteArticleTagSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleTagSerializer
+
+  delete:
+    responses:
+      200:
+
+
+
+

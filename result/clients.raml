@@ -1,0 +1,225 @@
+#%RAML 1.0
+title: clients
+baseUri: http://heidianapi.com
+
+types:
+  WriteTrialApplicationSerializer:
+    type: object
+    properties:
+      misc_channel:
+        required: false
+        type: string
+      weibo:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+      industry:
+        required: false
+        type: string
+      telephone:
+        required: true
+        type: string
+      email:
+        required: true
+        type: string
+      taobao:
+        required: false
+        type: string
+      wechat:
+        required: false
+        type: string
+      homepage:
+        required: false
+        type: string
+      brand:
+        required: true
+        type: string
+      weidian:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+
+  WriteReleaseRSVPSerializer:
+    type: object
+    properties:
+      mobile:
+        required: false
+        type: string
+      gender:
+        required: false
+        type: string
+      company:
+        required: false
+        type: string
+      email:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+
+  WriteSubscriptionSerializer:
+    type: object
+    properties:
+      email:
+        required: true
+        type: string
+
+  SubscriptionSerializer:
+    type: object
+    properties:
+      id:
+        required: false
+        type: integer
+      email:
+        required: true
+        type: string
+
+  ReleaseRSVPSerializer:
+    type: object
+    properties:
+      mobile:
+        required: false
+        type: string
+      gender:
+        required: false
+        type: string
+      company:
+        required: false
+        type: string
+      email:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+
+  TrialApplicationSerializer:
+    type: object
+    properties:
+      misc_channel:
+        required: false
+        type: string
+      weibo:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+      industry:
+        required: false
+        type: string
+      brand:
+        required: true
+        type: string
+      telephone:
+        required: true
+        type: string
+      id:
+        required: false
+        type: integer
+      taobao:
+        required: false
+        type: string
+      wechat:
+        required: false
+        type: string
+      homepage:
+        required: false
+        type: string
+      email:
+        required: true
+        type: string
+      weidian:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+
+
+
+/api/clients/subscription/:
+  post:
+    body:
+      application/json:
+        type: WriteSubscriptionSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: SubscriptionSerializer
+
+
+/api/clients/trialapplication/:
+  post:
+    body:
+      application/json:
+        type: WriteTrialApplicationSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: TrialApplicationSerializer
+
+
+/api/clients/release_rsvp/:
+  post:
+    body:
+      application/json:
+        type: WriteReleaseRSVPSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ReleaseRSVPSerializer
+
+
+/api/clients/translation/output_json/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+/api/clients/qiniu-uptoken/{bucket}:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+/api/clients/wechat-jsapi-ticket/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+/api/clients/wechat-auth/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+
+
+
+

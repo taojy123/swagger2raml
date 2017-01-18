@@ -1,0 +1,1026 @@
+#%RAML 1.0
+title: catalogue
+baseUri: http://heidianapi.com
+
+types:
+  WriteCollectionSerializer:
+    type: object
+    properties:
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      image:
+        required: false
+        type: string
+      body_html:
+        required: false
+        type: string
+      published_at:
+        required: false
+        type: string
+      published:
+        required: false
+        type: boolean
+      name:
+        required: true
+        type: string
+
+  WriteCollectSerializer:
+    type: object
+    properties:
+      collection_id:
+        required: true
+        type: integer
+      featured:
+        required: false
+        type: boolean
+      product_id:
+        required: true
+        type: integer
+      position:
+        required: false
+        type: integer
+
+  WriteProductVariantSerializer:
+    type: object
+    properties:
+      sku:
+        required: true
+        type: string
+      metafield:
+        required: false
+        type: string
+      grams:
+        required: false
+        type: string
+      inventory_policy:
+        required: false
+        type: string
+      price:
+        required: false
+        type: string
+      barcode:
+        required: false
+        type: string
+      inventory_quantity:
+        required: false
+        type: integer
+      options:
+        required: false
+        type: WriteProductOptionValueSerializer[]
+      compare_at_price:
+        required: false
+        type: string
+      image:
+        required: false
+        type: string
+      position:
+        required: false
+        type: integer
+      id:
+        required: false
+        type: integer
+
+  WriteProductTagSerializer:
+    type: object
+    properties:
+      title:
+        required: false
+        type: string
+
+  WriteProductCategorySerializer:
+    type: object
+    properties:
+      position:
+        required: false
+        type: integer
+      title:
+        required: false
+        type: string
+
+  ProductOptionSerializer:
+    type: object
+    properties:
+      values:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      title:
+        required: true
+        type: string
+
+  WriteProductCategoryNodeSerializer:
+    type: object
+    properties:
+      position:
+        required: false
+        type: integer
+      title:
+        required: false
+        type: string
+
+  WriteProductOptionSerializer:
+    type: object
+    properties:
+      id:
+        required: false
+        type: integer
+      title:
+        required: true
+        type: string
+
+  WriteProductOptionValueSerializer:
+    type: object
+    properties:
+      value:
+        required: false
+        type: string
+      title:
+        required: true
+        type: string
+
+  ProductSerializer:
+    type: object
+    properties:
+      image:
+        required: false
+        type: string
+      requires_shipping:
+        required: false
+        type: boolean
+      updated_at:
+        required: false
+        type: string
+      inventory_quantity:
+        required: false
+        type: integer
+      published_at:
+        required: false
+        type: string
+      compare_at_price:
+        required: false
+        type: string
+      images:
+        required: false
+        type: ProductImageSerializer[]
+      price_min:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      metafield:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      inventory_policy:
+        required: false
+        type: string
+      category_ids:
+        required: false
+        type: string[]
+      product_type_id:
+        required: true
+        type: string
+      price_max:
+        required: false
+        type: string
+      vendor:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      tags:
+        required: true
+        type: string[]
+      price:
+        required: false
+        type: string
+      sold_quantity:
+        required: false
+        type: string
+      body_html:
+        required: false
+        type: string
+      variants:
+        required: true
+        type: ProductVariantSerializer[]
+      name:
+        required: true
+        type: string
+      category_titles:
+        required: false
+        type: string[]
+      created_at:
+        required: false
+        type: string
+      published:
+        required: false
+        type: boolean
+      options:
+        required: false
+        type: ProductOptionSerializer[]
+
+  ProductOptionValueSerializer:
+    type: object
+    properties:
+      value:
+        required: false
+        type: string
+      title:
+        required: true
+        type: string
+
+  ProductCategoryNodeSerializer:
+    type: object
+    properties:
+      position:
+        required: false
+        type: integer
+      id:
+        required: false
+        type: integer
+      title:
+        required: false
+        type: string
+
+  ProductTypeSerializer:
+    type: object
+    properties:
+      id:
+        required: false
+        type: integer
+      title:
+        required: true
+        type: string
+
+  ProductCategorySerializer:
+    type: object
+    properties:
+      position:
+        required: false
+        type: integer
+      children:
+        required: false
+        type: ProductCategoryNodeSerializer[]
+      id:
+        required: false
+        type: integer
+      title:
+        required: false
+        type: string
+
+  ProductTagSerializer:
+    type: object
+    properties:
+      id:
+        required: false
+        type: integer
+      title:
+        required: false
+        type: string
+
+  WriteProductSerializer:
+    type: object
+    properties:
+      vendor:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      inventory_policy:
+        required: false
+        type: string
+      tags:
+        required: true
+        type: string[]
+      requires_shipping:
+        required: false
+        type: boolean
+      body_html:
+        required: false
+        type: string
+      category_ids:
+        required: false
+        type: string[]
+      published_at:
+        required: false
+        type: string
+      published:
+        required: false
+        type: boolean
+      images:
+        required: false
+        type: WriteProductImageSerializer[]
+      metafield:
+        required: false
+        type: string
+      variants:
+        required: true
+        type: WriteProductVariantSerializer[]
+      product_type_id:
+        required: true
+        type: string
+      options:
+        required: false
+        type: WriteProductOptionSerializer[]
+      name:
+        required: true
+        type: string
+
+  CollectionSerializer:
+    type: object
+    properties:
+      description:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      image:
+        required: false
+        type: string
+      body_html:
+        required: false
+        type: string
+      published_at:
+        required: false
+        type: string
+      published:
+        required: false
+        type: boolean
+      collects:
+        required: false
+        type: CollectSerializer[]
+      id:
+        required: false
+        type: integer
+      name:
+        required: true
+        type: string
+
+  ProductVariantSerializer:
+    type: object
+    properties:
+      sku:
+        required: true
+        type: string
+      created_at:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      grams:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      inventory_policy:
+        required: false
+        type: string
+      price:
+        required: false
+        type: string
+      barcode:
+        required: false
+        type: string
+      requires_shipping:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      inventory_quantity:
+        required: false
+        type: integer
+      options:
+        required: false
+        type: ProductOptionValueSerializer[]
+      compare_at_price:
+        required: false
+        type: string
+      image:
+        required: false
+        type: string
+      position:
+        required: false
+        type: integer
+      id:
+        required: false
+        type: integer
+
+  CollectSerializer:
+    type: object
+    properties:
+      product:
+        required: false
+        type: ProductSerializer
+      created_at:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      featured:
+        required: false
+        type: boolean
+      position:
+        required: false
+        type: integer
+      id:
+        required: false
+        type: integer
+
+  WriteProductTypeSerializer:
+    type: object
+    properties:
+      title:
+        required: true
+        type: string
+
+  WriteProductImageSerializer:
+    type: object
+    properties:
+      src:
+        required: true
+        type: string
+      metafield:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      position:
+        required: false
+        type: integer
+
+  ProductImageSerializer:
+    type: object
+    properties:
+      src:
+        required: true
+        type: string
+      metafield:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      position:
+        required: false
+        type: integer
+
+
+
+/api/catalogue/productoption/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductOptionSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteProductOptionSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductOptionSerializer
+
+
+/api/catalogue/productoption/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteProductOptionSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductOptionSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductOptionSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteProductOptionSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductOptionSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/catalogue/product/count/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductSerializer
+
+
+/api/catalogue/product/{pk}/copy_product/:
+  post:
+    body:
+      application/json:
+        type: WriteProductSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductSerializer
+
+
+/api/catalogue/product/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      name:
+        required: false
+        type: string
+      name__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      published_at_from:
+        required: false
+        type: string
+      published_at_to:
+        required: false
+        type: string
+      published:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      price_from:
+        required: false
+        type: string
+      price_to:
+        required: false
+        type: string
+      collection:
+        required: false
+        type: string
+      collection__exclude:
+        required: false
+        type: string
+      category:
+        required: false
+        type: string
+      category__in:
+        required: false
+        type: string
+      q:
+        required: false
+        type: string
+      order_by:
+        required: false
+        enum:
+          - id
+          - -id
+          - created_at
+          - -created_at
+          - name
+          - -name
+          - inventory_quantity
+          - -inventory_quantity
+          - title
+          - -title
+          - price_min
+          - -price_min
+          - published_at
+          - -published_at
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteProductSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductSerializer
+
+
+/api/catalogue/product/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteProductSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteProductSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/catalogue/variant/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductVariantSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteProductVariantSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductVariantSerializer
+
+
+/api/catalogue/variant/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteProductVariantSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductVariantSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductVariantSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteProductVariantSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductVariantSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/catalogue/producttype/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductTypeSerializer[]
+
+
+/api/catalogue/producttype/{pk}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductTypeSerializer
+
+
+/api/catalogue/tag/:
+  get:
+    queryParameters:
+      title:
+        required: false
+        type: string
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductTagSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteProductTagSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductTagSerializer
+
+
+/api/catalogue/tag/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteProductTagSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductTagSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductTagSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteProductTagSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductTagSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/catalogue/collection/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      name:
+        required: false
+        type: string
+      name__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      published:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      published_at_from:
+        required: false
+        type: string
+      published_at_to:
+        required: false
+        type: string
+      order_by:
+        required: false
+        enum:
+          - created_at
+          - -created_at
+          - id
+          - -id
+          - published_at
+          - -published_at
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectionSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteCollectionSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectionSerializer
+
+
+/api/catalogue/collection/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteCollectionSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectionSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectionSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteCollectionSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectionSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/catalogue/collection/{parent_lookup_collection}/collect/:
+  get:
+    queryParameters:
+      page:
+        required: false
+        type: integer
+      page_size:
+        required: false
+        type: integer
+      product:
+        required: false
+        type: string
+      product__in:
+        required: false
+        type: string
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteCollectSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectSerializer
+
+
+/api/catalogue/collection/{parent_lookup_collection}/collect/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WriteCollectSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectSerializer
+
+  patch:
+    body:
+      application/json:
+        type: WriteCollectSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectSerializer
+
+  delete:
+    responses:
+      200:
+
+
+/api/catalogue/category/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductCategorySerializer
+
+  put:
+    body:
+      application/json:
+        type: WriteProductCategorySerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductCategorySerializer
+
+
+
+

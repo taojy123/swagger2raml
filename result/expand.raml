@@ -1,0 +1,64 @@
+#%RAML 1.0
+title: expand
+baseUri: http://heidianapi.com
+
+
+
+
+/api/customers/voucher/available_for_order/:
+  get:
+    description: 获取该用户针对某订单可使用哪些代金券
+    queryParameters:
+      order_id:
+        required: false
+        type: integer
+
+    responses:
+      200:
+        body:
+          application/json:
+            description: available_amount 为最多可使用的金额
+            example: |
+                [
+                  {
+                    "id": 102,
+                    "customer_id": 1231,
+                    "title": "xxxxx",
+                    "total_balance": 100.00,
+                    "balance": 27.00,
+                    "target_product_ids": [],
+                    "available_amount": 20.00
+                  }
+                ]
+
+
+/api/customers/voucher/{voucher_id}/pay_for_order/:
+  post:
+    description: 使用代金券支付订单
+    body:
+      application/json:
+        example: |
+          {
+            "order_id": 101,
+            "amount": 20.00
+          }
+
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                [
+                  {
+                    "id": 102,
+                    "customer_id": 1231,
+                    "title": "xxxxx",
+                    "total_balance": 100.00,
+                    "balance": 7.00,
+                    "target_product_ids": []
+                  }
+                ]
+
+
+
