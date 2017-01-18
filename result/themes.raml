@@ -21,6 +21,9 @@ types:
       title:
         required: false
         type: string
+      version:
+        required: false
+        type: string
       name:
         required: true
         type: string
@@ -81,8 +84,8 @@ types:
         required: false
         type: string
       theme:
-        required: true
-        type: string
+        required: false
+        type: ThemeSerializer
       assets:
         required: false
         type: string
@@ -96,10 +99,19 @@ types:
   ThemeSerializer:
     type: object
     properties:
+      screenshot_mobile:
+        required: false
+        type: string
+      presets:
+        required: false
+        type: ThemePresetSerializer[]
       metafield:
         required: false
         type: string
       description:
+        required: false
+        type: string
+      screenshot:
         required: false
         type: string
       author:
@@ -109,6 +121,9 @@ types:
         required: false
         type: string
       title:
+        required: false
+        type: string
+      version:
         required: false
         type: string
       id:
@@ -141,9 +156,6 @@ types:
         type: string
       demo:
         required: false
-        type: string
-      theme:
-        required: true
         type: string
       assets:
         required: false

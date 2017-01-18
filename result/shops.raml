@@ -149,15 +149,15 @@ types:
         required: false
         type: boolean
 
-  WritePlanBillingSerializer:
+  WritePlanSerializer:
     type: object
     properties:
-      plan_period:
+      next_billing:
         required: true
-        type: string
-      plan_name:
+        type: PlanBillingSerializer
+      active_billing:
         required: true
-        type: string
+        type: PlanBillingSerializer
 
   PageConfigPresetSerializer:
     type: object
@@ -825,15 +825,15 @@ types:
         required: false
         type: string
 
-  WritePlanSerializer:
+  WritePlanBillingSerializer:
     type: object
     properties:
-      next_billing:
+      plan_period:
         required: true
-        type: PlanBillingSerializer
-      active_billing:
+        type: string
+      plan_name:
         required: true
-        type: PlanBillingSerializer
+        type: string
 
   WriteIdentificationSerializer:
     type: object
