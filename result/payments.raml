@@ -147,6 +147,37 @@ types:
         required: false
         type: integer
 
+  OrderDiscountSerializer:
+    type: object
+    properties:
+      code:
+        required: false
+        type: string
+      source_type:
+        required: false
+        type: string
+      order_id:
+        required: false
+        type: integer
+      value:
+        required: false
+        type: string
+      discount_type:
+        required: false
+        type: string
+      verbose_title:
+        required: false
+        type: string
+      source:
+        required: false
+        type: string
+      source_id:
+        required: false
+        type: integer
+      id:
+        required: false
+        type: integer
+
   ProductVariantSerializer:
     type: object
     properties:
@@ -169,25 +200,6 @@ types:
         required: true
         type: ProductOptionValueSerializer[]
       price:
-        required: false
-        type: string
-
-  WritePlaceSerializer:
-    type: object
-    properties:
-      code:
-        required: true
-        type: string
-      short_name:
-        required: false
-        type: string
-      name:
-        required: true
-        type: string
-      parent:
-        required: false
-        type: string
-      area:
         required: false
         type: string
 
@@ -405,36 +417,24 @@ types:
         required: false
         type: string
 
-  OrderDiscountSerializer:
+  WritePlaceSerializer:
     type: object
     properties:
       code:
+        required: true
+        type: string
+      short_name:
         required: false
         type: string
-      source_type:
+      name:
+        required: true
+        type: string
+      parent:
         required: false
         type: string
-      order_id:
-        required: false
-        type: integer
-      value:
+      area:
         required: false
         type: string
-      discount_type:
-        required: false
-        type: string
-      verbose_title:
-        required: false
-        type: string
-      source:
-        required: false
-        type: string
-      source_id:
-        required: false
-        type: integer
-      id:
-        required: false
-        type: integer
 
   WriteOrderSerializer:
     type: object

@@ -16,8 +16,8 @@ PY3 = sys.version_info[0] == 3
 
 TITLE_PREFIX = u''  #u'嘿店开放平台 API '
 ROOT_URL = 'http://heidianapi.com/api/docs/api-docs/'
-OUTPUT_DIR = './result'
-PATCH_FILES = ['./patch/notifications_patch.raml', './patch/patch.raml']
+OUTPUT_DIR = './result/'
+PATCH_DIR = './patch/'
 GENERATE_HTML = False
 
 
@@ -32,13 +32,14 @@ def get_data(url):
     return json.loads(data)
 
 
-def get_all_patches(patch_files):
+def get_all_patches(patch_dir):
     patches = []
-    for filename in patch_files:
+    for name in os.listdir(patch_dir):
+        patch_path = os.path.join(patch_dir, name)
         api_path  = ''
         method = ''
         patch = None
-        for line in open(filename).readlines():
+        for line in open(patch_path).readlines():
             line = line.rstrip()
 
             rs = re.findall(r'^(/.+):$', line)
@@ -72,7 +73,7 @@ General Options:
   -i, --input  <api_root_url>   Such as: 'http://xxx.com/api/docs/api-docs/'
   -o, --output  <result_dir>    Such as: './result/'
   -t, --title  <title_prefix>   Such as: 'My_First_Api'
-  -p, --patches  <patch_files>  Such as: 'aaa.raml,patches/bbb.raml,ccc.raml'
+  -p, --patch  <patch_dir>      Such as: './patch/'
   --html                        Generate html files
 """
     print(text)
@@ -82,7 +83,7 @@ General Options:
 if __name__ == '__main__':
 
     try:
-        options, args = getopt.getopt(sys.argv[1:], 'hi:o:t:p:', ['help', 'input=', 'output=', 'title=', 'patches='])
+        options, args = getopt.getopt(sys.argv[1:], 'hi:o:t:p:', ['help', 'input=', 'output=', 'title=', 'patch='])
 
         for name, value in options:
             if name in ['-h', '--help']:
@@ -93,8 +94,8 @@ if __name__ == '__main__':
                 OUTPUT_DIR = value
             elif name in ['-t', '--title']:
                 TITLE_PREFIX = value.replace('_', ' ')
-            elif name in ['-p', '--patches']:
-                PATCH_FILES = value.strip().split(',')
+            elif name in ['-p', '--patch']:
+                PATCH_DIR = value
             elif name in ['--html']:
                 GENERATE_HTML = True
 
@@ -105,7 +106,7 @@ if __name__ == '__main__':
         os.makedirs(OUTPUT_DIR)
 
     base_uri = re.findall(r'^(.+?//.+?)/', ROOT_URL)[0]
-    patches = get_all_patches(PATCH_FILES)
+    patches = get_all_patches(PATCH_DIR)
     data = get_data(ROOT_URL)
 
     for sub_api_data in data['apis']:
@@ -136,7 +137,7 @@ if __name__ == '__main__':
 
         print(serializers)
 
-        expands = {}
+        others = {}
         template = open('template.raml').read()
         page = step.Template(template).expand(locals())     
         if not PY3:   
@@ -146,18 +147,18 @@ if __name__ == '__main__':
         open(output_path, 'w').write(page)
 
 
-print('================ Expand Patches ==================')
-name = 'expand'
+print('================ Other Patches ==================')
+name = 'other'
 title = TITLE_PREFIX + name
 apis = []
 serializers = []
-expands = {}
+others = {}
 for patch in patches:
     print(patch, patch.matched)
     if patch.matched:
         continue
-    expands[patch.path] = expands.get(patch.path, [])
-    expands[patch.path].append(patch)
+    others[patch.path] = others.get(patch.path, [])
+    others[patch.path].append(patch)
 
 template = open('template.raml').read()
 page = step.Template(template).expand(locals())

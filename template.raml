@@ -61,9 +61,9 @@ types:
 
 %endfor
 
-%for api_path in sorted(expands):
+%for api_path in sorted(others):
 {{ api_path }}:
-  %for patch in expands[api_path]:
+  %for patch in others[api_path]:
   {{ patch.method }}:
     {{ patch.content.strip() }}
 

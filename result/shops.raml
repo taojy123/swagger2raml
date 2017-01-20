@@ -178,16 +178,43 @@ types:
   PageSerializer:
     type: object
     properties:
+      detail_page:
+        required: false
+        type: RecursiveField
+      metafield:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+      title:
+        required: false
+        type: string
+      url:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+      body_html:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
       permanent:
         required: false
         type: boolean
+      page_type:
+        required: false
+        type: string
+      pageconfig:
+        required: false
+        type: PageConfigSerializer
       id:
         required: false
         type: integer
-      name:
-        required: false
-        type: string
-      page_type:
+      description:
         required: false
         type: string
 
@@ -195,33 +222,24 @@ types:
     type: object
     properties:
 
-  ShopFrontPlanSerializer:
+  WriteStaticPageSerializer:
     type: object
     properties:
-      ends_at:
-        required: false
-        type: string
-      name:
-        required: false
-        type: string
-      days_left:
+      description:
         required: false
         type: string
       title:
         required: false
         type: string
-      period:
+      metafield:
         required: false
         type: string
-      starts_at:
+      body_html:
         required: false
         type: string
-      is_expired:
+      name:
         required: false
         type: string
-      id:
-        required: false
-        type: integer
 
   PageConfigSerializer:
     type: object
@@ -261,25 +279,6 @@ types:
         required: false
         type: string
       display_scope:
-        required: false
-        type: string
-
-  WriteStaticPageSerializer:
-    type: object
-    properties:
-      description:
-        required: false
-        type: string
-      title:
-        required: false
-        type: string
-      metafield:
-        required: false
-        type: string
-      body_html:
-        required: false
-        type: string
-      name:
         required: false
         type: string
 
@@ -325,6 +324,34 @@ types:
       email:
         required: false
         type: string
+
+  ShopFrontPlanSerializer:
+    type: object
+    properties:
+      ends_at:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      days_left:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      period:
+        required: false
+        type: string
+      starts_at:
+        required: false
+        type: string
+      is_expired:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
 
   ShopSerializer:
     type: object
@@ -424,19 +451,94 @@ types:
   WritePageSerializer:
     type: object
     properties:
-      permanent:
+      description:
         required: false
-        type: boolean
-      page_type:
+        type: string
+      title:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      body_html:
+        required: false
+        type: string
+      name:
+        required: true
+        type: string
+
+  ShopFrontSerializer:
+    type: object
+    properties:
+      domain:
+        required: false
+        type: string
+      identification_type:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      favicon:
+        required: false
+        type: string
+      logo:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      metafield:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      payment_channels:
+        required: false
+        type: string
+      theme:
+        required: false
+        type: ShopFrontThemeSerializer
+      email:
+        required: false
+        type: string
+      website:
+        required: false
+        type: string
+      customer_email:
+        required: false
+        type: string
+      description:
+        required: false
+        type: string
+      company:
+        required: false
+        type: string
+      customer_phone:
+        required: false
+        type: string
+      plan:
+        required: false
+        type: ShopFrontPlanSerializer
+      address:
+        required: false
+        type: string
+      slogan:
         required: false
         type: string
       name:
         required: false
         type: string
-
-  RecursiveField:
-    type: object
-    properties:
+      mobile:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+      script_tags:
+        required: false
+        type: ScriptTagSerializer[]
 
   PlanBillingSerializer:
     type: object
@@ -921,78 +1023,9 @@ types:
         required: false
         type: integer
 
-  ShopFrontSerializer:
+  RecursiveField:
     type: object
     properties:
-      domain:
-        required: false
-        type: string
-      identification_type:
-        required: false
-        type: string
-      updated_at:
-        required: false
-        type: string
-      favicon:
-        required: false
-        type: string
-      logo:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-      metafield:
-        required: false
-        type: string
-      title:
-        required: false
-        type: string
-      payment_channels:
-        required: false
-        type: string
-      theme:
-        required: false
-        type: ShopFrontThemeSerializer
-      email:
-        required: false
-        type: string
-      website:
-        required: false
-        type: string
-      customer_email:
-        required: false
-        type: string
-      description:
-        required: false
-        type: string
-      company:
-        required: false
-        type: string
-      customer_phone:
-        required: false
-        type: string
-      plan:
-        required: false
-        type: ShopFrontPlanSerializer
-      address:
-        required: false
-        type: string
-      slogan:
-        required: false
-        type: string
-      name:
-        required: false
-        type: string
-      mobile:
-        required: false
-        type: string
-      created_at:
-        required: false
-        type: string
-      script_tags:
-        required: false
-        type: ScriptTagSerializer[]
 
   WriteMenuSerializer:
     type: object

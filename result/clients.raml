@@ -43,6 +43,23 @@ types:
         required: false
         type: string
 
+  SubscriptionSerializer:
+    type: object
+    properties:
+      id:
+        required: false
+        type: integer
+      email:
+        required: true
+        type: string
+
+  WriteSubscriptionSerializer:
+    type: object
+    properties:
+      email:
+        required: true
+        type: string
+
   WriteReleaseRSVPSerializer:
     type: object
     properties:
@@ -60,23 +77,6 @@ types:
         type: string
       full_name:
         required: false
-        type: string
-
-  WriteSubscriptionSerializer:
-    type: object
-    properties:
-      email:
-        required: true
-        type: string
-
-  SubscriptionSerializer:
-    type: object
-    properties:
-      id:
-        required: false
-        type: integer
-      email:
-        required: true
         type: string
 
   ReleaseRSVPSerializer:
