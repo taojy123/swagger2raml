@@ -40,238 +40,6 @@ types:
         required: false
         type: string
 
-  ShippingAddressSerializer:
-    type: object
-    properties:
-      province:
-        required: false
-        type: string
-      city:
-        required: false
-        type: string
-      metafield:
-        required: false
-        type: string
-      district:
-        required: false
-        type: string
-      mobile:
-        required: false
-        type: string
-      address1:
-        required: false
-        type: string
-      address2:
-        required: false
-        type: string
-      updated_at:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-      customer_address_id:
-        required: false
-        type: integer
-      place:
-        required: false
-        type: PlaceSerializer
-      full_name:
-        required: false
-        type: string
-      country:
-        required: false
-        type: string
-      created_at:
-        required: false
-        type: string
-
-  WriteProductVariantSerializer:
-    type: object
-    properties:
-      sku:
-        required: true
-        type: string
-      price:
-        required: false
-        type: string
-      grams:
-        required: false
-        type: string
-      options:
-        required: true
-        type: WriteProductOptionValueSerializer[]
-
-  WriteProductOptionValueSerializer:
-    type: object
-    properties:
-      value:
-        required: false
-        type: string
-      title:
-        required: true
-        type: string
-
-  ProductSerializer:
-    type: object
-    properties:
-      title:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-      name:
-        required: true
-        type: string
-
-  TransactionSerializer:
-    type: object
-    properties:
-      status:
-        required: false
-        type: string
-      created_at:
-        required: false
-        type: string
-      transaction_type:
-        required: false
-        type: string
-      transaction_number:
-        required: true
-        type: string
-      order:
-        required: false
-        type: OrderSerializer
-      id:
-        required: false
-        type: integer
-
-  OrderDiscountSerializer:
-    type: object
-    properties:
-      code:
-        required: false
-        type: string
-      source_type:
-        required: false
-        type: string
-      order_id:
-        required: false
-        type: integer
-      value:
-        required: false
-        type: string
-      discount_type:
-        required: false
-        type: string
-      verbose_title:
-        required: false
-        type: string
-      source:
-        required: false
-        type: string
-      source_id:
-        required: false
-        type: integer
-      id:
-        required: false
-        type: integer
-
-  ProductVariantSerializer:
-    type: object
-    properties:
-      sku:
-        required: true
-        type: string
-      grams:
-        required: false
-        type: string
-      title:
-        required: false
-        type: string
-      image:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-      options:
-        required: true
-        type: ProductOptionValueSerializer[]
-      price:
-        required: false
-        type: string
-
-  WriteShippingAddressSerializer:
-    type: object
-    properties:
-      province:
-        required: false
-        type: string
-      city:
-        required: false
-        type: string
-      metafield:
-        required: false
-        type: string
-      district:
-        required: false
-        type: string
-      mobile:
-        required: false
-        type: string
-      address1:
-        required: false
-        type: string
-      address2:
-        required: false
-        type: string
-      customer_address_id:
-        required: false
-        type: integer
-      place_code:
-        required: false
-        type: string
-      full_name:
-        required: false
-        type: string
-      country:
-        required: false
-        type: string
-
-  ProductOptionValueSerializer:
-    type: object
-    properties:
-      value:
-        required: false
-        type: string
-      title:
-        required: true
-        type: string
-
-  PlaceSerializer:
-    type: object
-    properties:
-      code:
-        required: true
-        type: string
-      parent:
-        required: false
-        type: string
-      short_name:
-        required: false
-        type: string
-      area:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-      name:
-        required: true
-        type: string
-
   OrderSerializer:
     type: object
     properties:
@@ -375,6 +143,192 @@ types:
         required: false
         type: string
 
+  WriteProductVariantSerializer:
+    type: object
+    properties:
+      sku:
+        required: true
+        type: string
+      price:
+        required: false
+        type: string
+      grams:
+        required: false
+        type: string
+      options:
+        required: true
+        type: WriteProductOptionValueSerializer[]
+
+  WriteProductOptionValueSerializer:
+    type: object
+    properties:
+      value:
+        required: false
+        type: string
+      title:
+        required: true
+        type: string
+
+  ProductSerializer:
+    type: object
+    properties:
+      title:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      name:
+        required: true
+        type: string
+
+  TransactionSerializer:
+    type: object
+    properties:
+      status:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+      transaction_type:
+        required: false
+        type: string
+      transaction_number:
+        required: true
+        type: string
+      order:
+        required: false
+        type: OrderSerializer
+      id:
+        required: false
+        type: integer
+
+  ProductVariantSerializer:
+    type: object
+    properties:
+      sku:
+        required: true
+        type: string
+      grams:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      image:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      options:
+        required: true
+        type: ProductOptionValueSerializer[]
+      price:
+        required: false
+        type: string
+
+  WriteOrderLineSerializer:
+    type: object
+    properties:
+      variant_title:
+        required: false
+        type: string
+      image:
+        required: false
+        type: string
+      product_title:
+        required: false
+        type: string
+      requires_shipping:
+        required: false
+        type: boolean
+      title:
+        required: false
+        type: string
+
+  ProductOptionValueSerializer:
+    type: object
+    properties:
+      value:
+        required: false
+        type: string
+      title:
+        required: true
+        type: string
+
+  PlaceSerializer:
+    type: object
+    properties:
+      code:
+        required: true
+        type: string
+      parent:
+        required: false
+        type: string
+      short_name:
+        required: false
+        type: string
+      area:
+        required: false
+        type: string
+      pinyin:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      name:
+        required: true
+        type: string
+
+  ShippingAddressSerializer:
+    type: object
+    properties:
+      province:
+        required: false
+        type: string
+      city:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      district:
+        required: false
+        type: string
+      mobile:
+        required: false
+        type: string
+      address1:
+        required: false
+        type: string
+      address2:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      customer_address_id:
+        required: false
+        type: integer
+      place:
+        required: false
+        type: PlaceSerializer
+      full_name:
+        required: false
+        type: string
+      country:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+
   WriteTransactionSerializer:
     type: object
     properties:
@@ -385,6 +339,43 @@ types:
         required: true
         type: string
       transaction_type:
+        required: false
+        type: string
+
+  WriteShippingAddressSerializer:
+    type: object
+    properties:
+      province:
+        required: false
+        type: string
+      city:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      district:
+        required: false
+        type: string
+      mobile:
+        required: false
+        type: string
+      address1:
+        required: false
+        type: string
+      address2:
+        required: false
+        type: string
+      customer_address_id:
+        required: false
+        type: integer
+      place_code:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+      country:
         required: false
         type: string
 
@@ -417,24 +408,36 @@ types:
         required: false
         type: string
 
-  WritePlaceSerializer:
+  OrderDiscountSerializer:
     type: object
     properties:
       code:
-        required: true
-        type: string
-      short_name:
         required: false
         type: string
-      name:
-        required: true
-        type: string
-      parent:
+      source_type:
         required: false
         type: string
-      area:
+      order_id:
+        required: false
+        type: integer
+      value:
         required: false
         type: string
+      discount_type:
+        required: false
+        type: string
+      verbose_title:
+        required: false
+        type: string
+      source:
+        required: false
+        type: string
+      source_id:
+        required: false
+        type: integer
+      id:
+        required: false
+        type: integer
 
   WriteOrderSerializer:
     type: object
@@ -464,22 +467,25 @@ types:
         required: false
         type: string
 
-  WriteOrderLineSerializer:
+  WritePlaceSerializer:
     type: object
     properties:
-      variant_title:
+      parent:
         required: false
         type: string
-      image:
+      code:
+        required: true
+        type: string
+      name:
+        required: true
+        type: string
+      short_name:
         required: false
         type: string
-      product_title:
+      area:
         required: false
         type: string
-      requires_shipping:
-        required: false
-        type: boolean
-      title:
+      pinyin:
         required: false
         type: string
 

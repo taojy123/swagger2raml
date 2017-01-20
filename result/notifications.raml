@@ -19,31 +19,6 @@ types:
         required: false
         type: string
 
-  ShopNotificationSerializer:
-    type: object
-    properties:
-      category:
-        required: true
-        type: string
-      is_read:
-        required: false
-        type: boolean
-      kind:
-        required: false
-        type: string
-      created_at:
-        required: false
-        type: string
-      detail:
-        required: false
-        type: string
-      content:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-
   ShopNotificationConfigSerializer:
     type: object
     properties:
@@ -90,6 +65,31 @@ types:
       email_enabled:
         required: false
         type: boolean
+
+  ShopNotificationSerializer:
+    type: object
+    properties:
+      category:
+        required: true
+        type: string
+      is_read:
+        required: false
+        type: boolean
+      kind:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+      detail:
+        required: false
+        type: string
+      content:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
 
 
 

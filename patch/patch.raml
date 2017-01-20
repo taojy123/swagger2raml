@@ -41,6 +41,34 @@ baseUri: http://heidianapi.com
             "amount": 20.00
           }
 
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                [
+                  {
+                    "id": 102,
+                    "order_number": "234234242521522",
+                    "total_price": 20.00,
+                    "paid_price": 20.00,
+                    "unpaid_price": 0.00
+                    # ... Order 对象
+                  }
+                ]
+
+
+/api/customers/cart/quick_buy/:
+  post:
+    description: 快速下单购买
+    body:
+      application/json:
+        example: |
+          [ 
+            {"variant_id": 227, "quantity": 1}, 
+            {"variant_id": 229, "quantity": 20}
+            # ...
+          ]
 
     responses:
       200:
@@ -57,3 +85,4 @@ baseUri: http://heidianapi.com
                     # ... Order 对象
                   }
                 ]
+

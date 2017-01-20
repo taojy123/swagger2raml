@@ -3,6 +3,13 @@ title: oauth
 baseUri: http://heidianapi.com
 
 types:
+  NewUserSerializer:
+    type: object
+    properties:
+      domain:
+        required: false
+        type: string
+
   WriteNewUserSerializer:
     type: object
     properties:
@@ -20,13 +27,6 @@ types:
         type: string
       shopname:
         required: true
-        type: string
-
-  NewUserSerializer:
-    type: object
-    properties:
-      domain:
-        required: false
         type: string
 
 

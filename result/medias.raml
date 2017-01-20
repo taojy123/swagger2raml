@@ -240,7 +240,7 @@ types:
 
 
 /api/medias/file/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteFileSerializer
@@ -258,7 +258,7 @@ types:
           application/json:
             type: FileSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteFileSerializer
@@ -336,7 +336,7 @@ types:
 
 
 /api/medias/material/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteFileSerializer
@@ -354,7 +354,7 @@ types:
           application/json:
             type: FileSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteFileSerializer

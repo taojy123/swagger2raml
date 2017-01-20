@@ -79,19 +79,22 @@ types:
   WritePlaceSerializer:
     type: object
     properties:
+      parent:
+        required: false
+        type: string
       code:
+        required: true
+        type: string
+      name:
         required: true
         type: string
       short_name:
         required: false
         type: string
-      name:
-        required: true
-        type: string
-      parent:
+      area:
         required: false
         type: string
-      area:
+      pinyin:
         required: false
         type: string
 
@@ -163,33 +166,36 @@ types:
         required: false
         type: string
 
-  WriteOrderSerializer:
+  ProductStatisticsSerializer:
     type: object
     properties:
-      is_test:
-        required: false
-        type: boolean
+      product:
+        required: true
+        type: string
       metafield:
         required: false
         type: string
-      buyer_accepts_marketing:
+      views:
         required: false
-        type: boolean
-      mobile:
-        required: false
-        type: string
-      note:
+        type: integer
+      created_at:
         required: false
         type: string
-      full_name:
+      updated_at:
         required: false
         type: string
-      shipping_address:
+      sold_quantity:
+        required: false
+        type: integer
+      date:
         required: true
-        type: ShippingAddressSerializer
-      email:
+        type: string
+      sum_price:
         required: false
         type: string
+      id:
+        required: false
+        type: integer
 
   WriteProductOptionValueSerializer:
     type: object
@@ -388,6 +394,9 @@ types:
       area:
         required: false
         type: string
+      pinyin:
+        required: false
+        type: string
       id:
         required: false
         type: integer
@@ -405,36 +414,33 @@ types:
         required: false
         type: string
 
-  ProductStatisticsSerializer:
+  WriteOrderSerializer:
     type: object
     properties:
-      product:
-        required: true
-        type: string
+      is_test:
+        required: false
+        type: boolean
       metafield:
         required: false
         type: string
-      views:
+      buyer_accepts_marketing:
         required: false
-        type: integer
-      created_at:
-        required: false
-        type: string
-      updated_at:
+        type: boolean
+      mobile:
         required: false
         type: string
-      sold_quantity:
+      note:
         required: false
-        type: integer
-      date:
+        type: string
+      full_name:
+        required: false
+        type: string
+      shipping_address:
         required: true
-        type: string
-      sum_price:
+        type: ShippingAddressSerializer
+      email:
         required: false
         type: string
-      id:
-        required: false
-        type: integer
 
   WriteOrderStatisticsSerializer:
     type: object
@@ -805,12 +811,6 @@ types:
       page_size:
         required: false
         type: integer
-      product:
-        required: false
-        type: string
-      product__in:
-        required: false
-        type: string
       date:
         required: false
         type: string
@@ -818,6 +818,12 @@ types:
         required: false
         type: string
       date__lte:
+        required: false
+        type: string
+      product:
+        required: false
+        type: string
+      product__in:
         required: false
         type: string
 
@@ -846,12 +852,6 @@ types:
       page_size:
         required: false
         type: integer
-      article:
-        required: false
-        type: string
-      article__in:
-        required: false
-        type: string
       date:
         required: false
         type: string
@@ -859,6 +859,12 @@ types:
         required: false
         type: string
       date__lte:
+        required: false
+        type: string
+      article:
+        required: false
+        type: string
+      article__in:
         required: false
         type: string
 

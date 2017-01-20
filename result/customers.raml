@@ -65,23 +65,17 @@ types:
         required: false
         type: integer
 
-  CouponCodeSerializer:
+  WriteCartItemSerializer:
     type: object
     properties:
-      coupon:
-        required: false
-        type: CouponSerializer
-      status:
-        required: false
-        type: string
-      code:
-        required: true
-        type: string
-      id:
+      quantity:
         required: false
         type: integer
-      used_at:
+      checked:
         required: false
+        type: boolean
+      variant_id:
+        required: true
         type: string
 
   WriteAuthTokenSerializer:
@@ -128,21 +122,49 @@ types:
   WritePlaceSerializer:
     type: object
     properties:
+      parent:
+        required: false
+        type: string
       code:
+        required: true
+        type: string
+      name:
         required: true
         type: string
       short_name:
         required: false
         type: string
-      name:
-        required: true
-        type: string
-      parent:
-        required: false
-        type: string
       area:
         required: false
         type: string
+      pinyin:
+        required: false
+        type: string
+
+  CartSerializer:
+    type: object
+    properties:
+      total_price:
+        required: false
+        type: string
+      items:
+        required: false
+        type: CartItemSerializer[]
+      created_at:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      note:
+        required: false
+        type: string
+      token:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
 
   OrderLineSerializer:
     type: object
@@ -181,15 +203,42 @@ types:
         required: false
         type: string
 
-  WriteProductOptionValueSerializer:
+  CustomerAddressSerializer:
     type: object
     properties:
-      value:
+      province:
         required: false
         type: string
-      title:
-        required: true
+      city:
+        required: false
         type: string
+      district:
+        required: false
+        type: string
+      mobile:
+        required: false
+        type: string
+      address1:
+        required: false
+        type: string
+      address2:
+        required: false
+        type: string
+      is_default:
+        required: false
+        type: boolean
+      place:
+        required: false
+        type: PlaceSerializer
+      full_name:
+        required: false
+        type: string
+      country:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
 
   ProductSerializer:
     type: object
@@ -360,6 +409,28 @@ types:
         required: false
         type: string
 
+  CartItemSerializer:
+    type: object
+    properties:
+      product:
+        required: false
+        type: ProductSerializer
+      total_price:
+        required: false
+        type: string
+      checked:
+        required: false
+        type: boolean
+      variant:
+        required: false
+        type: ProductVariantSerializer
+      id:
+        required: false
+        type: integer
+      quantity:
+        required: false
+        type: integer
+
   WriteShippingAddressSerializer:
     type: object
     properties:
@@ -410,6 +481,9 @@ types:
         required: false
         type: string
       area:
+        required: false
+        type: string
+      pinyin:
         required: false
         type: string
       id:
@@ -507,42 +581,15 @@ types:
         required: false
         type: integer
 
-  CustomerAddressSerializer:
+  WriteProductOptionValueSerializer:
     type: object
     properties:
-      province:
+      value:
         required: false
         type: string
-      city:
-        required: false
+      title:
+        required: true
         type: string
-      district:
-        required: false
-        type: string
-      mobile:
-        required: false
-        type: string
-      address1:
-        required: false
-        type: string
-      address2:
-        required: false
-        type: string
-      is_default:
-        required: false
-        type: boolean
-      place:
-        required: false
-        type: PlaceSerializer
-      full_name:
-        required: false
-        type: string
-      country:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
 
   OrderSerializer:
     type: object
@@ -685,6 +732,13 @@ types:
         required: false
         type: string
 
+  WriteCartSerializer:
+    type: object
+    properties:
+      note:
+        required: false
+        type: string
+
   WriteFulfillmentSerializer:
     type: object
     properties:
@@ -739,6 +793,25 @@ types:
     type: object
     properties:
 
+  CouponCodeSerializer:
+    type: object
+    properties:
+      coupon:
+        required: false
+        type: CouponSerializer
+      status:
+        required: false
+        type: string
+      code:
+        required: true
+        type: string
+      id:
+        required: false
+        type: integer
+      used_at:
+        required: false
+        type: string
+
 
 
 /api/customers/order/:
@@ -756,12 +829,6 @@ types:
       order_number__in:
         required: false
         type: string
-      id:
-        required: false
-        type: string
-      id__in:
-        required: false
-        type: string
       financial_status:
         required: false
         enum:
@@ -772,13 +839,10 @@ types:
       financial_status__in:
         required: false
         type: string
-      order_status:
+      id:
         required: false
-        enum:
-          - open
-          - closed
-          - cancelled
-      order_status__in:
+        type: string
+      id__in:
         required: false
         type: string
       fulfillment_status:
@@ -788,6 +852,15 @@ types:
           - partial
           - fulfilled
       fulfillment_status__in:
+        required: false
+        type: string
+      order_status:
+        required: false
+        enum:
+          - open
+          - closed
+          - cancelled
+      order_status__in:
         required: false
         type: string
       order_by:
@@ -817,7 +890,7 @@ types:
 
 
 /api/customers/order/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteOrderSerializer
@@ -835,7 +908,7 @@ types:
           application/json:
             type: OrderSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteOrderSerializer
@@ -911,7 +984,7 @@ types:
 
 
 /api/customers/address/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteCustomerAddressSerializer
@@ -929,7 +1002,7 @@ types:
           application/json:
             type: CustomerAddressSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteCustomerAddressSerializer
@@ -946,7 +1019,7 @@ types:
 
 
 /api/customers/ordertoken/{token}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteOrderSerializer
@@ -964,7 +1037,7 @@ types:
           application/json:
             type: OrderSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteOrderSerializer
@@ -1013,6 +1086,151 @@ types:
         body:
           application/json:
             type: OrderSerializer
+
+
+/api/customers/cart/quick_buy/:
+  post:
+    description: 快速下单购买
+    body:
+      application/json:
+        example: |
+          [
+            {"variant_id": 227, "quantity": 1},
+            {"variant_id": 229, "quantity": 20}
+            # ...
+          ]
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+                [
+                  {
+                    "id": 102,
+                    "order_number": "234234242521522",
+                    "total_price": 20.00,
+                    "paid_price": 20.00,
+                    "unpaid_price": 0.00
+                    # ... Order 对象
+                  }
+                ]
+
+
+/api/customers/cart/{token}/checkout/:
+  post:
+    body:
+      application/json:
+        type: WriteCartSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CartSerializer
+
+
+/api/customers/cart/:
+  post:
+    body:
+      application/json:
+        type: WriteCartSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CartSerializer
+
+
+/api/customers/cart/{token}/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: CartSerializer
+
+
+/api/customers/cart/{parent_lookup_cart__token}/item/{pk}/check/:
+  post:
+    body:
+      application/json:
+        type: WriteCartItemSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CartItemSerializer
+
+
+/api/customers/cart/{parent_lookup_cart__token}/item/{pk}/uncheck/:
+  post:
+    body:
+      application/json:
+        type: WriteCartItemSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CartItemSerializer
+
+
+/api/customers/cart/{parent_lookup_cart__token}/item/:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: CartItemSerializer[]
+
+  post:
+    body:
+      application/json:
+        type: WriteCartItemSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CartItemSerializer
+
+
+/api/customers/cart/{parent_lookup_cart__token}/item/{pk}/:
+  patch:
+    body:
+      application/json:
+        type: WriteCartItemSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CartItemSerializer
+
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: CartItemSerializer
+
+  put:
+    body:
+      application/json:
+        type: WriteCartItemSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CartItemSerializer
+
+  delete:
+    responses:
+      200:
 
 
 /api/customers/customer/:

@@ -255,10 +255,13 @@ types:
   ProductTypeSerializer:
     type: object
     properties:
+      title:
+        required: true
+        type: string
       id:
         required: false
         type: integer
-      title:
+      name:
         required: true
         type: string
 
@@ -448,6 +451,9 @@ types:
   WriteProductTypeSerializer:
     type: object
     properties:
+      name:
+        required: true
+        type: string
       title:
         required: true
         type: string
@@ -515,7 +521,7 @@ types:
 
 
 /api/catalogue/productoption/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteProductOptionSerializer
@@ -533,7 +539,7 @@ types:
           application/json:
             type: ProductOptionSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteProductOptionSerializer
@@ -662,7 +668,7 @@ types:
 
 
 /api/catalogue/product/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteProductSerializer
@@ -680,7 +686,7 @@ types:
           application/json:
             type: ProductSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteProductSerializer
@@ -725,7 +731,7 @@ types:
 
 
 /api/catalogue/variant/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteProductVariantSerializer
@@ -743,7 +749,7 @@ types:
           application/json:
             type: ProductVariantSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteProductVariantSerializer
@@ -803,7 +809,7 @@ types:
 
 
 /api/catalogue/tag/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteProductTagSerializer
@@ -821,7 +827,7 @@ types:
           application/json:
             type: ProductTagSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteProductTagSerializer
@@ -899,7 +905,7 @@ types:
 
 
 /api/catalogue/collection/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteCollectionSerializer
@@ -917,7 +923,7 @@ types:
           application/json:
             type: CollectionSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteCollectionSerializer
@@ -968,7 +974,7 @@ types:
 
 
 /api/catalogue/collection/{parent_lookup_collection}/collect/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteCollectSerializer
@@ -986,7 +992,7 @@ types:
           application/json:
             type: CollectSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteCollectSerializer

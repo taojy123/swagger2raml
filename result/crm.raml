@@ -142,7 +142,7 @@ types:
 
 
 /api/crm/customer/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteCustomerSerializer
@@ -160,7 +160,7 @@ types:
           application/json:
             type: CustomerSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteCustomerSerializer
@@ -205,7 +205,7 @@ types:
 
 
 /api/crm/custom_form/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteCustomFormSerializer
@@ -223,7 +223,7 @@ types:
           application/json:
             type: CustomFormSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteCustomFormSerializer

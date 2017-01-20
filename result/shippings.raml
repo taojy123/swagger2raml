@@ -126,6 +126,9 @@ types:
       area:
         required: false
         type: string
+      pinyin:
+        required: false
+        type: string
       id:
         required: false
         type: integer
@@ -167,19 +170,22 @@ types:
   WritePlaceSerializer:
     type: object
     properties:
+      parent:
+        required: false
+        type: string
       code:
+        required: true
+        type: string
+      name:
         required: true
         type: string
       short_name:
         required: false
         type: string
-      name:
-        required: true
-        type: string
-      parent:
+      area:
         required: false
         type: string
-      area:
+      pinyin:
         required: false
         type: string
 
@@ -227,7 +233,7 @@ types:
 
 
 /api/shippings/shippingmethod/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteShippingMethodSerializer
@@ -245,7 +251,7 @@ types:
           application/json:
             type: ShippingMethodSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteShippingMethodSerializer
@@ -290,7 +296,7 @@ types:
 
 
 /api/shippings/shippingmethod/{parent_lookup_shipping_method}/shippingzone/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteShippingZoneSerializer
@@ -308,7 +314,7 @@ types:
           application/json:
             type: ShippingZoneSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteShippingZoneSerializer

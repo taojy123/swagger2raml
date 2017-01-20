@@ -260,6 +260,9 @@ types:
   ThemeSerializer:
     type: object
     properties:
+      screenshot_mobile:
+        required: false
+        type: string
       current_preset:
         required: false
         type: string
@@ -270,6 +273,9 @@ types:
         required: false
         type: string
       name:
+        required: false
+        type: string
+      screenshot:
         required: false
         type: string
       title:
@@ -769,7 +775,7 @@ types:
 
 
 /api/users/shop/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteShopSerializer
@@ -787,7 +793,7 @@ types:
           application/json:
             type: ShopSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteShopSerializer

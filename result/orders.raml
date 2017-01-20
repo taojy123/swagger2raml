@@ -3,79 +3,6 @@ title: orders
 baseUri: http://heidianapi.com
 
 types:
-  WriteProductVariantSerializer:
-    type: object
-    properties:
-      sku:
-        required: true
-        type: string
-      price:
-        required: false
-        type: string
-      grams:
-        required: false
-        type: string
-      options:
-        required: true
-        type: WriteProductOptionValueSerializer[]
-
-  WriteCartItemSerializer:
-    type: object
-    properties:
-      quantity:
-        required: false
-        type: integer
-      checked:
-        required: false
-        type: boolean
-      variant_id:
-        required: true
-        type: string
-
-  WritePlaceSerializer:
-    type: object
-    properties:
-      code:
-        required: true
-        type: string
-      short_name:
-        required: false
-        type: string
-      name:
-        required: true
-        type: string
-      parent:
-        required: false
-        type: string
-      area:
-        required: false
-        type: string
-
-  CartSerializer:
-    type: object
-    properties:
-      total_price:
-        required: false
-        type: string
-      items:
-        required: false
-        type: CartItemSerializer[]
-      created_at:
-        required: false
-        type: string
-      updated_at:
-        required: false
-        type: string
-      note:
-        required: false
-        type: string
-      token:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-
   OrderLineSerializer:
     type: object
     properties:
@@ -110,248 +37,6 @@ types:
         required: false
         type: integer
       product_title:
-        required: false
-        type: string
-
-  WriteProductOptionValueSerializer:
-    type: object
-    properties:
-      value:
-        required: false
-        type: string
-      title:
-        required: true
-        type: string
-
-  ProductSerializer:
-    type: object
-    properties:
-      title:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-      name:
-        required: true
-        type: string
-
-  ProductOptionValueSerializer:
-    type: object
-    properties:
-      value:
-        required: false
-        type: string
-      title:
-        required: true
-        type: string
-
-  WriteOrderLineSerializer:
-    type: object
-    properties:
-      variant_title:
-        required: false
-        type: string
-      image:
-        required: false
-        type: string
-      product_title:
-        required: false
-        type: string
-      requires_shipping:
-        required: false
-        type: boolean
-      title:
-        required: false
-        type: string
-
-  FulfillmentSerializer:
-    type: object
-    properties:
-      status:
-        required: false
-        type: string
-      kd100_data:
-        required: false
-        type: string
-      tracking_info:
-        required: false
-        type: string
-      tracking_url:
-        required: false
-        type: string
-      tracking_number:
-        required: false
-        type: string
-      tracking_company:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-
-  ShippingAddressSerializer:
-    type: object
-    properties:
-      province:
-        required: false
-        type: string
-      city:
-        required: false
-        type: string
-      metafield:
-        required: false
-        type: string
-      district:
-        required: false
-        type: string
-      mobile:
-        required: false
-        type: string
-      address1:
-        required: false
-        type: string
-      address2:
-        required: false
-        type: string
-      updated_at:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-      customer_address_id:
-        required: false
-        type: integer
-      place:
-        required: false
-        type: PlaceSerializer
-      full_name:
-        required: false
-        type: string
-      country:
-        required: false
-        type: string
-      created_at:
-        required: false
-        type: string
-
-  CartItemSerializer:
-    type: object
-    properties:
-      product:
-        required: false
-        type: ProductSerializer
-      total_price:
-        required: false
-        type: string
-      checked:
-        required: false
-        type: boolean
-      variant:
-        required: false
-        type: ProductVariantSerializer
-      id:
-        required: false
-        type: integer
-      quantity:
-        required: false
-        type: integer
-
-  WriteShippingAddressSerializer:
-    type: object
-    properties:
-      province:
-        required: false
-        type: string
-      city:
-        required: false
-        type: string
-      metafield:
-        required: false
-        type: string
-      district:
-        required: false
-        type: string
-      mobile:
-        required: false
-        type: string
-      address1:
-        required: false
-        type: string
-      address2:
-        required: false
-        type: string
-      customer_address_id:
-        required: false
-        type: integer
-      place_code:
-        required: false
-        type: string
-      full_name:
-        required: false
-        type: string
-      country:
-        required: false
-        type: string
-
-  PlaceSerializer:
-    type: object
-    properties:
-      code:
-        required: true
-        type: string
-      parent:
-        required: false
-        type: string
-      short_name:
-        required: false
-        type: string
-      area:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-      name:
-        required: true
-        type: string
-
-  WriteProductSerializer:
-    type: object
-    properties:
-      name:
-        required: true
-        type: string
-      title:
-        required: false
-        type: string
-
-  WriteOrderSerializer:
-    type: object
-    properties:
-      is_test:
-        required: false
-        type: boolean
-      metafield:
-        required: false
-        type: string
-      buyer_accepts_marketing:
-        required: false
-        type: boolean
-      mobile:
-        required: false
-        type: string
-      note:
-        required: false
-        type: string
-      full_name:
-        required: false
-        type: string
-      shipping_address:
-        required: true
-        type: ShippingAddressSerializer
-      email:
         required: false
         type: string
 
@@ -458,6 +143,45 @@ types:
         required: false
         type: string
 
+  WriteProductVariantSerializer:
+    type: object
+    properties:
+      sku:
+        required: true
+        type: string
+      price:
+        required: false
+        type: string
+      grams:
+        required: false
+        type: string
+      options:
+        required: true
+        type: WriteProductOptionValueSerializer[]
+
+  WriteProductOptionValueSerializer:
+    type: object
+    properties:
+      value:
+        required: false
+        type: string
+      title:
+        required: true
+        type: string
+
+  ProductSerializer:
+    type: object
+    properties:
+      title:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      name:
+        required: true
+        type: string
+
   ProductVariantSerializer:
     type: object
     properties:
@@ -483,10 +207,140 @@ types:
         required: false
         type: string
 
-  WriteCartSerializer:
+  WriteOrderLineSerializer:
     type: object
     properties:
-      note:
+      variant_title:
+        required: false
+        type: string
+      image:
+        required: false
+        type: string
+      product_title:
+        required: false
+        type: string
+      requires_shipping:
+        required: false
+        type: boolean
+      title:
+        required: false
+        type: string
+
+  ProductOptionValueSerializer:
+    type: object
+    properties:
+      value:
+        required: false
+        type: string
+      title:
+        required: true
+        type: string
+
+  PlaceSerializer:
+    type: object
+    properties:
+      code:
+        required: true
+        type: string
+      parent:
+        required: false
+        type: string
+      short_name:
+        required: false
+        type: string
+      area:
+        required: false
+        type: string
+      pinyin:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      name:
+        required: true
+        type: string
+
+  ShippingAddressSerializer:
+    type: object
+    properties:
+      province:
+        required: false
+        type: string
+      city:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      district:
+        required: false
+        type: string
+      mobile:
+        required: false
+        type: string
+      address1:
+        required: false
+        type: string
+      address2:
+        required: false
+        type: string
+      updated_at:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      customer_address_id:
+        required: false
+        type: integer
+      place:
+        required: false
+        type: PlaceSerializer
+      full_name:
+        required: false
+        type: string
+      country:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+
+  WriteShippingAddressSerializer:
+    type: object
+    properties:
+      province:
+        required: false
+        type: string
+      city:
+        required: false
+        type: string
+      metafield:
+        required: false
+        type: string
+      district:
+        required: false
+        type: string
+      mobile:
+        required: false
+        type: string
+      address1:
+        required: false
+        type: string
+      address2:
+        required: false
+        type: string
+      customer_address_id:
+        required: false
+        type: integer
+      place_code:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+      country:
         required: false
         type: string
 
@@ -506,6 +360,16 @@ types:
         required: false
         type: string
       tracking_company:
+        required: false
+        type: string
+
+  WriteProductSerializer:
+    type: object
+    properties:
+      name:
+        required: true
+        type: string
+      title:
         required: false
         type: string
 
@@ -540,139 +404,85 @@ types:
         required: false
         type: integer
 
+  WriteOrderSerializer:
+    type: object
+    properties:
+      is_test:
+        required: false
+        type: boolean
+      metafield:
+        required: false
+        type: string
+      buyer_accepts_marketing:
+        required: false
+        type: boolean
+      mobile:
+        required: false
+        type: string
+      note:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+      shipping_address:
+        required: true
+        type: ShippingAddressSerializer
+      email:
+        required: false
+        type: string
+
+  WritePlaceSerializer:
+    type: object
+    properties:
+      parent:
+        required: false
+        type: string
+      code:
+        required: true
+        type: string
+      name:
+        required: true
+        type: string
+      short_name:
+        required: false
+        type: string
+      area:
+        required: false
+        type: string
+      pinyin:
+        required: false
+        type: string
+
   WriteOrderDiscountSerializer:
     type: object
     properties:
 
+  FulfillmentSerializer:
+    type: object
+    properties:
+      status:
+        required: false
+        type: string
+      kd100_data:
+        required: false
+        type: string
+      tracking_info:
+        required: false
+        type: string
+      tracking_url:
+        required: false
+        type: string
+      tracking_number:
+        required: false
+        type: string
+      tracking_company:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
 
-
-/api/orders/cart/quick_buy/:
-  post:
-    body:
-      application/json:
-        type: WriteCartSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CartSerializer
-
-
-/api/orders/cart/{token}/checkout/:
-  post:
-    body:
-      application/json:
-        type: WriteCartSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CartSerializer
-
-
-/api/orders/cart/:
-  post:
-    body:
-      application/json:
-        type: WriteCartSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CartSerializer
-
-
-/api/orders/cart/{token}/:
-  get:
-    responses:
-      200:
-        body:
-          application/json:
-            type: CartSerializer
-
-
-/api/orders/cart/{parent_lookup_cart__token}/item/{pk}/check/:
-  post:
-    body:
-      application/json:
-        type: WriteCartItemSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CartItemSerializer
-
-
-/api/orders/cart/{parent_lookup_cart__token}/item/{pk}/uncheck/:
-  post:
-    body:
-      application/json:
-        type: WriteCartItemSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CartItemSerializer
-
-
-/api/orders/cart/{parent_lookup_cart__token}/item/:
-  get:
-    responses:
-      200:
-        body:
-          application/json:
-            type: CartItemSerializer[]
-
-  post:
-    body:
-      application/json:
-        type: WriteCartItemSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CartItemSerializer
-
-
-/api/orders/cart/{parent_lookup_cart__token}/item/{pk}/:
-  put:
-    body:
-      application/json:
-        type: WriteCartItemSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CartItemSerializer
-
-  get:
-    responses:
-      200:
-        body:
-          application/json:
-            type: CartItemSerializer
-
-  patch:
-    body:
-      application/json:
-        type: WriteCartItemSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CartItemSerializer
-
-  delete:
-    responses:
-      200:
 
 
 /api/orders/order/{pk}/check_paid/:
@@ -699,12 +509,6 @@ types:
       order_number__in:
         required: false
         type: string
-      id:
-        required: false
-        type: string
-      id__in:
-        required: false
-        type: string
       financial_status:
         required: false
         enum:
@@ -715,13 +519,10 @@ types:
       financial_status__in:
         required: false
         type: string
-      order_status:
+      id:
         required: false
-        enum:
-          - open
-          - closed
-          - cancelled
-      order_status__in:
+        type: string
+      id__in:
         required: false
         type: string
       fulfillment_status:
@@ -731,6 +532,15 @@ types:
           - partial
           - fulfilled
       fulfillment_status__in:
+        required: false
+        type: string
+      order_status:
+        required: false
+        enum:
+          - open
+          - closed
+          - cancelled
+      order_status__in:
         required: false
         type: string
       created_at_from:
@@ -773,7 +583,7 @@ types:
 
 
 /api/orders/order/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteOrderSerializer
@@ -791,7 +601,7 @@ types:
           application/json:
             type: OrderSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteOrderSerializer
@@ -828,7 +638,7 @@ types:
 
 
 /api/orders/order/{parent_lookup_order}/fulfillment/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteFulfillmentSerializer
@@ -846,7 +656,7 @@ types:
           application/json:
             type: FulfillmentSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteFulfillmentSerializer

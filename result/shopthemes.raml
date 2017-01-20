@@ -268,6 +268,9 @@ types:
   ThemeSerializer:
     type: object
     properties:
+      screenshot_mobile:
+        required: false
+        type: string
       current_preset:
         required: false
         type: string
@@ -278,6 +281,9 @@ types:
         required: false
         type: string
       name:
+        required: false
+        type: string
+      screenshot:
         required: false
         type: string
       title:
@@ -489,18 +495,6 @@ types:
 /api/shopthemes/file/:
   get:
     queryParameters:
-      file_type:
-        required: false
-        enum:
-          - layouts
-          - templates
-          - containers
-          - blocks
-          - snippets
-          - assets
-      file_type__in:
-        required: false
-        type: string
       name:
         required: false
         type: string
@@ -511,6 +505,18 @@ types:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      file_type:
+        required: false
+        enum:
+          - layouts
+          - templates
+          - containers
+          - blocks
+          - snippets
+          - assets
+      file_type__in:
         required: false
         type: string
       permanent:
@@ -545,7 +551,7 @@ types:
 
 
 /api/shopthemes/file/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteFileSerializer
@@ -563,7 +569,7 @@ types:
           application/json:
             type: FileSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteFileSerializer
@@ -600,18 +606,6 @@ types:
 /api/shopthemes/block/:
   get:
     queryParameters:
-      file_type:
-        required: false
-        enum:
-          - layouts
-          - templates
-          - containers
-          - blocks
-          - snippets
-          - assets
-      file_type__in:
-        required: false
-        type: string
       name:
         required: false
         type: string
@@ -622,6 +616,18 @@ types:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      file_type:
+        required: false
+        enum:
+          - layouts
+          - templates
+          - containers
+          - blocks
+          - snippets
+          - assets
+      file_type__in:
         required: false
         type: string
       permanent:
@@ -671,7 +677,7 @@ types:
 
 
 /api/shopthemes/pageconfig/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WritePageConfigSerializer
@@ -689,7 +695,7 @@ types:
           application/json:
             type: PageConfigSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WritePageConfigSerializer
@@ -784,7 +790,7 @@ types:
 
 
 /api/shopthemes/theme/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteThemeSerializer
@@ -802,7 +808,7 @@ types:
           application/json:
             type: ThemeSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteThemeSerializer
@@ -853,7 +859,7 @@ types:
 
 
 /api/shopthemes/theme/{parent_lookup_theme}/file/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteFileSerializer
@@ -871,7 +877,7 @@ types:
           application/json:
             type: FileSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteFileSerializer
@@ -923,7 +929,7 @@ types:
 
 
 /api/shopthemes/theme/{parent_lookup_theme}/pageconfig/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WritePageConfigSerializer
@@ -941,7 +947,7 @@ types:
           application/json:
             type: PageConfigSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WritePageConfigSerializer

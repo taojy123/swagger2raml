@@ -164,7 +164,7 @@ types:
 
 
 /api/blogs/article/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteArticleSerializer
@@ -182,7 +182,7 @@ types:
           application/json:
             type: ArticleSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteArticleSerializer
@@ -224,7 +224,7 @@ types:
 
 
 /api/blogs/tag/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteArticleTagSerializer
@@ -242,7 +242,7 @@ types:
           application/json:
             type: ArticleTagSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteArticleTagSerializer

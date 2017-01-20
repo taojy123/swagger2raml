@@ -16,9 +16,39 @@ types:
         required: false
         type: string
 
-  WriteBalanceOutSerializer:
+  BalanceOutSerializer:
     type: object
     properties:
+      alipay:
+        required: false
+        type: string
+      status:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
+      request_money:
+        required: false
+        type: string
+      last_checked_at:
+        required: false
+        type: string
+      reason:
+        required: false
+        type: string
+      full_name:
+        required: false
+        type: string
+      charge_fee:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
+      final_money:
+        required: false
+        type: string
 
   WalletSerializer:
     type: object
@@ -67,39 +97,9 @@ types:
         required: true
         type: string
 
-  BalanceOutSerializer:
+  WriteBalanceOutSerializer:
     type: object
     properties:
-      alipay:
-        required: false
-        type: string
-      status:
-        required: false
-        type: string
-      created_at:
-        required: false
-        type: string
-      request_money:
-        required: false
-        type: string
-      last_checked_at:
-        required: false
-        type: string
-      reason:
-        required: false
-        type: string
-      full_name:
-        required: false
-        type: string
-      charge_fee:
-        required: false
-        type: string
-      id:
-        required: false
-        type: integer
-      final_money:
-        required: false
-        type: string
 
   WriteOrderSerializer:
     type: object
@@ -195,7 +195,7 @@ types:
 
 
 /api/balance/out/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteBalanceOutSerializer
@@ -213,7 +213,7 @@ types:
           application/json:
             type: BalanceOutSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteBalanceOutSerializer

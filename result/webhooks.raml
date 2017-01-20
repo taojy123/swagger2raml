@@ -69,7 +69,7 @@ types:
 
 
 /api/webhooks/webhook/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteWebhookSerializer
@@ -87,7 +87,7 @@ types:
           application/json:
             type: WebhookSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteWebhookSerializer

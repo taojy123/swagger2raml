@@ -3,25 +3,6 @@ title: shops
 baseUri: http://heidianapi.com
 
 types:
-  WriteThemeSerializer:
-    type: object
-    properties:
-      current_preset:
-        required: false
-        type: string
-      private_settings_data:
-        required: false
-        type: string
-      metafield:
-        required: false
-        type: string
-      assets:
-        required: false
-        type: string
-      settings_data:
-        required: false
-        type: string
-
   WriteShopFrontThemeSerializer:
     type: object
     properties:
@@ -46,6 +27,25 @@ types:
       is_current:
         required: false
         type: boolean
+      metafield:
+        required: false
+        type: string
+      assets:
+        required: false
+        type: string
+      settings_data:
+        required: false
+        type: string
+
+  WriteThemeSerializer:
+    type: object
+    properties:
+      current_preset:
+        required: false
+        type: string
+      private_settings_data:
+        required: false
+        type: string
       metafield:
         required: false
         type: string
@@ -149,15 +149,15 @@ types:
         required: false
         type: boolean
 
-  WritePlanSerializer:
+  WritePlanBillingSerializer:
     type: object
     properties:
-      next_billing:
+      plan_period:
         required: true
-        type: PlanBillingSerializer
-      active_billing:
+        type: string
+      plan_name:
         required: true
-        type: PlanBillingSerializer
+        type: string
 
   PageConfigPresetSerializer:
     type: object
@@ -614,6 +614,9 @@ types:
   ThemeSerializer:
     type: object
     properties:
+      screenshot_mobile:
+        required: false
+        type: string
       current_preset:
         required: false
         type: string
@@ -624,6 +627,9 @@ types:
         required: false
         type: string
       name:
+        required: false
+        type: string
+      screenshot:
         required: false
         type: string
       title:
@@ -927,15 +933,15 @@ types:
         required: false
         type: string
 
-  WritePlanBillingSerializer:
+  WritePlanSerializer:
     type: object
     properties:
-      plan_period:
+      next_billing:
         required: true
-        type: string
-      plan_name:
+        type: PlanBillingSerializer
+      active_billing:
         required: true
-        type: string
+        type: PlanBillingSerializer
 
   WriteIdentificationSerializer:
     type: object
@@ -1220,7 +1226,7 @@ types:
 
 
 /api/shops/page/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteStaticPageSerializer
@@ -1238,7 +1244,7 @@ types:
           application/json:
             type: StaticPageSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteStaticPageSerializer
@@ -1324,7 +1330,7 @@ types:
 
 
 /api/shops/navigation/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WritePageSerializer
@@ -1342,7 +1348,7 @@ types:
           application/json:
             type: PageSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WritePageSerializer
@@ -1453,7 +1459,7 @@ types:
 
 
 /api/shops/menu/{name}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteMenuSerializer
@@ -1471,7 +1477,7 @@ types:
           application/json:
             type: MenuSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteMenuSerializer
@@ -1508,7 +1514,7 @@ types:
 
 
 /api/shops/menu/{parent_lookup_menu__name}/item/{pk}/:
-  put:
+  patch:
     body:
       application/json:
         type: WriteMenuItemSerializer
@@ -1526,7 +1532,7 @@ types:
           application/json:
             type: MenuItemSerializer
 
-  patch:
+  put:
     body:
       application/json:
         type: WriteMenuItemSerializer

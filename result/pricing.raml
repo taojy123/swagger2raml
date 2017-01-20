@@ -40,6 +40,16 @@ types:
         required: false
         type: integer
 
+  WritePlanSerializer:
+    type: object
+    properties:
+      next_billing:
+        required: true
+        type: PlanBillingSerializer
+      active_billing:
+        required: true
+        type: PlanBillingSerializer
+
   PlanBillingSerializer:
     type: object
     properties:
@@ -83,16 +93,6 @@ types:
       plan_name:
         required: true
         type: string
-
-  WritePlanSerializer:
-    type: object
-    properties:
-      next_billing:
-        required: true
-        type: PlanBillingSerializer
-      active_billing:
-        required: true
-        type: PlanBillingSerializer
 
 
 
