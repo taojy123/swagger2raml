@@ -41,6 +41,17 @@ types:
 
 
 /api/webhooks/webhook/:
+  post:
+    body:
+      application/json:
+        type: WriteWebhookSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: WebhookSerializer
+
   get:
     queryParameters:
       page:
@@ -56,20 +67,9 @@ types:
           application/json:
             type: WebhookSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteWebhookSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: WebhookSerializer
-
 
 /api/webhooks/webhook/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteWebhookSerializer
@@ -87,7 +87,7 @@ types:
           application/json:
             type: WebhookSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteWebhookSerializer

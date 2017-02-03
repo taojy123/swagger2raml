@@ -307,6 +307,17 @@ types:
 
 
 /api/discounts/promotion_code/:
+  post:
+    body:
+      application/json:
+        type: WritePromotionCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PromotionCodeSerializer
+
   get:
     queryParameters:
       page:
@@ -315,16 +326,16 @@ types:
       page_size:
         required: false
         type: integer
-      id:
-        required: false
-        type: string
-      id__in:
-        required: false
-        type: string
       code:
         required: false
         type: string
       code__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
         required: false
         type: string
       available:
@@ -350,20 +361,9 @@ types:
           application/json:
             type: PromotionCodeSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WritePromotionCodeSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: PromotionCodeSerializer
-
 
 /api/discounts/promotion_code/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WritePromotionCodeSerializer
@@ -381,7 +381,7 @@ types:
           application/json:
             type: PromotionCodeSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WritePromotionCodeSerializer
@@ -437,6 +437,17 @@ types:
 
 
 /api/discounts/customer/{parent_lookup_customer}/coupon_code/:
+  post:
+    body:
+      application/json:
+        type: WriteCouponCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CouponCodeSerializer
+
   get:
     queryParameters:
       page:
@@ -445,6 +456,15 @@ types:
       page_size:
         required: false
         type: integer
+      status:
+        required: false
+        enum:
+          - unissued
+          - unused
+          - used
+      status__in:
+        required: false
+        type: string
       customer:
         required: false
         type: string
@@ -455,15 +475,6 @@ types:
         required: false
         type: string
       id__in:
-        required: false
-        type: string
-      status:
-        required: false
-        enum:
-          - unissued
-          - unused
-          - used
-      status__in:
         required: false
         type: string
       is_issued:
@@ -487,20 +498,9 @@ types:
           application/json:
             type: CouponCodeSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteCouponCodeSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CouponCodeSerializer
-
 
 /api/discounts/customer/{parent_lookup_customer}/coupon_code/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteCouponCodeSerializer
@@ -518,7 +518,7 @@ types:
           application/json:
             type: CouponCodeSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteCouponCodeSerializer
@@ -544,6 +544,17 @@ types:
 
 
 /api/discounts/coupon/:
+  post:
+    body:
+      application/json:
+        type: WriteCouponSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CouponSerializer
+
   get:
     queryParameters:
       page:
@@ -581,20 +592,9 @@ types:
           application/json:
             type: CouponSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteCouponSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CouponSerializer
-
 
 /api/discounts/coupon/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteCouponSerializer
@@ -612,7 +612,7 @@ types:
           application/json:
             type: CouponSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteCouponSerializer
@@ -629,6 +629,17 @@ types:
 
 
 /api/discounts/coupon/{parent_lookup_coupon}/coupon_code/:
+  post:
+    body:
+      application/json:
+        type: WriteCouponCodeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CouponCodeSerializer
+
   get:
     queryParameters:
       page:
@@ -637,6 +648,15 @@ types:
       page_size:
         required: false
         type: integer
+      status:
+        required: false
+        enum:
+          - unissued
+          - unused
+          - used
+      status__in:
+        required: false
+        type: string
       customer:
         required: false
         type: string
@@ -647,15 +667,6 @@ types:
         required: false
         type: string
       id__in:
-        required: false
-        type: string
-      status:
-        required: false
-        enum:
-          - unissued
-          - unused
-          - used
-      status__in:
         required: false
         type: string
       is_issued:
@@ -679,20 +690,9 @@ types:
           application/json:
             type: CouponCodeSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteCouponCodeSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CouponCodeSerializer
-
 
 /api/discounts/coupon/{parent_lookup_coupon}/coupon_code/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteCouponCodeSerializer
@@ -710,7 +710,7 @@ types:
           application/json:
             type: CouponCodeSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteCouponCodeSerializer

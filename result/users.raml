@@ -45,15 +45,15 @@ types:
         required: false
         type: string
 
-  WritePlanSerializer:
+  WritePlanBillingSerializer:
     type: object
     properties:
-      next_billing:
+      plan_period:
         required: true
-        type: PlanBillingSerializer
-      active_billing:
+        type: string
+      plan_name:
         required: true
-        type: PlanBillingSerializer
+        type: string
 
   PageConfigPresetSerializer:
     type: object
@@ -173,16 +173,37 @@ types:
         required: false
         type: string
 
-  WriteShopAdminUserSerializer:
+  ShopNotificationConfigSerializer:
     type: object
     properties:
-      mobile:
+      kind:
         required: false
         type: string
-      email:
-        required: true
+      name:
+        required: false
         type: string
-      full_name:
+      allow_email_enable:
+        required: false
+        type: string
+      title:
+        required: false
+        type: string
+      allow_sms_enable:
+        required: false
+        type: string
+      sms_enabled:
+        required: false
+        type: boolean
+      dashboard_enabled:
+        required: false
+        type: boolean
+      email_enabled:
+        required: false
+        type: boolean
+      id:
+        required: false
+        type: integer
+      description:
         required: false
         type: string
 
@@ -440,15 +461,15 @@ types:
         required: false
         type: string
 
-  WritePlanBillingSerializer:
+  WritePlanSerializer:
     type: object
     properties:
-      plan_period:
+      next_billing:
         required: true
-        type: string
-      plan_name:
+        type: PlanBillingSerializer
+      active_billing:
         required: true
-        type: string
+        type: PlanBillingSerializer
 
   ShopAdminUserSerializer:
     type: object
@@ -551,37 +572,16 @@ types:
         required: false
         type: ScriptTagSerializer[]
 
-  ShopNotificationConfigSerializer:
+  WriteShopAdminUserSerializer:
     type: object
     properties:
-      kind:
+      mobile:
         required: false
         type: string
-      name:
-        required: false
+      email:
+        required: true
         type: string
-      allow_email_enable:
-        required: false
-        type: string
-      title:
-        required: false
-        type: string
-      allow_sms_enable:
-        required: false
-        type: string
-      sms_enabled:
-        required: false
-        type: boolean
-      dashboard_enabled:
-        required: false
-        type: boolean
-      email_enabled:
-        required: false
-        type: boolean
-      id:
-        required: false
-        type: integer
-      description:
+      full_name:
         required: false
         type: string
 
@@ -729,18 +729,29 @@ types:
 
 
 /api/users/shop/:
+  post:
+    body:
+      application/json:
+        type: WriteShopSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ShopSerializer
+
   get:
     queryParameters:
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
       id:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
         required: false
         type: string
       q:
@@ -762,20 +773,9 @@ types:
           application/json:
             type: ShopSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteShopSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: ShopSerializer
-
 
 /api/users/shop/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteShopSerializer
@@ -793,7 +793,7 @@ types:
           application/json:
             type: ShopSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteShopSerializer

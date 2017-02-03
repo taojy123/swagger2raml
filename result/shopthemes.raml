@@ -493,20 +493,19 @@ types:
 
 
 /api/shopthemes/file/:
+  post:
+    body:
+      application/json:
+        type: WriteFileSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
   get:
     queryParameters:
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
-      id:
-        required: false
-        type: string
-      id__in:
-        required: false
-        type: string
       file_type:
         required: false
         enum:
@@ -517,6 +516,18 @@ types:
           - snippets
           - assets
       file_type__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
         required: false
         type: string
       permanent:
@@ -538,20 +549,9 @@ types:
           application/json:
             type: FileSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteFileSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: FileSerializer
-
 
 /api/shopthemes/file/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteFileSerializer
@@ -569,7 +569,7 @@ types:
           application/json:
             type: FileSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteFileSerializer
@@ -606,18 +606,6 @@ types:
 /api/shopthemes/block/:
   get:
     queryParameters:
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
-      id:
-        required: false
-        type: string
-      id__in:
-        required: false
-        type: string
       file_type:
         required: false
         enum:
@@ -628,6 +616,18 @@ types:
           - snippets
           - assets
       file_type__in:
+        required: false
+        type: string
+      id:
+        required: false
+        type: string
+      id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
         required: false
         type: string
       permanent:
@@ -677,6 +677,17 @@ types:
 
 
 /api/shopthemes/pageconfig/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WritePageConfigSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer
+
   patch:
     body:
       application/json:
@@ -689,17 +700,6 @@ types:
             type: PageConfigSerializer
 
   get:
-    responses:
-      200:
-        body:
-          application/json:
-            type: PageConfigSerializer
-
-  put:
-    body:
-      application/json:
-        type: WritePageConfigSerializer
-
     responses:
       200:
         body:
@@ -770,13 +770,6 @@ types:
 
 
 /api/shopthemes/theme/:
-  get:
-    responses:
-      200:
-        body:
-          application/json:
-            type: ThemeSerializer[]
-
   post:
     body:
       application/json:
@@ -788,9 +781,16 @@ types:
           application/json:
             type: ThemeSerializer
 
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer[]
+
 
 /api/shopthemes/theme/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteThemeSerializer
@@ -808,7 +808,7 @@ types:
           application/json:
             type: ThemeSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteThemeSerializer
@@ -825,6 +825,17 @@ types:
 
 
 /api/shopthemes/theme/{parent_lookup_theme}/file/:
+  post:
+    body:
+      application/json:
+        type: WriteFileSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
   get:
     queryParameters:
       file_type:
@@ -846,20 +857,9 @@ types:
           application/json:
             type: FileSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteFileSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: FileSerializer
-
 
 /api/shopthemes/theme/{parent_lookup_theme}/file/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteFileSerializer
@@ -877,7 +877,7 @@ types:
           application/json:
             type: FileSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteFileSerializer
@@ -929,6 +929,17 @@ types:
 
 
 /api/shopthemes/theme/{parent_lookup_theme}/pageconfig/{pk}/:
+  put:
+    body:
+      application/json:
+        type: WritePageConfigSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: PageConfigSerializer
+
   patch:
     body:
       application/json:
@@ -941,17 +952,6 @@ types:
             type: PageConfigSerializer
 
   get:
-    responses:
-      200:
-        body:
-          application/json:
-            type: PageConfigSerializer
-
-  put:
-    body:
-      application/json:
-        type: WritePageConfigSerializer
-
     responses:
       200:
         body:

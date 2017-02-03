@@ -1,0 +1,19 @@
+{% if type.type == 'object' %}
+
+### {{ type.displayName | d(type.name) }}
+
+| Field | Type | Pattern | Required |
+| ----- | ---- | ------- | -------- |
+{%- for key, property in type.properties %}
+| `{{ key }}` | {{ property.type }} | `{{ property.pattern | default(" ") }}` | {{ 'yes' if property.required else 'no' }} |
+{%- endfor %}
+
+{% if type.examples %}
+#### Examples
+
+```json
+{{ type.examples }}
+```
+{% endif %}
+
+{% endif %}

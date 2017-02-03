@@ -100,6 +100,17 @@ types:
 
 
 /api/blogs/article/:
+  post:
+    body:
+      application/json:
+        type: WriteArticleSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleSerializer
+
   get:
     queryParameters:
       page:
@@ -108,16 +119,16 @@ types:
       page_size:
         required: false
         type: integer
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
       id:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
         required: false
         type: string
       published_at_from:
@@ -151,20 +162,9 @@ types:
           application/json:
             type: ArticleSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteArticleSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: ArticleSerializer
-
 
 /api/blogs/article/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteArticleSerializer
@@ -182,7 +182,7 @@ types:
           application/json:
             type: ArticleSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteArticleSerializer
@@ -199,6 +199,17 @@ types:
 
 
 /api/blogs/tag/:
+  post:
+    body:
+      application/json:
+        type: WriteArticleTagSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ArticleTagSerializer
+
   get:
     queryParameters:
       title:
@@ -211,20 +222,9 @@ types:
           application/json:
             type: ArticleTagSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteArticleTagSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: ArticleTagSerializer
-
 
 /api/blogs/tag/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteArticleTagSerializer
@@ -242,7 +242,7 @@ types:
           application/json:
             type: ArticleTagSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteArticleTagSerializer

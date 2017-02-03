@@ -179,6 +179,17 @@ types:
 
 
 /api/medias/file/:
+  post:
+    body:
+      application/json:
+        type: WriteFileSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
   get:
     queryParameters:
       page:
@@ -227,20 +238,9 @@ types:
           application/json:
             type: FileSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteFileSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: FileSerializer
-
 
 /api/medias/file/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteFileSerializer
@@ -258,7 +258,7 @@ types:
           application/json:
             type: FileSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteFileSerializer
@@ -275,6 +275,17 @@ types:
 
 
 /api/medias/material/:
+  post:
+    body:
+      application/json:
+        type: WriteFileSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: FileSerializer
+
   get:
     queryParameters:
       page:
@@ -323,20 +334,9 @@ types:
           application/json:
             type: FileSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteFileSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: FileSerializer
-
 
 /api/medias/material/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteFileSerializer
@@ -354,7 +354,7 @@ types:
           application/json:
             type: FileSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteFileSerializer

@@ -3,21 +3,30 @@ title: notifications
 baseUri: http://heidianapi.com
 
 types:
-  WriteShopNotificationSerializer:
+  ShopNotificationSerializer:
     type: object
     properties:
       category:
         required: true
         type: string
-      content:
-        required: false
-        type: string
       is_read:
         required: false
         type: boolean
+      kind:
+        required: false
+        type: string
+      created_at:
+        required: false
+        type: string
       detail:
         required: false
         type: string
+      content:
+        required: false
+        type: string
+      id:
+        required: false
+        type: integer
 
   ShopNotificationConfigSerializer:
     type: object
@@ -66,30 +75,21 @@ types:
         required: false
         type: boolean
 
-  ShopNotificationSerializer:
+  WriteShopNotificationSerializer:
     type: object
     properties:
       category:
         required: true
         type: string
-      is_read:
-        required: false
-        type: boolean
-      kind:
-        required: false
-        type: string
-      created_at:
-        required: false
-        type: string
-      detail:
-        required: false
-        type: string
       content:
         required: false
         type: string
-      id:
+      is_read:
         required: false
-        type: integer
+        type: boolean
+      detail:
+        required: false
+        type: string
 
 
 

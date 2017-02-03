@@ -1,0 +1,18 @@
+# {{ title }} API documentation{% if version %} version {{ version }}{% endif %}
+{{ baseUri }}
+
+{% for item in documentation %}
+### {{ item.title }}
+{{ item.content }}
+{% endfor %}
+
+---
+
+## Models
+{% for name, type in types %}
+{% include "./type.njk" %}
+{% endfor %}
+
+{% for resource in resources %}
+{% include "./resource.njk" %}
+{% endfor %}

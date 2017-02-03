@@ -21,9 +21,6 @@ types:
       title:
         required: false
         type: string
-      version:
-        required: false
-        type: string
       name:
         required: true
         type: string
@@ -87,8 +84,8 @@ types:
         required: false
         type: string
       theme:
-        required: false
-        type: ThemeSerializer
+        required: true
+        type: string
       assets:
         required: false
         type: string
@@ -102,19 +99,10 @@ types:
   ThemeSerializer:
     type: object
     properties:
-      screenshot_mobile:
-        required: false
-        type: string
-      presets:
-        required: false
-        type: ThemePresetSerializer[]
       metafield:
         required: false
         type: string
       description:
-        required: false
-        type: string
-      screenshot:
         required: false
         type: string
       author:
@@ -124,9 +112,6 @@ types:
         required: false
         type: string
       title:
-        required: false
-        type: string
-      version:
         required: false
         type: string
       id:
@@ -159,6 +144,9 @@ types:
         type: string
       demo:
         required: false
+        type: string
+      theme:
+        required: true
         type: string
       assets:
         required: false
@@ -237,7 +225,7 @@ types:
 
 
 /api/themes/uploadtheme/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteThemeUploadSerializer
@@ -248,7 +236,7 @@ types:
           application/json:
             type: ThemeUploadSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteThemeUploadSerializer
@@ -261,6 +249,17 @@ types:
 
 
 /api/themes/theme/:
+  post:
+    body:
+      application/json:
+        type: WriteThemeSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemeSerializer
+
   get:
     queryParameters:
       page:
@@ -276,20 +275,9 @@ types:
           application/json:
             type: ThemeSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteThemeSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: ThemeSerializer
-
 
 /api/themes/theme/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteThemeSerializer
@@ -307,7 +295,7 @@ types:
           application/json:
             type: ThemeSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteThemeSerializer
@@ -324,6 +312,17 @@ types:
 
 
 /api/themes/preset/:
+  post:
+    body:
+      application/json:
+        type: WriteThemePresetSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ThemePresetSerializer
+
   get:
     queryParameters:
       page:
@@ -332,12 +331,6 @@ types:
       page_size:
         required: false
         type: integer
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
       theme:
         required: false
         type: string
@@ -345,6 +338,12 @@ types:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
         required: false
         type: string
       tag:
@@ -360,20 +359,9 @@ types:
           application/json:
             type: ThemePresetSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteThemePresetSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: ThemePresetSerializer
-
 
 /api/themes/preset/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteThemePresetSerializer
@@ -391,7 +379,7 @@ types:
           application/json:
             type: ThemePresetSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteThemePresetSerializer

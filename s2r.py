@@ -19,6 +19,7 @@ ROOT_URL = 'http://heidianapi.com/api/docs/api-docs/'
 OUTPUT_DIR = './result/'
 PATCH_DIR = './patch/'
 GENERATE_HTML = False
+GENERATE_MD = True
 
 
 def get_data(url):
@@ -75,6 +76,7 @@ General Options:
   -t, --title  <title_prefix>   Such as: 'My_First_Api'
   -p, --patch  <patch_dir>      Such as: './patch/'
   --html                        Generate html files
+  --md                          Generate markdown files
 """
     print(text)
     sys.exit()
@@ -98,6 +100,8 @@ if __name__ == '__main__':
                 PATCH_DIR = value
             elif name in ['--html']:
                 GENERATE_HTML = True
+            elif name in ['--md']:
+                GENERATE_MD = True
 
     except getopt.GetoptError:
         usage()
@@ -171,7 +175,7 @@ open(output_path, 'w').write(page)
 print('=====================================')
 
 
-if GENERATE_HTML or 1:
+if GENERATE_HTML:
     print('============== raml2html ==================')
 
     """
@@ -198,6 +202,37 @@ if GENERATE_HTML or 1:
         open(index_path, 'a').write('<p><a href="%s">%s</a></p>\n' % (html_name, html_name))
 
     print('=====================================')
+
+
+if GENERATE_MD:
+    print('============== raml2html ==================')
+
+    """
+    npm install -g raml2md
+    raml2md -i example.raml -o example.html
+    """
+
+    MD_DIR = os.path.join(OUTPUT_DIR, 'md')
+    if not os.path.exists(MD_DIR):
+        os.mkdir(MD_DIR)
+
+    index_path = os.path.join(MD_DIR, 'index.md')
+    open(index_path, 'w')
+
+    for name in os.listdir(OUTPUT_DIR):
+        if name[-5:] != '.raml':
+            continue
+        raml_path = os.path.join(OUTPUT_DIR, name)
+        md_name = name[:-5]+'.md'
+        md_path = os.path.join(MD_DIR, md_name)
+        cmd = 'raml2md -i %s -o %s -t ./md_template/index.njk' % (raml_path, md_path)
+        print(cmd)
+        os.system(cmd)
+        open(index_path, 'a').write('* [%s](%s)\n' % (md_name, md_name))
+
+    print('=====================================')
+
+
 
 
 print('Finish!')

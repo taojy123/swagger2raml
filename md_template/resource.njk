@@ -1,0 +1,49 @@
+{% if resource.methods | length %}
+
+{% for endpoint in resource.methods %}
+### {{ endpoint.displayName | default(resource.relativeUri) | capitalize }}
+
+{{ endpoint.description }}
+
+```
+{{ endpoint.method | upper }} {{ resource.parentUrl }}{{ resource.relativeUri }}
+```
+
+{% if endpoint.allUriParameters | length %}
+URI Parameters
+
+| Attribute | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+{%- for param in endpoint.allUriParameters %}
+| `{{ param.key }}` | {{ param.type }} | {{ 'yes' if param.required else 'no' }} | {{ param.description }} |
+{%- endfor %}
+{% endif %}
+
+{% if endpoint.queryParameters | length %}
+QueryString Parameters
+
+| Attribute | Type | Required | Description | Example |
+| --------- | ---- | -------- | ----------- | ------- |
+{%- for param in endpoint.queryParameters %}
+| `{{ param.key }}` | {{ param.type }} | {{ 'yes' if param.required else 'no' }} | {{ param.description }} | {{ param.examples }}
+{%- endfor %}
+{% endif %}
+
+{% if endpoint.responses %}
+Responses
+
+| Code | Description |
+| ---- | ----------- |
+{%- for response in endpoint.responses %}
+| {{ response.code }} | {{ response.description }} |
+{%- endfor %}
+
+{% endif %}
+
+{%- endfor -%}
+
+{% endif %}
+
+{% for resource in resource.resources %}
+{% include "./resource.njk" %}
+{% endfor %}

@@ -40,6 +40,16 @@ types:
         required: false
         type: integer
 
+  WritePlanBillingSerializer:
+    type: object
+    properties:
+      plan_period:
+        required: true
+        type: string
+      plan_name:
+        required: true
+        type: string
+
   WritePlanSerializer:
     type: object
     properties:
@@ -83,16 +93,6 @@ types:
       id:
         required: false
         type: integer
-
-  WritePlanBillingSerializer:
-    type: object
-    properties:
-      plan_period:
-        required: true
-        type: string
-      plan_name:
-        required: true
-        type: string
 
 
 

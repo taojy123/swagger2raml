@@ -493,6 +493,17 @@ types:
 
 
 /api/catalogue/productoption/:
+  post:
+    body:
+      application/json:
+        type: WriteProductOptionSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductOptionSerializer
+
   get:
     queryParameters:
       page:
@@ -508,20 +519,9 @@ types:
           application/json:
             type: ProductOptionSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteProductOptionSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: ProductOptionSerializer
-
 
 /api/catalogue/productoption/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteProductOptionSerializer
@@ -539,7 +539,7 @@ types:
           application/json:
             type: ProductOptionSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteProductOptionSerializer
@@ -578,6 +578,17 @@ types:
 
 
 /api/catalogue/product/:
+  post:
+    body:
+      application/json:
+        type: WriteProductSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductSerializer
+
   get:
     queryParameters:
       page:
@@ -586,16 +597,16 @@ types:
       page_size:
         required: false
         type: integer
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
       id:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
         required: false
         type: string
       published_at_from:
@@ -655,20 +666,9 @@ types:
           application/json:
             type: ProductSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteProductSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: ProductSerializer
-
 
 /api/catalogue/product/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteProductSerializer
@@ -686,7 +686,7 @@ types:
           application/json:
             type: ProductSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteProductSerializer
@@ -703,6 +703,17 @@ types:
 
 
 /api/catalogue/variant/:
+  post:
+    body:
+      application/json:
+        type: WriteProductVariantSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductVariantSerializer
+
   get:
     queryParameters:
       page:
@@ -718,20 +729,9 @@ types:
           application/json:
             type: ProductVariantSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteProductVariantSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: ProductVariantSerializer
-
 
 /api/catalogue/variant/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteProductVariantSerializer
@@ -749,7 +749,7 @@ types:
           application/json:
             type: ProductVariantSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteProductVariantSerializer
@@ -784,6 +784,17 @@ types:
 
 
 /api/catalogue/tag/:
+  post:
+    body:
+      application/json:
+        type: WriteProductTagSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: ProductTagSerializer
+
   get:
     queryParameters:
       title:
@@ -796,20 +807,9 @@ types:
           application/json:
             type: ProductTagSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteProductTagSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: ProductTagSerializer
-
 
 /api/catalogue/tag/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteProductTagSerializer
@@ -827,7 +827,7 @@ types:
           application/json:
             type: ProductTagSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteProductTagSerializer
@@ -844,6 +844,17 @@ types:
 
 
 /api/catalogue/collection/:
+  post:
+    body:
+      application/json:
+        type: WriteCollectionSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectionSerializer
+
   get:
     queryParameters:
       page:
@@ -852,16 +863,16 @@ types:
       page_size:
         required: false
         type: integer
-      name:
-        required: false
-        type: string
-      name__in:
-        required: false
-        type: string
       id:
         required: false
         type: string
       id__in:
+        required: false
+        type: string
+      name:
+        required: false
+        type: string
+      name__in:
         required: false
         type: string
       published:
@@ -892,20 +903,9 @@ types:
           application/json:
             type: CollectionSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteCollectionSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CollectionSerializer
-
 
 /api/catalogue/collection/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteCollectionSerializer
@@ -923,7 +923,7 @@ types:
           application/json:
             type: CollectionSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteCollectionSerializer
@@ -940,6 +940,17 @@ types:
 
 
 /api/catalogue/collection/{parent_lookup_collection}/collect/:
+  post:
+    body:
+      application/json:
+        type: WriteCollectSerializer
+
+    responses:
+      200:
+        body:
+          application/json:
+            type: CollectSerializer
+
   get:
     queryParameters:
       page:
@@ -961,20 +972,9 @@ types:
           application/json:
             type: CollectSerializer[]
 
-  post:
-    body:
-      application/json:
-        type: WriteCollectSerializer
-
-    responses:
-      200:
-        body:
-          application/json:
-            type: CollectSerializer
-
 
 /api/catalogue/collection/{parent_lookup_collection}/collect/{pk}/:
-  patch:
+  put:
     body:
       application/json:
         type: WriteCollectSerializer
@@ -992,7 +992,7 @@ types:
           application/json:
             type: CollectSerializer
 
-  put:
+  patch:
     body:
       application/json:
         type: WriteCollectSerializer
