@@ -86,3 +86,17 @@ baseUri: http://heidianapi.com
                   }
                 ]
 
+
+
+/api/discounts/coupon/{pk}/customers/:
+  post:
+    description: 分发优惠券
+    body:
+      application/json:
+        example: |
+          [
+            {"customer": 101}, 
+            {"customer": 102}
+          ]
+    responses:
+      204:
